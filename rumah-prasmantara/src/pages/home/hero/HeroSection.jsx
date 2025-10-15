@@ -142,7 +142,6 @@ export const HeroSection = () => {
         <ScrollText />
         <WaveEffect />
       </section>
-      <section className='h-[100vh]'></section>
     </>
   );
 };
