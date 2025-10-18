@@ -88,7 +88,7 @@ const HeroText = ({ isVisible }) => (
 );
 
 const ScrollText = () => (
-  <div className="w-full text-lg align-middle text-center font-bold text-[#EAAE8F] tracking-wide flex flex-col items-center justify-center">
+  <div className="w-full text-lg align-middle text-center font-bold text-[#EAAE8F] tracking-wide flex flex-col items-center justify-center -translate-y-25">
     <p
       className=""
       style={{ fontFamily: font.cormorantUpright }}

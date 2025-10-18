@@ -1,13 +1,19 @@
 import { NavigationBar } from "../../components/navigation/NavigationBar";
 import { HeroSection } from "./hero/HeroSection";
+import { StatsSection } from "./stats/StatsSection";
+import { StrengthSection } from "./strength/strengthSection";
+
 import './HomePage.css'
-import { Section } from "./stats/StatsSection";
 export function HomePage() {
   return (
     <>
       <NavigationBar />
       <HeroSection />
-      <Section />
+      <StatsSection />
+      <div className="w-full bg-[#3C261A]">
+        <StrengthSection />
+        
+      </div>
     </>
   );
 }

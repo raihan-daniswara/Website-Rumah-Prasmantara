@@ -31,7 +31,6 @@ const Header = ({ isVisible }) => (
   </header>
 );
 
-// 🔥 TiltCard sekarang menerima prop "bgImage"
 const TiltCard = ({ isVisible, children, slideClass = '-translate-x-5', bgImage }) => (
   <Tilt
     tiltMaxAngleX={8}
@@ -49,26 +48,22 @@ const TiltCard = ({ isVisible, children, slideClass = '-translate-x-5', bgImage 
       boxShadow: '0 10px 20px rgba(0, 0, 0, 0.2)',
     }}
   >
-    {/* Layer gambar full cover (berbeda tiap card) */}
     <div
       className="absolute inset-0 w-full h-full bg-cover bg-center opacity-0 transition-all duration-700 ease-in-out 
-        group-hover:opacity-10 group-hover:scale-110"
+        group-hover:opacity-30 group-hover:scale-110"
       style={{
         backgroundImage: `url(${bgImage})`,
       }}
     ></div>
 
-    {/* Lapisan semi-transparan opsional untuk kontras teks */}
     <div className="absolute inset-0 bg-black/20 opacity-0 transition-all duration-700 group-hover:opacity-30"></div>
 
-    {/* Isi kartu */}
     <div className="relative z-10">
       {children}
     </div>
   </Tilt>
 );
 
-// 🔹 Card 1
 const Card1 = ({ isVisible }) => (
   <TiltCard isVisible={isVisible} bgImage={cardImage1}>
     <h1
@@ -92,7 +87,6 @@ const Card1 = ({ isVisible }) => (
   </TiltCard>
 );
 
-// 🔹 Card 2
 const Card2 = ({ isVisible }) => (
   <TiltCard isVisible={isVisible} bgImage={cardImage2}>
     <h1
@@ -116,7 +110,6 @@ const Card2 = ({ isVisible }) => (
   </TiltCard>
 );
 
-// 🔹 Card 3
 const Card3 = ({ isVisible }) => (
   <TiltCard isVisible={isVisible} bgImage={cardImage3} slideClass="translate-x-5">
     <h1
@@ -150,7 +143,7 @@ const Content = ({ contentVisible }) => (
   </div>
 );
 
-export const Section = () => {
+export const StatsSection = () => {
   const [headerVisible, setHeaderVisible] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
   const sectionRef = useRef(null);
