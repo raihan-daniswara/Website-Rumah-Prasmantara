@@ -33,7 +33,6 @@ const TextContent = () => (
   </div>
 );
 
-
 // CardContent Component
 const CardContent = () => {
   const menuData = [

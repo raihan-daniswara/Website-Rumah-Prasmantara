@@ -5,6 +5,7 @@ import { StrengthSection } from "./strength/strengthSection";
 
 import './HomePage.css'
 import { MenuSection } from "./menu/MenuSection";
+import { CommentSection } from "./comment/CommentSection";
 export function HomePage() {
   return (
     <>
@@ -14,6 +15,7 @@ export function HomePage() {
       <div className="w-full pt-30 bg-[#3C261A] flex flex-col gap-15">
         <StrengthSection />
         <MenuSection />
+        <CommentSection />
       </div>
     </>
   );
