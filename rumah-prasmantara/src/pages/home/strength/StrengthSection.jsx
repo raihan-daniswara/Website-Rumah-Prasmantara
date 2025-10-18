@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import "./StrengthSection.css";
 import chef from "../../../assets/home/chef.png";
 import iconVariasi from "../../../assets/home/icon-variasi.png";
@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
-  cormorantGaramond: '"Cormorant Garamond", serif'
+  cormorantGaramond: '"Cormorant Garamond", serif',
 };
 
 const cardData = [
@@ -16,24 +16,32 @@ const cardData = [
     icon: iconVariasi,
     title: "Variasi Masakan",
     highlight: "Nusantara",
-    width: "128px"
+    width: "128px",
   },
   {
     icon: iconKonsep,
     title: "Konsep Unik",
     highlight: "Prasmanan",
-    width: "92px"
+    width: "92px",
   },
   {
     icon: iconPesan,
     title: "Dapat Pesan",
     highlight: "Melalui Online",
-    width: "128px"
-  }
+    width: "128px",
+  },
 ];
 
-const StrengthCard = ({ icon, title, highlight, width }) => (
-  <div className="card px-6 py-5 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:scale-105 hover:cursor-pointer">
+const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
+  <div
+    className={`card px-6 py-5 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-1000 ease-out hover:cursor-pointer hover:scale-105 ${
+      isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+    }`}
+    style={{
+      borderRadius: "32px",
+      boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
+    }}
+  >
     <img src={icon} alt={title} className={`w-${width} h-auto`} />
     <p
       className="text-2xl text-[#EAAE8F] font-bold text-center"
@@ -46,12 +54,16 @@ const StrengthCard = ({ icon, title, highlight, width }) => (
   </div>
 );
 
-const TextContent = () => (
-  <div className="flex flex-col items-center gap-8 w-fit">
+const TextContent = ({ isVisible }) => (
+  <div
+    className={`flex flex-col items-center gap-8 w-fit transition-all duration-1000 ease-out ${
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+    }`}
+  >
     {/* Header */}
     <div className="textContent flex flex-col gap-2.5">
       <h1
-        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]! "
+        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Mengapa <span className="text-[#C54300]">Harus</span> Memilih
@@ -76,23 +88,31 @@ const TextContent = () => (
           icon={card.icon}
           title={card.title}
           highlight={card.highlight}
+          width={card.width}
+          isVisible={isVisible}
         />
       ))}
     </div>
-        <NavLink
-          to="/tentang"
-          className={({ isActive }) => `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
-            }`}
-          style={{ fontFamily: font.cormorantGaramond }}
-        >
-          Tentang <span className='text-[#C54300]'>Kami</span>
-        </NavLink>
+    <NavLink
+      to="/tentang"
+      className={({ isActive }) =>
+        `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${
+          isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
+        }`
+      }
+      style={{ fontFamily: font.cormorantGaramond }}
+    >
+      Tentang <span className="text-[#C54300]">Kami</span>
+    </NavLink>
   </div>
 );
 
-const ImageContent = () => (
-  <div className="chef-border relative w-[500px] h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center hover:cursor-pointer hover:scale-105 duration-[300ms] ease-out transition-all">
-    {/* Div kedua di tengah */}
+const ImageContent = ({ isVisible }) => (
+  <div
+    className={`chef-border relative w-[500px] h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center hover:cursor-pointer hover:scale-105 duration-[300ms] ease-out transition-all ${
+      isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
+    }`}
+  >
     <div className="absolute inset-0 flex items-center justify-center rounded-full">
       <div className="relative w-[600px] h-[600px] flex items-center justify-center">
         <img
@@ -114,10 +134,64 @@ const ImageContent = () => (
 );
 
 export const StrengthSection = () => {
+  const [textVisible, setTextVisible] = useState(false);
+  const [imageVisible, setImageVisible] = useState(false);
+  const sectionRef = useRef(null);
+  const textObserverRef = useRef(null);
+  const imageObserverRef = useRef(null);
+
+  const handleTextIntersection = useCallback(
+    (entries) => {
+      const [entry] = entries;
+      if (entry.isIntersecting && !textVisible) {
+        setTimeout(() => {
+          setTextVisible(true);
+        }, 100);
+        textObserverRef.current?.unobserve(entry.target);
+      }
+    },
+    [textVisible]
+  );
+
+  const handleImageIntersection = useCallback(
+    (entries) => {
+      const [entry] = entries;
+      if (entry.isIntersecting && !imageVisible) {
+        setTimeout(() => {
+          setImageVisible(true);
+        }, 100);
+        imageObserverRef.current?.unobserve(entry.target);
+      }
+    },
+    [imageVisible]
+  );
+
+  useEffect(() => {
+    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
+      threshold: 0.3,
+    });
+    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
+      threshold: 0.3,
+    });
+
+    if (sectionRef.current) {
+      textObserverRef.current.observe(sectionRef.current);
+      imageObserverRef.current.observe(sectionRef.current);
+    }
+
+    return () => {
+      textObserverRef.current?.disconnect();
+      imageObserverRef.current?.disconnect();
+    };
+  }, [handleTextIntersection, handleImageIntersection]);
+
   return (
-    <section className="flex gap-20 py-16 px-4 items-center justify-center">
-      <ImageContent />
-      <TextContent />
+    <section
+      ref={sectionRef}
+      className="flex gap-20 py-16 px-4 items-center justify-center"
+    >
+      <ImageContent isVisible={imageVisible} />
+      <TextContent isVisible={textVisible} />
     </section>
   );
 };
