@@ -1,0 +1,89 @@
+.hero-header-1 {
+  line-height: 97px;
+  text-shadow: 0px 4px 10px rgba(197, 67, 0, 0.25),
+    0px 4px 100px rgba(66, 48, 37, 0.25);
+}
+.hero-header-2 {
+  line-height: 52px;
+  text-shadow: 0px 4px 15px rgba(217, 204, 204, 0.25);
+}
+.hero-paragraph {
+  line-height: 52px;
+  text-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.image-container {
+  transform: rotate(-15deg);
+}
+
+.button-text {
+  text-shadow: 0px 0px 20px rgba(234, 174, 143, 0.20);
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.11);
+}
+
+.image-wrapper img {
+  filter: brightness(80%);
+}
+
+.image-wrapper {
+  box-shadow: 0px 4px 50px rgba(66, 48, 37, 1);
+}
+
+/* Hero Section Fade In Animation */
+.image-container,
+.text,
+.hero-header-2,
+.hero-header-1,
+.hero-paragraph,
+.button-text {
+  will-change: transform, opacity;
+}
+
+/* Floating Animation */
+.floating-container {
+  perspective: 1000px;
+}
+
+.floating-item {
+  will-change: transform;
+  animation: float var(--float-duration, 6s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+  animation-play-state: running;
+  transform-origin: center bottom;
+}
+
+/* Keyframe untuk floating effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+  }
+  33% {
+    transform: translateY(calc(var(--float-amplitude, 6px) * -1)) rotateX(2deg) rotateY(-1deg);
+  }
+  66% {
+    transform: translateY(var(--float-amplitude, 6px)) rotateX(-1deg) rotateY(1deg);
+  }
+}
+
+
+/* Smooth hover effect untuk button */
+.button-text {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.button-text:hover {
+  transform: translateY(-2px);
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Pause floating animation saat tidak visible untuk performance */
+.opacity-0 .floating-item {
+  animation-play-state: paused !important;
+}
+
+.blob-container img {
+  width: 100%;
+  height: 100%;
+}

@@ -3,7 +3,7 @@ import './NavigationBar.css'
 
 export function NavigationBar() {
   return (
-    <nav className="nav-bar fixed mt-3 bg-linear-0 from-[#3C261A]/95 to-[#4d3123]/95 z-50 left-1/2 -translate-x-1/2 w-7xl mx-auto flex items-center justify-between px-2.5 backdrop-blur-sm shadow-md py-0.5 rounded-full">
+    <nav className="nav-bar fixed mt-3 bg-linear-0 from-[#3C261A]/95 to-[#4d3123]/95 z-50 left-1/2 -translate-x-1/2 min-w-6xl max-w-7xl mx-auto flex items-center justify-between px-2.5 backdrop-blur-sm shadow-md py-0.5 rounded-full">
 
       {/* Brand */}
       <NavLink

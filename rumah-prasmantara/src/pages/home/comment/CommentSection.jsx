@@ -43,32 +43,28 @@ const CardContent = () => {
       image: ImageNayataDewi,
       name: "Nayata Dewi",
       rating: 5,
-      comment:
-        "Makanan terasa sehat karena tidak terlalu asin, tidak terlalu gurih, dan tidak terlalu manis.",
+      comment: "Makanan terasa sehat karena tidak terlalu asin, tidak terlalu gurih, dan tidak terlalu manis.",
       date: "Aug 10, 2025",
     },
     {
       image: ImageDedeKurniawan,
       name: "Dede Kurniawan",
       rating: 4,
-      comment:
-        "Salah satu rumah makan penghilang rasa rindu masakan rumah. Penyajiannya pun prasmanan. Jd kita bisa leluasa ambil.",
+      comment: "Salah satu rumah makan penghilang rasa rindu masakan rumah. Penyajiannya pun prasmanan. Jd kita bisa leluasa ambil.",
       date: "Sep 15, 2025",
     },
     {
       image: ImageLaodeSilalahiIsmail,
       name: "Laode Silalahi Ismail",
       rating: 5,
-      comment:
-        "Banyak pilihan menu lauknya, makanannya enak semua, pelayanan nya juga ramah.",
+      comment: "Banyak pilihan menu lauknya, makanannya enak semua, pelayanan nya juga ramah.",
       date: "Oct 05, 2025",
     },
     {
       image: ImageNoorBetty,
       name: "Noor Betty",
       rating: 4,
-      comment:
-        "Makanan nya beraneka ragam alias komplit dan rasa masakan nya pun ok banget.",
+      comment: "Makanan nya beraneka ragam alias komplit dan rasa masakan nya pun ok banget.",
       date: "Oct 12, 2025",
     },
     {
@@ -82,16 +78,14 @@ const CardContent = () => {
       image: ImageDeniIrawan,
       name: "Deni Irawan",
       rating: 4,
-      comment:
-        "Rasa makanan sangat autentik, namun harga sedikit di atas rata-rata.",
+      comment: "Rasa makanan sangat autentik, namun harga sedikit di atas rata-rata.",
       date: "Oct 17, 2025",
     },
     {
       image: ImageRosmanHarianto,
       name: "Rosman Harianto",
       rating: 5,
-      comment:
-        "Saat siang hari masih lumayan komplit, banyak alternatif sayur dan lauk siap saji, bersih rapih dan enak.",
+      comment: "Saat siang hari masih lumayan komplit, banyak alternatif sayur dan lauk siap saji, bersih rapih dan enak.",
       date: "Oct 16, 2025",
     },
   ];
