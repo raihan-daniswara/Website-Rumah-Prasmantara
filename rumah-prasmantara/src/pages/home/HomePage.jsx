@@ -12,7 +12,7 @@ export function HomePage() {
       <NavigationBar />
       <HeroSection />
       <StatsSection />
-      <div className="w-full pt-30 bg-[#3C261A] flex flex-col gap-15">
+      <div className="w-full pt-30 bg-gradient-to-b from-[#3C261A] to-[#442717] overflow-hidden flex flex-col gap-15">
         <StrengthSection />
         <MenuSection />
         <CommentSection />

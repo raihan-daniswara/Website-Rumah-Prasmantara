@@ -101,8 +101,8 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative flex flex-col h-[100vh] w-full items-center justify-start bg-gradient-to-b from-[#3C261A] to-[#442717] overflow-hidden">
-      <div className="flex gap-10 items-center w-[1323px] justify-start absolute top-1/2 -translate-y-1/2">
+    <section className="relative flex h-[100vh] w-full items-center justify-center">
+      <div className="w-[1323px] absolute top-1/2 -translate-y-1/2">
         <HeroText isVisible={isVisible} />
         <HeroBlob />
       </div>
