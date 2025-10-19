@@ -1,6 +1,7 @@
 import { NavigationBar } from "../../components/navigation/NavigationBar";
 import './AboutPage.css'
 import { HeroSection } from "./hero/HeroSection";
+import { PartnersSection } from "./partners/PartnersSection";
 import { StrengthSection } from "./strength/StrengthSection";
 export function AboutPage(){
   return(
@@ -9,6 +10,7 @@ export function AboutPage(){
       <NavigationBar />
       <HeroSection />
       <StrengthSection />
+      <PartnersSection />
     </div>
     </>
   )
