@@ -1,6 +1,7 @@
 import { NavigationBar } from "../../components/navigation/NavigationBar";
 import './AboutPage.css'
 import { HeroSection } from "./hero/HeroSection";
+import { LocationSection } from "./location/LocationSection";
 import { PartnersSection } from "./partners/PartnersSection";
 import { StrengthSection } from "./strength/StrengthSection";
 import { TeamsSection } from "./teams/TeamsSection";
@@ -14,7 +15,7 @@ export function AboutPage(){
       <PartnersSection />
       <TeamsSection />
     </div>
-    
+      <LocationSection />
     </>
   )
 }
