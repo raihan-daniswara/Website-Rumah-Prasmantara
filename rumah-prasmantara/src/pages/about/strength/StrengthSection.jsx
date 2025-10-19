@@ -128,16 +128,16 @@ const ImageContent = ({ isVisible }) => (
       <img
         src={MasakanNusantara2}
         alt="Masakan Nusantara 2"
-        className="rounded-t-[100px] rounded-b-[300px] object-cover w-[240px] h-[340px]"
+        className="strengthImage rounded-t-[100px] rounded-b-[300px] object-cover w-[240px] h-[340px]"
       />
     </div>
 
     {/* Kolom kanan (GIF) */}
-    <div className="rounded-l-[50px] rounded-r-[220px] overflow-hidden w-[300px] h-[600px]">
+    <div className="strengthImage rounded-l-[50px] rounded-r-[220px] overflow-hidden w-[300px] h-[600px]">
       <img
         src={MakananGIF}
         alt="Masakan Animasi"
-        className="object-cover w-full h-full"
+        className="strengthImage object-cover w-full h-full"
       />
     </div>
   </div>
@@ -198,7 +198,7 @@ export const StrengthSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="flex gap-20 py-16 px-4 items-center justify-center"
+      className="h-[100vh] flex gap-20 py-16 px-4 items-center justify-center"
     >
       <ImageContent isVisible={imageVisible} />
       <TextContent isVisible={textVisible} />

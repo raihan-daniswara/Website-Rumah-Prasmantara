@@ -3,6 +3,7 @@ import './AboutPage.css'
 import { HeroSection } from "./hero/HeroSection";
 import { PartnersSection } from "./partners/PartnersSection";
 import { StrengthSection } from "./strength/StrengthSection";
+import { TeamsSection } from "./teams/TeamsSection";
 export function AboutPage(){
   return(
     <>
@@ -11,7 +12,9 @@ export function AboutPage(){
       <HeroSection />
       <StrengthSection />
       <PartnersSection />
+      <TeamsSection />
     </div>
+    
     </>
   )
 }

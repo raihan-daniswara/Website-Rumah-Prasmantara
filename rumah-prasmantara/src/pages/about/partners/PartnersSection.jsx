@@ -161,7 +161,7 @@ export const PartnersSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="flex gap-20 py-16 px-4 items-center justify-center"
+      className="h-[100vh] flex gap-20 py-16 px-4 items-center justify-center"
     >
       <TextContent isVisible={textVisible} />
       <ImageContent isVisible={imageVisible} />

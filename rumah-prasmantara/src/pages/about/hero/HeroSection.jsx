@@ -15,7 +15,7 @@ const font = {
 
 const HeroBlob = () => {
   return (
-    <div className="blob-container absolute w-[700px] h-[700px] right-0 top-1/2 -translate-y-1/2" style={{ zIndex: -1 }}>
+    <div className="blob-container absolute w-[700px] h-[700px] right-0 top-1/2 -translate-y-1/2 animate-pulse" style={{ zIndex: -1 }}>
       <img
         src={blob}
         className="absolute top-0 left-0 scale-110 translate-x-5 transition-all ease-in"
