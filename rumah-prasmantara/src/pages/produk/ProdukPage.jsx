@@ -1,12 +1,22 @@
 import { NavigationBar } from "../../components/navigation/NavigationBar";
+import { WaveBottom } from "../../components/wave/WaveBottom";
+import { WaveTop } from "../../components/wave/WaveTop";
 import { FavoriteSection } from "./favorite/FavoriteSection";
 import { HeroSection } from "./hero/HeroSection";
 import './ProdukPage.css'
-export function ProdukPage(){
-  return(
-    <div className="bg-linear-to-b from-[#402719] to-[#3C261A]">
-      <HeroSection />
-      <FavoriteSection />
-    </div>
+import { SpecialSection } from "./spesial/SpesialSection";
+export function ProdukPage() {
+  return (
+    <>
+      <div className="relative bg-[#3C261A]">
+        <HeroSection />
+        <FavoriteSection />
+        <WaveBottom />
+      </div>
+      <SpecialSection />
+      <div className="w-full h-[100vh] relative bg-gradient-to-b from-[#3C261A] to-[#442717]">
+        <WaveTop />
+      </div>
+    </>
   )
 }

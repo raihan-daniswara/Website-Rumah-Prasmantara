@@ -1,6 +1,6 @@
 // Wave Component
 export const WaveBottom = () => (
-  <div className="wave-container absolute bottom-0 left-0 w-full overflow-hidden">
+  <div className="wave-container absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none">
     <svg
       className="wave-svg relative block w-full h-[150px]"
       xmlns="http://www.w3.org/2000/svg"

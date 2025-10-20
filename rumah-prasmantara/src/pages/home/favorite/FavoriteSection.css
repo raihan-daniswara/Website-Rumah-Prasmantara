@@ -1,33 +1,33 @@
 /* mask untuk sembunyiin border kiri dan kanan */
-.slick-list {
+.favorite-section .slick-list {
   mask-image: linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%);
 }
 
 /* Card non aktif */
-.slick-slide {
+.favorite-section .slick-slide {
   opacity: 0.5;
   transform: scale(0.9);
   transition: all 0.4s ease;
 }
 
 /* Card aktif */
-.slick-center {
+.favorite-section .slick-center {
   opacity: 1;
   transform: scale(1);
 }
 
-.slick-center .menu-card {
+.favorite-section .slick-center .menu-card {
   box-shadow: 0 0px 50px rgba(223, 178, 0, 0.15);
   transition: box-shadow 0.8s ease;
 }
 
 /* Dot container */
-.slick-dots li {
+.favorite-section .slick-dots li {
   margin: 0 !important;
 }
 
 /* Dot non aktif */
-.custom-dot {
+.favorite-section .custom-dot {
   width: 14px;
   height: 14px;
   background: rgba(197, 67, 0, 0.4);
@@ -38,7 +38,7 @@
 }
 
 /* Dot aktif */
-.slick-dots li.slick-active .custom-dot {
+.favorite-section .slick-dots li.slick-active .custom-dot {
   width: 22px;
   height: 22px;
   background: #C54300;

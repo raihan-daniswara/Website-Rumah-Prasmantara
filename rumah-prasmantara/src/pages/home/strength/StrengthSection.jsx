@@ -71,7 +71,7 @@ const TextContent = ({ isVisible }) => (
         <span className="text-[#C54300]">Rumah Prasmantara</span>?
       </h1>
       <p
-        className="text-4xl text-[#BDBDBD] font-semibold leading-[52px]!"
+        className="text-4xl text-[#BDBDBD] font-semibold leading-[52px]"
         style={{ fontFamily: font.cormorantGaramond }}
       >
         Beberapa pengalaman kuliner Nusantara yang

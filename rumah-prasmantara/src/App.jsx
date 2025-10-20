@@ -8,6 +8,9 @@ import './App.css';
 import { NavigationBar } from './components/navigation/NavigationBar';
 import ScrollToTop from './components/ScrollToTop';
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 function App() {
   const location = useLocation();
 

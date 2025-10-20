@@ -1,5 +1,5 @@
 export const WaveTop = () => (
-  <div className="wave-container absolute top-0 left-0 w-full overflow-hidden rotate-180">
+  <div className="wave-container absolute top-0 left-0 w-full overflow-hidden rotate-180 pointer-events-none">
     {/* Gelombang utama di depan */}
     <svg
       className="relative block w-full h-[180px] z-10"

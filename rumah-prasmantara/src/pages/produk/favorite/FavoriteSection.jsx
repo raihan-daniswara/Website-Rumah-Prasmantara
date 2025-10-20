@@ -6,8 +6,6 @@ import imageSateLilit from "../../../assets/home/sate-lilit.png";
 import imageRendang from "../../../assets/home/rendang.png";
 import { MenuCard } from "../../../components/menu/Menu";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
@@ -18,7 +16,7 @@ const font = {
 const TextContent = ({ isVisible }) => (
   <div
     className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
     }`}
   >
     <h1
@@ -95,7 +93,7 @@ const CardContent = ({ isVisible }) => {
         {dots}
       </ul>
     ),
-    customPaging: (i) => <div className="custom-dot" />,
+    customPaging: () => <div className="custom-dot" />,
     responsive: [
       {
         breakpoint: 1441,
@@ -118,7 +116,7 @@ const CardContent = ({ isVisible }) => {
 
   return (
     <div
-      className={`card-wrapper w-[80vw] transition-all duration-1000 ease-out ${
+      className={`favorite-section card-wrapper w-[80vw] transition-all duration-1000 ease-out ${
         isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
       }`}
     >
@@ -193,7 +191,7 @@ export const FavoriteSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="h-[120vh] w-full flex flex-col items-center justify-center"
+      className="pb-40 pt-20 w-full flex flex-col items-center"
     >
       <TextContent isVisible={textVisible} />
       <CardContent isVisible={cardVisible} />
