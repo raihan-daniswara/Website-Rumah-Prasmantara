@@ -87,3 +87,16 @@
   width: 100%;
   height: 100%;
 }
+
+@keyframes floatScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+}
+
+.blob-float {
+  animation: floatScale 2s ease-in-out infinite;
+}

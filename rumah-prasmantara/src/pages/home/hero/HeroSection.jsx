@@ -5,6 +5,7 @@ import arrowDown from '../../../assets/home/arrow-down.png';
 import './HeroSection.css';
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import { WaveBottom } from '../../../components/wave/WaveBottom';
 
 // font 
 const font = {
@@ -56,7 +57,7 @@ const HeroImages = ({ isVisible }) => (
 const HeroText = ({ isVisible }) => (
   <div className={`text flex flex-col items-start gap-5 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
     }`}>
-    <div className="my-2.5">
+    <div className="my-2.5 flex flex-col gap-2.5">
       <h2
         className="hero-header-2 text-[#DBCECE] text-5xl font-medium transition-all duration-1000 ease-out"
         style={{ fontFamily: font.greatVibes }}
@@ -64,7 +65,7 @@ const HeroText = ({ isVisible }) => (
         Rumah Prasmantara
       </h2>
       <h1
-        className="hero-header-1 text-7xl text-[#EAAE8F] font-bold transition-all duration-1000 ease-out"
+        className="hero-header-1 text-[80px] text-[#EAAE8F] font-bold transition-all duration-1000 ease-out"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Ragam Nusan<span className="text-[#C54300]">tara</span> <br />di Satu <span className="text-[#C54300]">Prasman</span>an
@@ -99,25 +100,6 @@ const ScrollText = () => (
   </div>
 );
 
-// Wave Component
-const WaveEffect = () => (
-  <div className="wave-container absolute bottom-0 left-0 w-full overflow-hidden">
-    <svg
-      className="wave-svg relative block w-full h-[150px]"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-    >
-      <path
-        className="wave-path"
-        fill="#2C231E"
-        fillOpacity="1"
-        d="M0,192L48,208C96,224,192,256,288,256C384,256,480,224,576,208C672,192,768,192,864,208C960,224,1056,256,1152,256C1248,256,1344,224,1392,208L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-      />
-    </svg>
-  </div>
-);
-
 // Main Hero Section
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -140,7 +122,7 @@ export const HeroSection = () => {
           <HeroImages isVisible={isVisible} />
         </div>
         <ScrollText />
-        <WaveEffect />
+        <WaveBottom />
       </section>
     </>
   );

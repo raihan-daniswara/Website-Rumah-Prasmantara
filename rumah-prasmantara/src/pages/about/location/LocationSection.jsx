@@ -56,16 +56,42 @@ const TextContent = ({ isVisible }) => (
 );
 
 const locations = [
-  { name: "Jakarta Pusat", address: "Jl. Cut Mutia", top: "434px", left: "378px" },
-  { name: "Surabaya", address: "Jl. Ahmad Yani", top: "470px", left: "548px" },
-  { name: "Pekanbaru", address: "Jl. Gatot Subroto", top: "191px", left: "205px" },
-  { name: "Pontianak", address: "Jl. Urip Sumoharjo", top: "213px", left: "470px" },
-  { name: "Makassar", address: "Jl. Urip Sumoharjo", top: "317px", left: "623px" },
+  { 
+    name: "Jakarta Pusat", 
+    address: "Jl. Sabang, Menteng", 
+    top: "434px", 
+    left: "378px" 
+  },
+  { 
+    name: "Surabaya", 
+    address: "Jl. Kembang Jepun", 
+    top: "470px", 
+    left: "548px" 
+  },
+  { 
+    name: "Pekanbaru", 
+    address: "Jl. Jenderal Sudirman", 
+    top: "191px", 
+    left: "205px" 
+  },
+  { 
+    name: "Pontianak", 
+    address: "Jl. Gajah Mada", 
+    top: "213px", 
+    left: "470px" 
+  },
+  { 
+    name: "Makassar", 
+    address: "Jl. Penghibur", 
+    top: "317px", 
+    left: "623px" 
+  },
 ];
+
 
 const ImageContent = ({ isVisible }) => {
   const [activeLocation, setActiveLocation] = useState(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [HoveredIndex, setHoveredIndex] = useState(null);
 
   return (
     <div
@@ -104,7 +130,7 @@ const ImageContent = ({ isVisible }) => {
             className={`transition-all duration-300 ${
               activeLocation === index
                 ? "w-5 h-5 bg-[#C54300] scale-125 ring-[8px] ring-[#9C3500]/40 rounded-full"
-                : "w-5 h-5 bg-[#C54300] rounded-full"
+                : "dotLocation w-5 h-5 bg-[#C54300] rounded-full"
             }`}
           />
 

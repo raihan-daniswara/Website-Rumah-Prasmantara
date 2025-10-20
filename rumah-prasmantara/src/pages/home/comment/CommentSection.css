@@ -1,4 +1,4 @@
 .commentCard {
-  transition: all 0.3s ease; /* Smooth transition for background and scale */
+  transition: all 0.3s ease;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.3);
 }

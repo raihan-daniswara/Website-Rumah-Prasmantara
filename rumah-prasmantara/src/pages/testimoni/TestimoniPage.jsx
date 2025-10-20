@@ -3,7 +3,6 @@ import './TestimoniPage.css'
 export function TestimoniPage(){
   return(
     <>
-      <NavigationBar />
     </>
   )
 }

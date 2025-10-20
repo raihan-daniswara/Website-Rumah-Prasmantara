@@ -13,18 +13,22 @@ const font = {
   cormorantGaramond: '"Cormorant Garamond", serif',
 };
 
-const HeroBlob = () => {
+const HeroBlob = ({ isVisible }) => {
   return (
     <div className="blob-container absolute w-[700px] h-[700px] right-0 top-1/2 -translate-y-1/2 animate-pulse" style={{ zIndex: -1 }}>
       <img
         src={blob}
-        className="absolute top-0 left-0 scale-110 translate-x-5 transition-all ease-in"
+        className={`absolute top-0 left-0 scale-110 translate-x-5 transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
+        }`}
         alt="Blob"
         style={{ zIndex: 1 }}
       />
       <img
         src={blobStroke}
-        className="absolute top-0 left-0 transition-all ease-in"
+        className={`blob-float absolute top-0 left-0 transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-70'
+        }`}
         alt="Blob Stroke"
         style={{ zIndex: 2 }}
       />
@@ -39,7 +43,7 @@ const HeroText = ({ isVisible }) => (
     }`}
     style={{ zIndex: 10 }}
   >
-    <div className="my-2.5">
+    <div className="my-2.5 flex flex-col gap-2.5">
       <h2
         className="hero-header-2 text-[#DBCECE] text-5xl font-medium transition-all duration-1000 ease-out"
         style={{ fontFamily: font.greatVibes }}
@@ -47,7 +51,7 @@ const HeroText = ({ isVisible }) => (
         Tentang Kami
       </h2>
       <h1
-        className="hero-header-1 text-7xl text-[#EAAE8F] font-bold transition-all duration-1000 ease-out"
+        className="hero-header-1 text-[80px] text-[#EAAE8F] font-bold transition-all duration-1000 ease-out"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Alasan <span className="text-[#C54300]">Rumah<br />Prasmantara</span> Hadir
@@ -104,7 +108,7 @@ export const HeroSection = () => {
     <section className="relative flex h-[100vh] w-full items-center justify-center">
       <div className="w-[1323px] absolute top-1/2 -translate-y-1/2">
         <HeroText isVisible={isVisible} />
-        <HeroBlob />
+        <HeroBlob isVisible={isVisible} />
       </div>
     </section>
   );

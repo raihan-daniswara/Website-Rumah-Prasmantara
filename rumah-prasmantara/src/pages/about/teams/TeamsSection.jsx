@@ -78,7 +78,7 @@ const TeamsContent = () => {
       <div className="grid grid-cols-4 gap-10">
         {teamsData.slice(0, 4).map((team, index) => (
           <div key={index} className="flex flex-col items-center">
-            <img src={team.image} className="w-full h-max" />
+            <img src={team.image} className="w-full h-max" loading="lazy"/>
             <div className="flex flex-col items-center mt-4">
               <p
                 className="font-bold text-4xl text-[#C54300]"
@@ -103,7 +103,7 @@ const TeamsContent = () => {
       <div className="flex justify-center gap-10 mt-10">
         {teamsData.slice(4).map((team, index) => (
           <div key={index + 4} className="flex flex-col items-center">
-            <img src={team.image} className="w-full h-max" />
+            <img src={team.image} className="w-full h-max" loading="lazy"/>
             <div className="flex flex-col items-center mt-4">
               <p
                 className="font-bold text-4xl text-[#C54300]"
@@ -130,7 +130,7 @@ const TeamsContent = () => {
 
 export const TeamsSection = () => {
   return (
-    <section className="py-16 px-4 flex flex-col items-center justify-center">
+    <section className="py-16 px-4 mb-20 flex flex-col items-center justify-start">
       <TextContent />
       <TeamsContent />
     </section>

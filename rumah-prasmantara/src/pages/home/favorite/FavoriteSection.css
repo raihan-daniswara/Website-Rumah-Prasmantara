@@ -1,0 +1,47 @@
+/* mask untuk sembunyiin border kiri dan kanan */
+.slick-list {
+  mask-image: linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%);
+}
+
+/* Card non aktif */
+.slick-slide {
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+}
+
+/* Card aktif */
+.slick-center {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slick-center .menu-card {
+  box-shadow: 0 0px 50px rgba(223, 178, 0, 0.15);
+  transition: box-shadow 0.8s ease;
+}
+
+/* Dot container */
+.slick-dots li {
+  margin: 0 !important;
+}
+
+/* Dot non aktif */
+.custom-dot {
+  width: 14px;
+  height: 14px;
+  background: rgba(197, 67, 0, 0.4);
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 12px 4px rgba(197, 67, 0, 0.25);
+  transform: translateY(0px);
+}
+
+/* Dot aktif */
+.slick-dots li.slick-active .custom-dot {
+  width: 22px;
+  height: 22px;
+  background: #C54300;
+  box-shadow: 0 0 25px 10px rgba(197, 67, 0, 0.6);
+  transform: translateY(-4px);
+}

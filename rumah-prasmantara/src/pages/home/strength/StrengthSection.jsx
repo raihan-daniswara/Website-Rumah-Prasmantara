@@ -63,7 +63,7 @@ const TextContent = ({ isVisible }) => (
     {/* Header */}
     <div className="textContent flex flex-col gap-2.5">
       <h1
-        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
+        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]!"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Mengapa <span className="text-[#C54300]">Harus</span> Memilih
@@ -71,7 +71,7 @@ const TextContent = ({ isVisible }) => (
         <span className="text-[#C54300]">Rumah Prasmantara</span>?
       </h1>
       <p
-        className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
+        className="text-4xl text-[#BDBDBD] font-semibold leading-[52px]!"
         style={{ fontFamily: font.cormorantGaramond }}
       >
         Beberapa pengalaman kuliner Nusantara yang

@@ -95,14 +95,12 @@ const CardContent = () => {
 
   return (
     <div className="flex flex-col gap-10">
-      {/* Baris atas - 3 kartu */}
       <div className="flex justify-center gap-6">
         {topRow.map((comment, index) => (
           <CommentCard key={index} index={index} {...comment} />
         ))}
       </div>
 
-      {/* Baris bawah - 4 kartu */}
       <div className="flex justify-center gap-6">
         {bottomRow.map((comment, index) => (
           <CommentCard key={index + 3} index={index + 3} {...comment} />
@@ -114,7 +112,7 @@ const CardContent = () => {
 
 export const CommentSection = () => {
   return (
-    <section className="py-16 px-4 flex flex-col gap-[35px] items-center justify-center">
+    <section className="py-16 px-4 mb-10 flex flex-col gap-[35px] items-center justify-center">
       <TextContent />
       <CardContent />
       <NavLink
