@@ -3,6 +3,7 @@ import { WaveBottom } from "../../components/wave/WaveBottom";
 import { WaveTop } from "../../components/wave/WaveTop";
 import { FavoriteSection } from "./favorite/FavoriteSection";
 import { HeroSection } from "./hero/HeroSection";
+import { MenuSection } from "./menu/MenuSection";
 import './ProdukPage.css'
 import { SpecialSection } from "./spesial/SpesialSection";
 export function ProdukPage() {
@@ -14,8 +15,9 @@ export function ProdukPage() {
         <WaveBottom />
       </div>
       <SpecialSection />
-      <div className="w-full h-[100vh] relative bg-gradient-to-b from-[#3C261A] to-[#442717]">
+      <div className="w-full h-max relative bg-gradient-to-b from-[#3C261A] to-[#442717]">
         <WaveTop />
+        <MenuSection />
       </div>
     </>
   )
