@@ -118,7 +118,7 @@ export const HeroSection = () => {
   return (
     <section className="relative flex flex-col h-[100vh] w-full items-center justify-end overflow-hidden">
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#3C261A]/40 via-[#3C261A]/90 to-[#3C261A]" />
+      <div className="absolute inset-0" />
       <div className="flex gap-10 items-center justify-center absolute top-1/2 -translate-y-1/2 z-10">
         <HeroText isVisible={isVisible} />
       </div>
