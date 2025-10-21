@@ -1,4 +1,4 @@
-import heroImage from '../../../assets/contact/hero-image.png';
+// import heroImage from '../../../assets/contact/hero-image.png';
 import contactCard from '../../../assets/contact/contact-card.svg';
 import instagramLogo from '../../../assets/contact/instagram.svg';
 import whatsappLogo from '../../../assets/contact/whatsapp.svg';
