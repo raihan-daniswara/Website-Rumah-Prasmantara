@@ -7,6 +7,8 @@ import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { SpecialMenuCard } from "../../../components/menu/SpecialMenu";
+import { WaveTop } from "../../../components/wave/WaveTop";
+import { WaveBottom } from "../../../components/wave/WaveBottom";
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
@@ -63,7 +65,7 @@ const CardContent = () => {
       rating: 4.5,
       description:
         "Kapurung khas Sulawesi Selatan berbahan sagu dengan kuah sayuran segar dan cita rasa asam gurih.",
-      price: 25000,
+      price: '25.000',
       day: "Senin",
     },
     // {
@@ -81,7 +83,7 @@ const CardContent = () => {
       rating: 4.2,
       description:
         "Pie khas Bali dengan kulit tipis renyah berpadu dengan isian susu manis lembut yang lumer di mulut.",
-      price: 5000,
+      price: '5.000',
       day: "Rabu",
     },
   ];
@@ -129,6 +131,25 @@ const CategorySlider = () => {
     </div>
   );
 };
+
+const WaveSpecial = () => (
+  <div className="wave-container absolute bottom-0 left-0 w-full overflow-visible pointer-events-none">
+    <svg
+      className="relative block w-full h-[180px] z-10 filter drop-shadow-[0_-30px_30px_rgba(44,35,30,1)]"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 320"
+      preserveAspectRatio="none"
+    >
+      <path
+        fill="#3C261A"
+        d="M0,200 
+          C240,320 480,80 720,200 
+          C960,320 1200,80 1440,200 
+          L1440,320 L0,320 Z"
+      />
+    </svg>
+  </div>
+);
 
 
 export const SpecialSection = () => {
@@ -182,11 +203,13 @@ export const SpecialSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="pb-40 pt-20 w-full h-[100vh] overflow-hidden flex flex-col items-center relative"
+      className="pt-40 w-full h-[120vh] overflow-hidden flex flex-col items-center relative"
     >
+      <WaveBottom />
       <TextContent isVisible={textVisible} />
       <CategorySlider />
       <CardContent />
+      <WaveSpecial />
     </section>
   );
 };

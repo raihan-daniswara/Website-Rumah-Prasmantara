@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import "./LocationSection.css";
 import indonesiaMap from "../../../assets/about/indonesia-map.svg";
 import { NavLink } from "react-router-dom";
+import { WaveBottom } from "../../../components/wave/WaveBottom";
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
@@ -95,7 +96,7 @@ const ImageContent = ({ isVisible }) => {
 
   return (
     <div
-      className={`relative duration-[1000ms] ease-out transition-all ${
+      className={`relative duration-1000 ease-out transition-all ${
         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
       }`}
     >
@@ -129,7 +130,7 @@ const ImageContent = ({ isVisible }) => {
           <div
             className={`transition-all duration-300 ${
               activeLocation === index
-                ? "w-5 h-5 bg-[#C54300] scale-125 ring-[8px] ring-[#9C3500]/40 rounded-full"
+                ? "w-5 h-5 bg-[#C54300] scale-125 ring-8 ring-[#9C3500]/40 rounded-full"
                 : "dotLocation w-5 h-5 bg-[#C54300] rounded-full"
             }`}
           />
@@ -208,8 +209,9 @@ export const LocationSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="h-[100vh] flex gap-[10px] py-16 px-4 items-center justify-center"
+      className="relative h-screen flex gap-[10px] py-16 px-4 items-center justify-center"
     >
+      <WaveBottom />
       <ImageContent isVisible={imageVisible} />
       <TextContent isVisible={textVisible} />
     </section>

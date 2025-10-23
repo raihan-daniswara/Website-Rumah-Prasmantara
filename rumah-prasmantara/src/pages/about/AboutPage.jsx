@@ -9,12 +9,11 @@ import { TeamsSection } from "./teams/TeamsSection";
 export function AboutPage(){
   return(
     <>
-    <div className="relative bg-gradient-to-b from-[#3C261A] to-[#442717] overflow-hidden">
+    <div className="relative bg-linear-to-b from-[#442717] to-[#3C261A] overflow-hidden">
       <HeroSection />
       <StrengthSection />
       <PartnersSection />
       <TeamsSection />
-      <WaveBottom />
     </div>
       <LocationSection />
     </>

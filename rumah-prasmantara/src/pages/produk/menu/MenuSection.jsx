@@ -277,7 +277,7 @@ export const MenuSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="h-fit py-50 flex flex-col gap-20 items-center"
+      className="h-fit py-20 flex flex-col gap-20 items-center"
     >
       <HeaderContent />
       <div className="w-full main-menu flex gap-20 justify-center items-center">

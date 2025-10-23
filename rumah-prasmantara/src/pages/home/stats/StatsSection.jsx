@@ -7,6 +7,13 @@ import cardImage1 from '/src/assets/home/card1.png';
 import cardImage2 from '/src/assets/home/card2.png';
 import cardImage3 from '/src/assets/home/card3.png';
 
+import backgroundIndonesia from '../../../assets/background/background-indonesia.svg';
+import BackgroundCircleBig from "../../../assets/background/background-circle-big2.svg";
+import BackgroundBatik from "../../../assets/background/batik.png";
+import { WaveTop } from '../../../components/wave/WaveTop';
+import { WaveBottom } from '../../../components/wave/WaveBottom';
+
+
 // font 
 const font = {
   greatVibes: '"Great Vibes", cursive',
@@ -186,12 +193,36 @@ export const StatsSection = () => {
   }, [handleHeaderIntersection, handleContentIntersection]);
 
   return (
-    <div 
-      ref={sectionRef} 
-      className="section mt-10 mb-20 p-8 rounded-3xl"
+    <div
+      ref={sectionRef}
+      className="h-fit w-full relative section py-50 rounded-3xl"
     >
+      <WaveBottom />
+      <div className="absolute w-full h-full">
+        <img
+          className="absolute -top-35 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
+          src={backgroundIndonesia}
+          alt="Background Indonesia"
+        />
+        <img
+          className="absolute -bottom-10 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
+          src={BackgroundCircleBig}
+          alt="Background Circle"
+        />
+        <img
+          className="absolute bottom-20 left-20 scale-115 rotate-y-180 rotate-10 opacity-50 pointer-events-none select-none"
+          src={BackgroundBatik}
+          alt="Background Batik"
+        />
+        <img
+          className="absolute bottom-20 right-20 scale-115 opacity-50 pointer-events-none select-none"
+          src={BackgroundBatik}
+          alt="Background Batik"
+        />
+      </div>
       <Header isVisible={headerVisible} />
       <Content contentVisible={contentVisible} />
+      <WaveTop />
     </div>
   );
 };

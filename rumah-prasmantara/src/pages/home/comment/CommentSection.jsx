@@ -8,6 +8,7 @@ import ImageDeniIrawan from "../../../assets/home/deni-irawan.png";
 import ImageRosmanHarianto from "../../../assets/home/rosman-haryanto.png";
 import { NavLink } from "react-router-dom";
 import { CommentCard } from "../../../components/comment/Comment";
+import { FaStar, FaRegStar } from "react-icons/fa";
 
 // Font
 const font = {
@@ -22,8 +23,8 @@ const TextContent = () => (
       className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
       style={{ fontFamily: font.cormorantUpright }}
     >
-      Disukai Pecinta <span className="text-[#C54300]">Kuliner</span> di{" "}
-      <span className="text-[#C54300]">Seluruh Nusantara</span>
+      Disukai Pecinta <span className="text-[#C54300]">Kuliner</span> di
+      <span className="text-[#C54300]"> Seluruh Nusantara</span>
     </h1>
     <p
       className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
@@ -94,14 +95,14 @@ const CardContent = () => {
   const bottomRow = commentData.slice(3);
 
   return (
-    <div className="flex flex-col gap-10">
-      <div className="flex justify-center gap-6">
+    <div className="flex flex-col gap-[30px]">
+      <div className="flex justify-center gap-[30px]">
         {topRow.map((comment, index) => (
           <CommentCard key={index} index={index} {...comment} />
         ))}
       </div>
 
-      <div className="flex justify-center gap-6">
+      <div className="flex justify-center gap-[30px]">
         {bottomRow.map((comment, index) => (
           <CommentCard key={index + 3} index={index + 3} {...comment} />
         ))}

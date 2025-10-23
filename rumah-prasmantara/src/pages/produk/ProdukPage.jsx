@@ -15,8 +15,7 @@ export function ProdukPage() {
         <WaveBottom />
       </div>
       <SpecialSection />
-      <div className="w-full h-max relative bg-gradient-to-b from-[#3C261A] to-[#442717]">
-        <WaveTop />
+      <div className="w-full h-max relative bg-linear-to-b from-[#3C261A] to-[#442717]">
         <MenuSection />
       </div>
     </>

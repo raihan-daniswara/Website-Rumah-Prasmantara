@@ -4,6 +4,10 @@ import chef from "../../../assets/home/chef.png";
 import iconVariasi from "../../../assets/home/icon-variasi.png";
 import iconKonsep from "../../../assets/home/icon-konsep.png";
 import iconPesan from "../../../assets/home/icon-pesan.png";
+
+import BackgroundFlower from "../../../assets/background/flower.png"
+import BackgroundFlowerBig from "../../../assets/background/flower-big.png"
+import BackgroundCircleBig from "../../../assets/background/background-circle-big.svg"
 import { NavLink } from "react-router-dom";
 
 const font = {
@@ -34,15 +38,14 @@ const cardData = [
 
 const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
   <div
-    className={`card px-6 py-5 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-1000 ease-out hover:cursor-pointer hover:scale-105 ${
-      isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
-    }`}
+    className={`card group px-6 py-5 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-300 ease-out hover:cursor-pointer hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+      }`}
     style={{
       borderRadius: "32px",
       boxShadow: "0 10px 20px rgba(0, 0, 0, 0.2)",
     }}
   >
-    <img src={icon} alt={title} className={`w-${width} h-auto`} />
+    <img src={icon} alt={title} className={`w-${width} h-auto transition-all duration-300 ease-in-out group-hover:drop-shadow-[0_4px_20px_rgba(197,67,0,0.1)]`} />
     <p
       className="text-2xl text-[#EAAE8F] font-bold text-center"
       style={{ fontFamily: font.cormorantGaramond }}
@@ -56,32 +59,29 @@ const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
 
 const TextContent = ({ isVisible }) => (
   <div
-    className={`flex flex-col items-center gap-8 w-fit transition-all duration-1000 ease-out ${
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-    }`}
+    className={`flex flex-col items-center gap-8 w-fit transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+      }`}
   >
     {/* Header */}
-    <div className="textContent flex flex-col gap-2.5">
+    <div className="max-w-[660px] flex flex-col gap-2.5">
       <h1
-        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]!"
+        className="header-text text-[#EAAE8F] font-bold text-6xl leading-[78px]!"
         style={{ fontFamily: font.cormorantUpright }}
       >
-        Mengapa <span className="text-[#C54300]">Harus</span> Memilih
-        <br />
-        <span className="text-[#C54300]">Rumah Prasmantara</span>?
+        Mengapa <span className="text-[#C54300]">Harus</span> Memilih 
+        <span className="text-[#C54300]"> Rumah Prasmantara</span>?
       </h1>
       <p
-        className="text-4xl text-[#BDBDBD] font-semibold leading-[52px]"
+        className="text-4xl text-[#BDBDBD] font-semibold leading-[52px] text-shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
         style={{ fontFamily: font.cormorantGaramond }}
       >
-        Beberapa pengalaman kuliner Nusantara yang
-        <br />
+        Beberapa pengalaman kuliner Nusantara yang 
         unik dibandingkan dengan tempat lain.
       </p>
     </div>
 
     {/* Cards */}
-    <div className="card-wrapper flex flex-wrap gap-5 justify-center">
+    <div className="card-text card-wrapper flex flex-wrap gap-5 justify-center">
       {cardData.map((card, index) => (
         <StrengthCard
           key={index}
@@ -96,8 +96,7 @@ const TextContent = ({ isVisible }) => (
     <NavLink
       to="/tentang"
       className={({ isActive }) =>
-        `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${
-          isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
+        `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
         }`
       }
       style={{ fontFamily: font.cormorantGaramond }}
@@ -108,30 +107,46 @@ const TextContent = ({ isVisible }) => (
 );
 
 const ImageContent = ({ isVisible }) => (
-  <div
-    className={`chef-border relative w-[500px] h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center hover:cursor-pointer hover:scale-105 duration-[300ms] ease-out transition-all ${
-      isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
-    }`}
-  >
-    <div className="absolute inset-0 flex items-center justify-center rounded-full">
-      <div className="relative w-[600px] h-[600px] flex items-center justify-center">
-        <img
-          src={chef}
-          alt="Chef"
-          className="w-full h-[600px] object-cover"
-          style={{
-            transform: "translateY(-49px)",
-            clipPath: "inset(0 0 0 round 250px)",
-            maskImage:
-              "linear-gradient(to bottom, transparent -10%, black 15%, black 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent -10%, black 15%, black 100%)",
-          }}
-        />
+  <div className="relative">
+    {/* background */}
+    <img src={BackgroundFlower} className="absolute -left-20 -bottom-20 scale-150 opacity-50 pointer-events-none select-none" />
+    <img src={BackgroundFlowerBig} className="absolute left-60 -top-20 scale-125 opacity-50 pointer-events-none select-none" />
+
+    {/* image content */}
+    <div
+      className={`chef-border relative w-[500px] h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center 
+        hover:cursor-pointer hover:scale-105 duration-300 ease-out transition-all group
+        ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"}
+      `}
+    >
+      {/* efek */}
+      <div className="absolute w-5 h-5 right-40 bottom-40 rounded-full bg-[#C54300] shadow-[0_0_32px_6px_rgba(197,67,0,0.49)] 
+        opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out group-hover:right-0 group-hover:bottom-10 pointer-events-none select-none"
+      />
+      <div className="absolute w-1 h-1 left-40 top-40 rounded-full bg-[#C54300] shadow-[0_0_43px_17px_rgba(197,67,0,0.49)] 
+        opacity-0 group-hover:opacity-50 transition-all duration-500 ease-in-out group-hover:left-0 group-hover:top-0 group-hover:w-10 group-hover:h-10 pointer-events-none select-none"
+      />
+
+      {/* konten */}
+      <div className="absolute inset-0 flex items-center justify-center rounded-full">
+        <div className="relative w-[600px] h-[600px] flex items-center justify-center">
+          <img
+            src={chef}
+            alt="Chef"
+            className="w-full h-[600px] object-cover pointer-events-none select-none"
+            style={{
+              transform: "translateY(-49px)",
+              clipPath: "inset(0 0 0 round 250px)",
+              maskImage:
+                "linear-gradient(to bottom, transparent -10%, black 15%, black 100%)",
+            }}
+          />
+        </div>
       </div>
     </div>
   </div>
 );
+
 
 export const StrengthSection = () => {
   const [textVisible, setTextVisible] = useState(false);
@@ -169,9 +184,11 @@ export const StrengthSection = () => {
   useEffect(() => {
     textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
       threshold: 0.3,
+      once: true
     });
     imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
       threshold: 0.3,
+      once: true
     });
 
     if (sectionRef.current) {
@@ -188,8 +205,9 @@ export const StrengthSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="flex gap-20 py-16 px-4 items-center justify-center"
+      className="strength-section relative h-fit flex gap-20 py-16 px-4 items-center justify-center"
     >
+    <img src={BackgroundCircleBig} className="absolute opacity-50 -right-75 pointer-events-none select-none" />
       <ImageContent isVisible={imageVisible} />
       <TextContent isVisible={textVisible} />
     </section>

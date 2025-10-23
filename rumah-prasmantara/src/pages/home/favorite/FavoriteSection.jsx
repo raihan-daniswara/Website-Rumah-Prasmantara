@@ -5,6 +5,10 @@ import imageNasiLiwet from "../../../assets/home/nasi-liwet.png";
 import imageSateLilit from "../../../assets/home/sate-lilit.png";
 import imageRendang from "../../../assets/home/rendang.png";
 import { MenuCard } from "../../../components/menu/Menu";
+
+import BackgroundDaun from "../../../assets/background/daun.png"
+import BackgroundSereh from "../../../assets/background/sereh.png"
+import BackgroundTomat from "../../../assets/background/tomat.png"
 import Slider from "react-slick";
 
 const font = {
@@ -15,9 +19,8 @@ const font = {
 
 const TextContent = ({ isVisible }) => (
   <div
-    className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-    }`}
+    className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+      }`}
   >
     <h1
       className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
@@ -116,9 +119,8 @@ const CardContent = ({ isVisible }) => {
 
   return (
     <div
-      className={`favorite-section card-wrapper w-[80vw] transition-all duration-1000 ease-out ${
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
-      }`}
+      className={`favorite-section-home card-wrapper w-[80vw] transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+        }`}
     >
       <Slider {...settings}>
         {menuData.map((menu, index) => (
@@ -191,8 +193,23 @@ export const FavoriteSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="h-[120vh] w-full flex flex-col items-center justify-center"
+      className="relative h-[120vh] w-full flex flex-col items-center justify-center"
     >
+      <img
+        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 opacity-50 pointer-events-none select-none"
+        src={BackgroundDaun}
+        alt="Background Daun"
+      />
+      <img
+        className="absolute left-60 top-30 opacity-50 pointer-events-none select-none"
+        src={BackgroundSereh}
+        alt="Background Sereh"
+      />
+      <img
+        className="absolute right-60 top-30 opacity-50 pointer-events-none select-none"
+        src={BackgroundTomat}
+        alt="Background Tomat"
+      />
       <TextContent isVisible={textVisible} />
       <CardContent isVisible={cardVisible} />
     </section>

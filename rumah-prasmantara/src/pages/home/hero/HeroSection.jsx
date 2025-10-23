@@ -2,6 +2,11 @@ import heroImage1 from '../../../assets/home/hero-image1.png';
 import heroImage2 from '../../../assets/home/hero-image2.png';
 import heroImage3 from '../../../assets/home/hero-image3.png';
 import arrowDown from '../../../assets/home/arrow-down.png';
+
+import backgroundCircle from '../../../assets/background/background-circle.svg';
+import backgroundMendungKecil from '../../../assets/background/mega-mendung/mendung-kecil.svg';
+import backgroundMendungBesar from '../../../assets/background/mega-mendung/mendung-besar.svg';
+
 import './HeroSection.css';
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
@@ -89,7 +94,7 @@ const HeroText = ({ isVisible }) => (
 );
 
 const ScrollText = () => (
-  <div className="w-full text-lg align-middle text-center font-bold text-[#EAAE8F] tracking-wide flex flex-col items-center justify-center -translate-y-25">
+  <div className="w-full text-lg align-middle text-center font-bold text-[#EAAE8F] tracking-wide flex flex-col items-center justify-center">
     <p
       className=""
       style={{ fontFamily: font.cormorantUpright }}
@@ -116,13 +121,46 @@ export const HeroSection = () => {
 
   return (
     <>
-      <section className="relative flex flex-col h-[100vh] w-full items-center justify-end bg-gradient-to-b from-[#3C261A] to-[#442717] overflow-hidden">
-        <div className="flex gap-10 items-center justify-center absolute top-1/2 -translate-y-1/2">
+      <section className="relative flex flex-col h-[90vh] w-full items-center justify-end bg-linear-to-b from-[#442717] to-[#3C261A] overflow-hidden">
+          <img
+            className="absolute scale-150 opacity-50 top-7 left-7 pointer-events-none select-none"
+            src={backgroundCircle}
+            alt="Background Circle"
+          />
+
+          <img
+            className="absolute scale-115 opacity-50 top-[40%] left-[-6%] pointer-events-none select-none"
+            style={{ animation: 'mendungMove1 8s infinite ease-in-out' }}
+            src={backgroundMendungKecil}
+            alt="Mendung Kecil 1"
+          />
+
+          <img
+            className="absolute scale-115 opacity-50 top-[15%] left-[40%] rotate-190 mendung-anim pointer-events-none select-none"
+            style={{ animation: 'mendungMove2 11s infinite ease-in-out' }}
+            src={backgroundMendungBesar}
+            alt="Mendung Besar 1"
+          />
+
+          <img
+            className="absolute scale-115 opacity-50 bottom-[35%] right-[-5%] mendung-anim pointer-events-none select-none"
+            style={{ animation: 'mendungMove3 13s infinite ease-in-out' }}
+            src={backgroundMendungBesar}
+            alt="Mendung Besar 2"
+          />
+
+          <img
+            className="absolute scale-115 opacity-50 bottom-[10%] left-[30%] mendung-anim pointer-events-none select-none"
+            style={{ animation: 'mendungMove1 14s infinite ease-in-out' }}
+            src={backgroundMendungKecil}
+            alt="Mendung Kecil 2"
+          />
+
+        <div className="flex gap-10 items-center justify-center">
           <HeroText isVisible={isVisible} />
           <HeroImages isVisible={isVisible} />
         </div>
         <ScrollText />
-        <WaveBottom />
       </section>
     </>
   );

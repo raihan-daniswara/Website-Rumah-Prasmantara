@@ -7,12 +7,11 @@ import { ReserveSection } from "./reserve/ReserveSection";
 export function ContactPage() {
   return (
     <>
-    <div className="relative h-fit w-full bg-gradient-to-b from-[#402719] to-[#3C261A]">
-      <HeroSection />
-      <QuestionSection />
-      <WaveBottom />
-    </div>
-    <ReserveSection />
+      <div className="relative h-fit w-full bg-linear-to-b from-[#402719] to-[#3C261A]">
+        <HeroSection />
+        <QuestionSection />
+      </div>
+      <ReserveSection />
     </>
   )
 }

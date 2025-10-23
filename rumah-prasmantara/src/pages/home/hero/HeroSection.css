@@ -83,3 +83,28 @@
   animation-play-state: paused !important;
 }
 
+
+/* Mega Mendung */
+@keyframes mendungMove1 {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(25px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes mendungMove2 {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(-30px); }
+  100% { transform: translateX(0px); }
+}
+
+@keyframes mendungMove3 {
+  0% { transform: translateX(0px); }
+  50% { transform: translateX(20px); }
+  100% { transform: translateX(0px); }
+}
+
+/* Kelas umum untuk efek bergerak halus */
+.mendung-anim {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}

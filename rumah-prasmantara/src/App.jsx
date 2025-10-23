@@ -6,7 +6,6 @@ import { TestimoniPage } from './pages/testimoni/TestimoniPage';
 import { ContactPage } from './pages/contact/ContactPage';
 import './App.css';
 import { NavigationBar } from './components/navigation/NavigationBar';
-import ScrollToTop from './components/ScrollToTop';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -17,7 +16,6 @@ function App() {
   return (
     <>
       <NavigationBar />
-      <ScrollToTop />
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/tentang" element={<AboutPage />} />

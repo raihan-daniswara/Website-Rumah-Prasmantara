@@ -2,6 +2,7 @@ import "./ReserveSection.css";
 import reserveMascott from '../../../assets/contact/reserve-mascott.svg';
 import { useCallback, useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { WaveBottom } from "../../../components/wave/WaveBottom";
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
@@ -84,8 +85,8 @@ const ReserveForm = () => {
           ></textarea>
 
           <p className="text-[#EAAE8F] text-[24px] leading-[52px] font-semibold" style={{ fontFamily: font.cormorantGaramond }}>
-            <span className="font-bold text-[#C54300]">*</span> Kami akan hubungi Anda untuk reservasi{" "}
-            <span className="text-[#C54300]">maksimal 24 jam</span>.
+            <span className="font-bold text-[#C54300]">*</span> Kami akan hubungi Anda untuk reservasi
+            <span className="text-[#C54300]"> maksimal 24 jam</span>.
           </p>
 
           <button
@@ -166,8 +167,9 @@ export const ReserveSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="h-fit py-50 flex flex-col gap-20 items-center"
+      className="relative h-fit py-50 flex flex-col gap-20 items-center"
     >
+      <WaveBottom />
       <HeaderContent />
       <ReserveForm />
     </section>
