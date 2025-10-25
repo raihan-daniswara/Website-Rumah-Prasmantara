@@ -13,25 +13,49 @@ const font = {
 };
 
 const HeaderContent = ({ isVisible }) => (
-  <div
-    className={`header-content flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-      }`}
-  >
-    <h1
-      className="hero-paragraph text-center text-[#EAAE8F] font-bold text-6xl leading-[78px]"
-      style={{ fontFamily: font.cormorantUpright }}
+  <>
+    {/* Large */}
+    <div
+      className={`hidden lg:flex header-content flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+        }`}
     >
-      Amankan <span className="text-[#C54300]">Meja</span> Anda di <span className="text-[#C54300]"> Rumah Prasmantara</span>
-    </h1>
-    <p
-      className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
-      style={{ fontFamily: font.cormorantGaramond }}
+      <h1
+        className="hero-paragraph text-center text-[#EAAE8F] font-bold text-6xl leading-[78px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Amankan <span className="text-[#C54300]">Meja</span> Anda di <span className="text-[#C54300]"> Rumah Prasmantara</span>
+      </h1>
+      <p
+        className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Pesan meja sekarang dan rasakan kelezatan kuliner khas nusantara tanpa perlu
+        <br />
+        khawatir kehabisan meja.
+      </p>
+    </div>
+
+    {/* Small */}
+    <div
+      className={`flex lg:hidden header-content flex-col gap-2.5 text-center items-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+        }`}
     >
-      Pesan meja sekarang dan rasakan kelezatan kuliner khas nusantara tanpa perlu
-      <br />
-      khawatir kehabisan meja.
-    </p>
-  </div>
+      <h1
+        className="hero-paragraph text-center text-[#EAAE8F] max-w-[370px] font-bold text-[32px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Amankan <span className="text-[#C54300]">Meja</span> Anda di <span className="text-[#C54300]"> Rumah Prasmantara</span>
+      </h1>
+      <p
+        className="text-xl text-[#BDBDBD] max-w-[370px] font-semibold"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Pesan meja sekarang dan rasakan kelezatan kuliner khas nusantara tanpa perlu
+        <br />
+        khawatir kehabisan meja.
+      </p>
+    </div>
+  </>
 );
 
 const ReserveForm = ({ isVisible }) => {
@@ -41,7 +65,7 @@ const ReserveForm = ({ isVisible }) => {
         }`}
     >
       <div
-        className="bg-[#3C261A] p-8 rounded-[20px] shadow-lg w-[700px]"
+        className="bg-[#3C261A] p-[15px] rounded-[20px] shadow-lg w-[370px] lg:w-[700px]"
       >
         <form className="flex flex-col gap-6">
           {/* Row 1 */}
@@ -49,13 +73,13 @@ const ReserveForm = ({ isVisible }) => {
             <input
               type="text"
               placeholder="Nama Lengkap"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
             <input
               type="tel"
               placeholder="Nomor Telepon"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
           </div>
@@ -65,13 +89,13 @@ const ReserveForm = ({ isVisible }) => {
             <input
               type="date"
               placeholder="Tanggal Reservasi"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
             <input
               type="number"
               placeholder="Jumlah Orang"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
           </div>
@@ -80,7 +104,7 @@ const ReserveForm = ({ isVisible }) => {
           <input
             type="email"
             placeholder="Email"
-            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
             style={{ fontFamily: font.cormorantGaramond }}
           />
 
@@ -88,18 +112,18 @@ const ReserveForm = ({ isVisible }) => {
           <textarea
             placeholder="Catatan Khusus"
             rows="4"
-            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-[30px] resize-none focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-[30px] resize-none focus:outline-none focus:ring-1 focus:ring-[#C54300]"
             style={{ fontFamily: font.cormorantGaramond }}
           ></textarea>
 
-          <p className="text-[#EAAE8F] text-[24px] leading-[52px] font-semibold" style={{ fontFamily: font.cormorantGaramond }}>
+          <p className="text-[#EAAE8F] text-[13px] lg:text-[24px] lg:leading-[52px] font-semibold" style={{ fontFamily: font.cormorantGaramond }}>
             <span className="font-bold text-[#C54300]">*</span> Kami akan hubungi Anda untuk reservasi
             <span className="text-[#C54300]"> maksimal 24 jam</span>.
           </p>
 
           <button
             type="submit"
-            className="mt-2 bg-[#2D1F18] text-[#EAAE8F] text-4xl font-bold py-3 rounded-full transition duration-300"
+            className="bg-[#2D1F18] text-[#EAAE8F] text-[18px] font-bold py-3 rounded-full transition duration-300"
             style={{ fontFamily: font.cormorantGaramond }}
           >
             Kirim <span className="text-[#C54300] hover:text-white">Reservasi</span>
@@ -107,7 +131,7 @@ const ReserveForm = ({ isVisible }) => {
         </form>
       </div>
 
-      <div className="relative">
+      <div className="hidden lg:block relative">
         <img
           src={reserveMascott}
           alt="Reserve Mascott"
@@ -146,7 +170,7 @@ export const ReserveSection = () => {
   }, []);
   return (
     <section
-      className="relative h-fit w-full py-50 flex flex-col gap-20 items-center"
+      className="relative h-fit w-full py-50 flex flex-col lg:gap-20 gap-5 items-center"
     >
       <img
         className="absolute opacity-100 -z-1 -top-12 -right-21 pointer-events-none select-none"

@@ -110,14 +110,14 @@ const HeroText = ({ isVisible }) => {
             Hubungi Kami
           </h2>
           <h1
-            className="produk-hero-header-1 text-[40px] text-[#EAAE8F] font-bold"
+            className="produk-hero-header-1 text-[40px] text-[#EAAE8F] max-w-[360px] font-bold"
             style={{ fontFamily: font.cormorantUpright }}
           >
             Bertanya Seputar{" "}
             <span className="text-[#C54300]">Rumah Prasmantara</span>?
           </h1>
           <p
-            className="hero-paragraph text-xl font-semibold text-[#BDBDBD]"
+            className="hero-paragraph text-xl font-semibold max-w-[380px] text-[#BDBDBD]"
             style={{ fontFamily: font.cormorantGaramond }}
           >
             Ada hal yang belum jelas? Kami dengan senang hati menjawab setiap pertanyaan Anda.
