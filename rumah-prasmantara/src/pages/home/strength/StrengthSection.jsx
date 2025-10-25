@@ -118,14 +118,14 @@ const TextContent = ({ isVisible }) => (
       {/* Header */}
       <div className="max-w-[660px] flex flex-col items-center justify-center gap-2.5">
         <h1
-          className="header-text max-w-[310px] text-[#EAAE8F] font-bold text-[32px] text-center leading-[52px]!"
+          className="header-text max-w-[310px] text-[#EAAE8F] font-bold text-[32px] text-center"
           style={{ fontFamily: font.cormorantUpright }}
         >
           Mengapa <span className="text-[#C54300]">Harus</span> Memilih
           <span className="text-[#C54300]"> Rumah Prasmantara</span>?
         </h1>
         <p
-          className="text-2xl text-[#BDBDBD] font-semibold max-w-[350px] leading-[42px] text-center text-shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
+          className="text-xl text-[#BDBDBD] font-semibold max-w-[350px] text-center text-shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
           style={{ fontFamily: font.cormorantGaramond }}
         >
           Beberapa pengalaman kuliner Nusantara yang
@@ -220,7 +220,7 @@ export const StrengthSection = () => {
 
   return (
     <section
-      className="strength-section relative h-fit flex flex-col lg:flex-row gap-10 lg:gap-20 lg:py-16 px-4 items-center justify-center"
+      className="strength-section relative h-fit flex flex-col lg:flex-row gap-10 lg:gap-20 py-5 lg:py-16 px-4 items-center justify-center"
     >
       <img
         src={BackgroundCircleBig}

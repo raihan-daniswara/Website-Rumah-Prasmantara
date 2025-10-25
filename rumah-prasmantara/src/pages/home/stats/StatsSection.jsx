@@ -42,13 +42,13 @@ const Header = ({ isVisible }) => (
     {/* Small */}
     <header className={`transition-all duration-1000 flex lg:hidden flex-col items-center justify-center gap-2.5 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
       <h1
-        className="hero-header-1 text-[32px] text-center text-[#EAAE8F] font-bold  max-w-[380px]"
+        className="hero-header-1 text-[32px] text-center text-[#EAAE8F] font-bold max-w-[380px]"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Perpaduan <span className="text-[#C54300]">Makanan Nusantara</span> Yang Menyatu
       </h1>
       <h2
-        className="hero-header-2 text-xl text-center text-[#BDBDBD] font-semibold  max-w-[380px]"
+        className="hero-header-2 text-xl text-center text-[#BDBDBD] font-semibold max-w-[380px]"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Ragam Makanan Nusantara Yang Bisa Kalian Rasakan di Rumah Prasmantara
