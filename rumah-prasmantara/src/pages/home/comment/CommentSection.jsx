@@ -21,23 +21,43 @@ const font = {
 };
 
 const TextContent = () => (
-  <div className="textContent flex flex-col gap-2.5 text-center">
-    <h1
-      className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
-      style={{ fontFamily: font.cormorantUpright }}
-    >
-      Disukai Pecinta <span className="text-[#C54300]">Kuliner</span> di
-      <span className="text-[#C54300]"> Seluruh Nusantara</span>
-    </h1>
-    <p
-      className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
-      style={{ fontFamily: font.cormorantGaramond }}
-    >
-      Lihat apa yang mereka katakan tentang pengalaman makan di Rumah Prasmantara.
-      <br />
-      Bukan hanya soal rasa, tapi juga kenangan yang tercipta di setiap suapan.
-    </p>
-  </div>
+  <>
+    {/* Large */}
+    <div className="hidden textContent lg:flex flex-col gap-2.5 text-center">
+      <h1
+        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Disukai Pecinta <span className="text-[#C54300]">Kuliner</span> di
+        <span className="text-[#C54300]"> Seluruh Nusantara</span>
+      </h1>
+      <p
+        className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Lihat apa yang mereka katakan tentang pengalaman makan di Rumah Prasmantara.
+        <br />
+        Bukan hanya soal rasa, tapi juga kenangan yang tercipta di setiap suapan.
+      </p>
+    </div>
+
+    {/* Small */}
+    <div className="flex textContent lg:hidden flex-col gap-[5px] text-center">
+      <h1
+        className="hero-paragraph text-[#EAAE8F] font-bold text-[32px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Disukai Pecinta <span className="text-[#C54300]">Kuliner</span> di
+        <span className="text-[#C54300]"> Seluruh Nusantara</span>
+      </h1>
+      <p
+        className="text-xl text-[#BDBDBD] font-semibold"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Lihat apa yang mereka katakan tentang pengalaman makan di Rumah Prasmantara.
+      </p>
+    </div>
+  </>
 );
 
 
@@ -110,6 +130,12 @@ const CardContent = () => {
           <CommentCard key={index + 3} index={index + 3} {...comment} />
         ))}
       </div>
+
+      <div className="flex lg:hidden justify-center gap-[30px]">
+        {topRow.map((comment, index) => (
+          <CommentCard key={index} index={index} {...comment} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -118,17 +144,17 @@ export const CommentSection = () => {
   return (
     <section className="relative h-max py-16 px-4 mb-10 flex flex-col gap-[35px] items-center justify-center">
       <img
-        className="absolute right-30 top-20 opacity-50 scale-120 z-0 pointer-events-none select-none"
+        className="hidden lg:block absolute right-30 top-20 opacity-50 scale-120 z-0 pointer-events-none select-none"
         src={BackgroundLemonSlice}
         alt="Background ComBackgroundLemonSlice"
       />
       <img
-        className="absolute left-30 top-0 opacity-50 scale-120 z-0 pointer-events-none select-none"
+        className="hidden lg:block absolute left-30 top-0 opacity-50 scale-120 z-0 pointer-events-none select-none"
         src={BackgroundOnion}
         alt="Background ComBackgroundOnion"
       />
       <img
-        className="absolute left-1/2 -translate-x-1/2 -bottom-45 opacity-50 scale-120 z-0 pointer-events-none select-none"
+        className="hidden lg:block absolute left-1/2 -translate-x-1/2 -bottom-45 opacity-50 scale-120 z-0 pointer-events-none select-none"
         src={BackgroundCommentBatik}
         alt="Background ComBackgroundCommentBatik"
       />
@@ -136,7 +162,7 @@ export const CommentSection = () => {
       <CardContent />
       <NavLink
         to="/testimoni"
-        className={({ isActive }) => `px-10 py-4 text-4xl rounded-full font-bold button-text bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
+        className={({ isActive }) => `lg:px-10 lg:py-4 lg:text-4xl px-5 py-[5px] text-[22px] mx-auto rounded-full font-bold button-text bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
           }`}
         style={{ fontFamily: font.cormorantGaramond }}
       >
