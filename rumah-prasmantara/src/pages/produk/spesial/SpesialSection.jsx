@@ -16,42 +16,80 @@ const font = {
 };
 
 const CustomPrevArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute -left-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3 rounded-full transition-all duration-300 z-10"
-  >
-    <FaArrowLeft className="text-4xl" />
-  </button>
+  <>
+    <button
+      onClick={onClick}
+      className="hidden lg:block absolute -left-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3 rounded-full transition-all duration-300 z-10"
+    >
+      <FaArrowLeft className="text-4xl" />
+    </button>
+    <button
+      onClick={onClick}
+      className="block lg:hidden absolute -left-15 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[3px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-2 rounded-full transition-all duration-300 z-10"
+    >
+      <FaArrowLeft className="text-2xl" />
+    </button>
+  </>
 );
 
 const CustomNextArrow = ({ onClick }) => (
-  <button
-    onClick={onClick}
-    className="absolute -right-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3 rounded-full transition-all duration-300 z-10"
-  >
-    <FaArrowRight className="text-4xl" />
-  </button>
+  <>
+    <button
+      onClick={onClick}
+      className="hidden lg:block absolute -right-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3 rounded-full transition-all duration-300 z-10"
+    >
+      <FaArrowRight className="text-4xl" />
+    </button>
+    <button
+      onClick={onClick}
+      className="block lg:hidden absolute -right-15 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[3px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-2 rounded-full transition-all duration-300 z-10"
+    >
+      <FaArrowRight className="text-2xl" />
+    </button>
+  </>
 );
 
 const TextContent = ({ isVisible }) => (
-  <div
-    className={`flex flex-col gap-2.5 text-center transform transition-all duration-1200 ease-out
+  <>
+    {/* Large */}
+    <div
+      className={`hidden lg:flex flex-col gap-2.5 text-center transform transition-all duration-1200 ease-out
       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-  >
-    <h1
-      className="text-[#EAAE8F] font-bold text-6xl leading-[78px]"
-      style={{ fontFamily: font.cormorantUpright }}
     >
-      Menu <span className="text-[#C54300]">Spesial</span> Kami
-    </h1>
-    <p
-      className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
-      style={{ fontFamily: font.cormorantGaramond }}
+      <h1
+        className="text-[#EAAE8F] font-bold text-6xl leading-[78px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Menu <span className="text-[#C54300]">Spesial</span> Kami
+      </h1>
+      <p
+        className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Sajian istimewa yang diracik dengan penuh dedikasi, menghadirkan paduan rasa
+        <br /> autentik khas Nusantara dan hanya hadir di hari spesial saja.
+      </p>
+    </div>
+
+    {/* Small */}
+    <div
+      className={`flex lg:hidden flex-col gap-2.5 text-center transform transition-all duration-1200 ease-out
+      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
-      Sajian istimewa yang diracik dengan penuh dedikasi, menghadirkan paduan rasa
-      <br /> autentik khas Nusantara dan hanya hadir di hari spesial saja.
-    </p>
-  </div>
+      <h1
+        className="text-[#EAAE8F] font-bold text-[32px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Menu <span className="text-[#C54300]">Spesial</span> Kami
+      </h1>
+      <p
+        className="text-xl max-w-[370px] text-[#BDBDBD] font-semibold"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Sajian istimewa yang diracik dengan penuh dedikasi dan hanya hadir di hari spesial saja.
+      </p>
+    </div>
+  </>
 );
 
 const CategorySlider = ({ isVisible }) => {
@@ -65,7 +103,10 @@ const CategorySlider = ({ isVisible }) => {
     slidesToScroll: 6,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-    responsive: [{ breakpoint: 1441, settings: { slidesToShow: 5, slidesToScroll: 5 } }],
+    responsive: [
+      { breakpoint: 1441, settings: { slidesToShow: 5, slidesToScroll: 5 } },
+      { breakpoint: 640, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+    ],
   };
 
   return (
@@ -77,7 +118,13 @@ const CategorySlider = ({ isVisible }) => {
         {categories.map((category, index) => (
           <div key={index} className="px-2">
             <div
-              className="hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
+              className="hidden lg:block hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
+              style={{ fontFamily: font.cormorantUpright }}
+            >
+              {category}
+            </div>
+            <div
+              className="block lg:hidden hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-xl font-bold rounded-full leading-6 py-2 text-center transition-all duration-300 hover:cursor-pointer"
               style={{ fontFamily: font.cormorantUpright }}
             >
               {category}
@@ -113,10 +160,10 @@ const CardContent = ({ isVisible }) => {
 
   return (
     <div
-      className={`mt-10 pb-10 w-[1200px] h-[500px] overflow-y-auto custom-scrollbar mask-fade transform transition-all duration-1200 ease-out
+      className={`lg:m-10 m-5 w-[1200px] h-[500px] overflow-y-auto lg:custom-scrollbar mask-fade transform transition-all duration-600 ease-out
       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
-      <div className="flex flex-col gap-12 items-center mt-10">
+      <div className="flex flex-col lg:gap-12 gap-5 items-center lg:mt-10 mt-5">
         {SpecialData.map((item, index) => (
           <SpecialMenuCard key={index} {...item} />
         ))}
