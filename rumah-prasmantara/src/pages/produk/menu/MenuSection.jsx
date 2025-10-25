@@ -94,7 +94,7 @@ const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType, isVisi
 
     {/* Small */}
     <div
-      className={` flex lg:hidden w-[100vh] flex-col items-center gap-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      className={` flex lg:hidden w-fit flex-col items-center gap-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
     >
       <div className="text-main-content flex flex-col gap-2.5">
@@ -238,9 +238,19 @@ const CardContent = ({ type, isVisible }) => {
   const settings = {
     infinite: false,
     centerPadding: "0px",
-    slidesToShow: 1.4,
+    slidesToShow: 1.25,
     arrows: false,
     swipeToSlide: true,
+    responsive: [
+    {
+      breakpoint: 640,
+      settings: {
+        slidesToShow: 1.4,
+        centerPadding: "0px",
+        swipeToSlide: true,
+      },
+    },
+  ],
   };
 
 
@@ -398,7 +408,7 @@ export const MenuSection = () => {
         src={backgroundMinuman}
         alt="Background BabackgroundRumah4"
       />
-      <div ref={headerRef}>
+      <div ref={headerRef} className="hidden lg:block">
         <HeaderContent isVisible={headerVisible} />
       </div>
 
