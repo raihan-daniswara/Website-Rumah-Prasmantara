@@ -12,6 +12,8 @@ import backgroundRumah5 from '../../../assets/background/about/rumah5.png';
 import backgroundRumah6 from '../../../assets/background/about/rumah6.png';
 import { useEffect, useRef, useState } from "react";
 
+import Slider from "react-slick";
+
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
@@ -58,99 +60,173 @@ const teamsData = [
 ];
 
 const TextContent = ({ isVisible }) => (
-  <div
-    className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-  >
-    <h1
-      className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
-      style={{ fontFamily: font.cormorantUpright }}
+  <>
+    {/* Large */}
+    <div
+      className={`hidden lg:flex textContent flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
     >
-      Di Balik <span className="text-[#C54300]">Sajian Nusantara</span>
-    </h1>
-    <p
-      className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
-      style={{ fontFamily: font.cormorantGaramond }}
-    >
-      Dari warisan rasa yang terjaga di setiap hidangan, kami hadirkan yang terbaik untuk
-      <br />
-      Anda.
-    </p>
-  </div>
-);
-
-const TeamsContent = ({ isVisible }) => (
-  <div
-    className={`mt-10 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-  >
-    {/* Baris Pertama */}
-    <div className="grid grid-cols-4 gap-10">
-      {teamsData.slice(0, 4).map((team, index) => (
-        <div
-          key={index}
-          className={`flex flex-col items-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          style={{
-            transitionDelay: isVisible ? `${index * 400}ms` : "0ms",
-          }}
-        >
-          <img src={team.image} className="w-full h-max" loading="lazy" />
-          <div className="flex flex-col items-center mt-4">
-            <p
-              className="font-bold text-4xl text-[#C54300]"
-              style={{ fontFamily: font.cormorantUpright }}
-            >
-              {team.name}
-            </p>
-            <p
-              className="text-[28px] font-bold text-[#EAAE8F]"
-              style={{ fontFamily: font.cormorantGaramond }}
-            >
-              <span style={{ fontFamily: font.cormorant }}>
-                {team.role.charAt(0)}
-              </span>
-              {team.role.slice(1)}
-            </p>
-          </div>
-        </div>
-      ))}
+      <h1
+        className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Di Balik <span className="text-[#C54300]">Sajian Nusantara</span>
+      </h1>
+      <p
+        className="text-4xl text-[#BDBDBD] font-semibold mt-4 leading-[52px]"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Dari warisan rasa yang terjaga di setiap hidangan, kami hadirkan yang terbaik untuk
+        <br />
+        Anda.
+      </p>
     </div>
 
-    {/* Baris kedua*/}
-    <div className="flex justify-center gap-10 mt-10">
-      {teamsData.slice(4).map((team, index) => (
-        <div
-          key={index + 4}
-          className={`flex flex-col items-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}
-          style={{
-            transitionDelay: isVisible ? `${index * 600}ms` : "0ms",
-          }}
-        >
-          <img src={team.image} className="w-full h-max" loading="lazy" />
-          <div className="flex flex-col items-center mt-4">
-            <p
-              className="font-bold text-4xl text-[#C54300]"
-              style={{ fontFamily: font.cormorantUpright }}
-            >
-              {team.name}
-            </p>
-            <p
-              className="text-[28px] font-bold text-[#EAAE8F]"
-              style={{ fontFamily: font.cormorantGaramond }}
-            >
-              <span style={{ fontFamily: font.cormorant }}>
-                {team.role.charAt(0)}
-              </span>
-              {team.role.slice(1)}
-            </p>
-          </div>
-        </div>
-      ))}
+    {/* Small */}
+    <div
+      className={`flex lg:hidden textContent flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+    >
+      <h1
+        className="hero-paragraph text-[#EAAE8F] font-bold text-[32px]"
+        style={{ fontFamily: font.cormorantUpright }}
+      >
+        Di Balik <span className="text-[#C54300]">Sajian Nusantara</span>
+      </h1>
+      <p
+        className="max-w-[330px] text-xl text-[#BDBDBD] font-semibold"
+        style={{ fontFamily: font.cormorantGaramond }}
+      >
+        Dari warisan rasa yang terjaga di setiap hidangan, kami hadirkan yang terbaik untuk Anda.
+      </p>
     </div>
-  </div>
+  </>
 );
+
+const TeamsSlider = ({ teamsData, isVisible }) => {
+
+  const slides = [
+    teamsData.slice(0, 4), // Slide 0: 4 orang
+    teamsData.slice(4),    // Slide 1: 3 orang
+  ];
+
+  return (
+    <div className="block lg:hidden w-full mt-10 relative">
+      {/* Container scroll horizontal */}
+      <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+        {slides.map((slide, slideIndex) => (
+          <div key={slideIndex} className="grid grid-cols-2 gap-4 snap-center min-w-full px-4">
+            {slide.map((team, index) => (
+              <div
+                key={index}
+                className={`flex flex-col items-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                  }`}
+                style={{ transitionDelay: isVisible ? `${index * 200}ms` : "0ms" }}
+              >
+                <img
+                  src={team.image}
+                  className="h-40 mt-4 object-cover rounded-full"
+                  loading="lazy"
+                />
+                <div className="flex flex-col items-center mt-4">
+                  <p className="font-bold text-2xl text-[#C54300]" style={{ fontFamily: font.cormorantUpright }}>
+                    {team.name}
+                  </p>
+                  <p className="text-[18px] font-bold text-[#EAAE8F]" style={{ fontFamily: font.cormorantGaramond }}>
+                    <span style={{ fontFamily: font.cormorant }}>{team.role.charAt(0)}</span>
+                    {team.role.slice(1)}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const TeamsContent = ({ isVisible }) => {
+  return (
+    <>
+      {/* Large */}
+      <div
+        className={`hidden lg:block mt-10 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+      >
+        {/* Baris Pertama */}
+        <div className="grid grid-cols-4 gap-10">
+          {teamsData.slice(0, 4).map((team, index) => (
+            <div
+              key={index}
+              className={`flex flex-col items-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+              style={{
+                transitionDelay: isVisible ? `${index * 400}ms` : "0ms",
+              }}
+            >
+              <img src={team.image} className="w-full h-max" loading="lazy" />
+              <div className="flex flex-col items-center mt-4">
+                <p
+                  className="font-bold text-4xl text-[#C54300]"
+                  style={{ fontFamily: font.cormorantUpright }}
+                >
+                  {team.name}
+                </p>
+                <p
+                  className="text-[28px] font-bold text-[#EAAE8F]"
+                  style={{ fontFamily: font.cormorantGaramond }}
+                >
+                  <span style={{ fontFamily: font.cormorant }}>
+                    {team.role.charAt(0)}
+                  </span>
+                  {team.role.slice(1)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Baris kedua*/}
+        <div className="flex justify-center gap-10 mt-10">
+          {teamsData.slice(4).map((team, index) => (
+            <div
+              key={index + 4}
+              className={`flex flex-col items-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+              style={{
+                transitionDelay: isVisible ? `${index * 600}ms` : "0ms",
+              }}
+            >
+              <img src={team.image} className="w-full h-max" loading="lazy" />
+              <div className="flex flex-col items-center mt-4">
+                <p
+                  className="font-bold text-4xl text-[#C54300]"
+                  style={{ fontFamily: font.cormorantUpright }}
+                >
+                  {team.name}
+                </p>
+                <p
+                  className="text-[28px] font-bold text-[#EAAE8F]"
+                  style={{ fontFamily: font.cormorantGaramond }}
+                >
+                  <span style={{ fontFamily: font.cormorant }}>
+                    {team.role.charAt(0)}
+                  </span>
+                  {team.role.slice(1)}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Small */}
+      <TeamsSlider teamsData={teamsData} isVisible={isVisible} />
+    </>
+  )
+}
+
 
 export const TeamsSection = () => {
   const [textVisible, setTextVisible] = useState(false);
