@@ -21,24 +21,27 @@ const cardData = [
     title: "Variasi Masakan",
     highlight: "Nusantara",
     width: "128px",
+    mobileWidth: "96px",
   },
   {
     icon: iconKonsep,
     title: "Konsep Unik",
     highlight: "Prasmanan",
     width: "92px",
+    mobileWidth: "68px",
   },
   {
     icon: iconPesan,
     title: "Dapat Pesan",
     highlight: "Melalui Online",
     width: "128px",
+    mobileWidth: "96px",
   },
 ];
 
 const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
   <div
-    className={`card group px-6 py-5 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-300 ease-out hover:cursor-pointer hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+    className={`card group px-6 py-4 lg:py-5 w-[165px] lg:w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-300 ease-out hover:cursor-pointer hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
       }`}
     style={{
       borderRadius: "32px",
@@ -47,7 +50,7 @@ const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
   >
     <img src={icon} alt={title} className={`w-${width} h-auto transition-all duration-300 ease-in-out group-hover:drop-shadow-[0_4px_20px_rgba(197,67,0,0.1)]`} />
     <p
-      className="text-2xl text-[#EAAE8F] font-bold text-center"
+      className="text-lg lg:text-2xl text-[#EAAE8F] font-bold text-center"
       style={{ fontFamily: font.cormorantGaramond }}
     >
       {title}
@@ -58,52 +61,93 @@ const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
 );
 
 const TextContent = ({ isVisible }) => (
-  <div
-    className={`flex flex-col items-center gap-8 w-fit transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-      }`}
-  >
-    {/* Header */}
-    <div className="max-w-[660px] flex flex-col gap-2.5">
-      <h1
-        className="header-text text-[#EAAE8F] font-bold text-6xl leading-[78px]!"
-        style={{ fontFamily: font.cormorantUpright }}
-      >
-        Mengapa <span className="text-[#C54300]">Harus</span> Memilih 
-        <span className="text-[#C54300]"> Rumah Prasmantara</span>?
-      </h1>
-      <p
-        className="text-4xl text-[#BDBDBD] font-semibold leading-[52px] text-shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
+  <>
+    {/* Large */}
+    <div
+      className={`hidden lg:flex flex-col items-center gap-8 w-fit transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+        }`}
+    >
+      {/* Header */}
+      <div className="max-w-[660px] flex flex-col gap-2.5">
+        <h1
+          className="header-text text-[#EAAE8F] font-bold text-6xl leading-[78px]!"
+          style={{ fontFamily: font.cormorantUpright }}
+        >
+          Mengapa <span className="text-[#C54300]">Harus</span> Memilih
+          <span className="text-[#C54300]"> Rumah Prasmantara</span>?
+        </h1>
+        <p
+          className="text-4xl text-[#BDBDBD] font-semibold leading-[52px] text-shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
+          style={{ fontFamily: font.cormorantGaramond }}
+        >
+          Beberapa pengalaman kuliner Nusantara yang
+          unik dibandingkan dengan tempat lain.
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div className="card-text card-wrapper flex flex-wrap gap-5 justify-center">
+        {cardData.map((card, index) => (
+          <StrengthCard
+            key={index}
+            icon={card.icon}
+            title={card.title}
+            highlight={card.highlight}
+            width={card.width}
+            isVisible={isVisible}
+          />
+        ))}
+      </div>
+      <NavLink
+        to="/tentang"
+        className={({ isActive }) =>
+          `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
+          }`
+        }
         style={{ fontFamily: font.cormorantGaramond }}
       >
-        Beberapa pengalaman kuliner Nusantara yang 
-        unik dibandingkan dengan tempat lain.
-      </p>
+        Tentang <span className="text-[#C54300]">Kami</span>
+      </NavLink>
     </div>
 
-    {/* Cards */}
-    <div className="card-text card-wrapper flex flex-wrap gap-5 justify-center">
-      {cardData.map((card, index) => (
-        <StrengthCard
-          key={index}
-          icon={card.icon}
-          title={card.title}
-          highlight={card.highlight}
-          width={card.width}
-          isVisible={isVisible}
-        />
-      ))}
-    </div>
-    <NavLink
-      to="/tentang"
-      className={({ isActive }) =>
-        `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
-        }`
-      }
-      style={{ fontFamily: font.cormorantGaramond }}
+    {/* Small */}
+    <div
+      className={`flex lg:hidden flex-col items-center gap-8 w-fit transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
     >
-      Tentang <span className="text-[#C54300]">Kami</span>
-    </NavLink>
-  </div>
+      {/* Header */}
+      <div className="max-w-[660px] flex flex-col items-center justify-center gap-2.5">
+        <h1
+          className="header-text max-w-[310px] text-[#EAAE8F] font-bold text-[32px] text-center leading-[52px]!"
+          style={{ fontFamily: font.cormorantUpright }}
+        >
+          Mengapa <span className="text-[#C54300]">Harus</span> Memilih
+          <span className="text-[#C54300]"> Rumah Prasmantara</span>?
+        </h1>
+        <p
+          className="text-2xl text-[#BDBDBD] font-semibold max-w-[350px] leading-[42px] text-center text-shadow-[0_4px_10px_rgba(255,255,255,0.1)]"
+          style={{ fontFamily: font.cormorantGaramond }}
+        >
+          Beberapa pengalaman kuliner Nusantara yang
+          unik dibandingkan dengan tempat lain.
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div className="card-text card-wrapper flex flex-wrap gap-5 justify-center">
+        {cardData.map((card, index) => (
+          <StrengthCard
+            key={index}
+            icon={card.icon}
+            title={card.title}
+            highlight={card.highlight}
+            width={card.width}
+            isVisible={isVisible}
+          />
+        ))}
+      </div>
+    </div>
+  </>
 );
 
 const ImageContent = ({ isVisible }) => (
@@ -114,26 +158,26 @@ const ImageContent = ({ isVisible }) => (
 
     {/* image content */}
     <div
-      className={`chef-border relative w-[500px] h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center 
+      className={`chef-border relative w-[250px] h-[250px] lg:w-[500px] lg:h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center 
         hover:cursor-pointer hover:scale-105 duration-300 ease-out transition-all group
         ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"}
       `}
     >
       {/* efek */}
-      <div className="absolute w-5 h-5 right-40 bottom-40 rounded-full bg-[#C54300] shadow-[0_0_32px_6px_rgba(197,67,0,0.49)] 
-        opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out group-hover:right-0 group-hover:bottom-10 pointer-events-none select-none"
+      <div className="absolute w-3 h-3 right-0 bottom-0 rounded-full bg-[#C54300] shadow-[0_0_32px_6px_rgba(197,67,0,0.49)] 
+        opacity-100 transition-all duration-500 ease-in-out pointer-events-none select-none"
       />
-      <div className="absolute w-1 h-1 left-40 top-40 rounded-full bg-[#C54300] shadow-[0_0_43px_17px_rgba(197,67,0,0.49)] 
-        opacity-0 group-hover:opacity-50 transition-all duration-500 ease-in-out group-hover:left-0 group-hover:top-0 group-hover:w-10 group-hover:h-10 pointer-events-none select-none"
+      <div className="absolute w-6 h-6 -left-3 -top-3 rounded-full bg-[#C54300] shadow-[0_0_43px_17px_rgba(197,67,0,0.49)] 
+        opacity-50 transition-all duration-500 ease-in-out pointer-events-none select-none"
       />
 
       {/* konten */}
       <div className="absolute inset-0 flex items-center justify-center rounded-full">
-        <div className="relative w-[600px] h-[600px] flex items-center justify-center">
+        <div className="relative w-[350px] h-[350px] lg:w-[600px] lg:h-[600px] flex items-center justify-center">
           <img
             src={chef}
             alt="Chef"
-            className="w-full h-[600px] object-cover pointer-events-none select-none"
+            className="w-[300px] h-full object-cover pointer-events-none select-none"
             style={{
               transform: "translateY(-49px)",
               clipPath: "inset(0 0 0 round 250px)",
@@ -176,7 +220,7 @@ export const StrengthSection = () => {
 
   return (
     <section
-      className="strength-section relative h-fit flex gap-20 py-16 px-4 items-center justify-center"
+      className="strength-section relative h-fit flex flex-col lg:flex-row gap-10 lg:gap-20 lg:py-16 px-4 items-center justify-center"
     >
       <img
         src={BackgroundCircleBig}
