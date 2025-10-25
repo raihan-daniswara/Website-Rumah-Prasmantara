@@ -64,16 +64,14 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative flex flex-col h-[100vh] w-full items-center justify-end overflow-hidden">
+    <section className="relative flex flex-col h-screen w-full items-center justify-end overflow-hidden">
       {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-43 blur-[1.5px]"
-        style={{
-          backgroundImage: `url(${heroImage1})`,
-        }}
-      ></div>
+      <img
+      src={heroImage1}
+        className="absolute inset-0 bg-cover bg-center w-full opacity-43 blur-[1.5px]"
+      ></img>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#3C261A]/40 via-[#3C261A]/90 to-[#3C261A]" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#3C261A]/40 via-[#3C261A]/90 to-[#3C261A]" />
       <div className="flex gap-10 items-center justify-center absolute top-1/2 -translate-y-1/2 z-10">
         <HeroText isVisible={isVisible} />
       </div>

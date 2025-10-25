@@ -1,17 +1,22 @@
 import "./ReserveSection.css";
 import reserveMascott from '../../../assets/contact/reserve-mascott.svg';
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { WaveBottom } from "../../../components/wave/WaveBottom";
 
+import backgroundLingkaran from '../../../assets/background/about/lingkaran.png';
+import { WaveTop } from "../../../components/wave/WaveTop";
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
   cormorantInfant: '"Cormorant Infant", serif',
 };
 
-const HeaderContent = () => (
-  <div className="header-content flex flex-col gap-2.5 text-center">
+const HeaderContent = ({ isVisible }) => (
+  <div
+    className={`header-content flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+      }`}
+  >
     <h1
       className="hero-paragraph text-center text-[#EAAE8F] font-bold text-6xl leading-[78px]"
       style={{ fontFamily: font.cormorantUpright }}
@@ -29,9 +34,12 @@ const HeaderContent = () => (
   </div>
 );
 
-const ReserveForm = () => {
+const ReserveForm = ({ isVisible }) => {
   return (
-    <div className="flex justify-center items-center gap-5 ">
+    <div
+      className={`flex justify-center items-center gap-5 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
+        }`}
+    >
       <div
         className="bg-[#3C261A] p-8 rounded-[20px] shadow-lg w-[700px]"
       >
@@ -41,13 +49,13 @@ const ReserveForm = () => {
             <input
               type="text"
               placeholder="Nama Lengkap"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40  px-4 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
             <input
               type="tel"
               placeholder="Nomor Telepon"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40  px-4 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
           </div>
@@ -57,13 +65,13 @@ const ReserveForm = () => {
             <input
               type="date"
               placeholder="Tanggal Reservasi"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40  px-4 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
             <input
               type="number"
               placeholder="Jumlah Orang"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40  px-4 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
           </div>
@@ -72,7 +80,7 @@ const ReserveForm = () => {
           <input
             type="email"
             placeholder="Email"
-            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40   px-4 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
             style={{ fontFamily: font.cormorantGaramond }}
           />
 
@@ -80,7 +88,7 @@ const ReserveForm = () => {
           <textarea
             placeholder="Catatan Khusus"
             rows="4"
-            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40   px-4 py-3 rounded-[30px] resize-none focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+            className="w-full bg-[#2C231E] text-[#BDBDBD] text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-[30px] resize-none focus:outline-none focus:ring-1 focus:ring-[#C54300]"
             style={{ fontFamily: font.cormorantGaramond }}
           ></textarea>
 
@@ -99,12 +107,11 @@ const ReserveForm = () => {
         </form>
       </div>
 
-      {/* Kolom kanan: Gambar resepsionis */}
       <div className="relative">
         <img
           src={reserveMascott}
           alt="Reserve Mascott"
-          className="w-[630px] drop-shadow-xl"
+          className={`w-[630px] drop-shadow-xl transition-all duration-1000 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-40"}`}
         />
       </div>
     </div>
@@ -113,65 +120,52 @@ const ReserveForm = () => {
 
 
 export const ReserveSection = () => {
-  const [textVisible, setTextVisible] = useState(false);
-  const [imageVisible, setImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const imageObserverRef = useRef(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
+  const headerRef = useRef(null);
+  const contentRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleImageIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !imageVisible) {
-        setTimeout(() => {
-          setImageVisible(true);
-        }, 100);
-        imageObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [imageVisible]
-  );
-
+  // Observer Header
   useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
-      threshold: 0.3,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeaderVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (headerRef.current) observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      imageObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      textObserverRef.current?.disconnect();
-      imageObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleImageIntersection]);
-
+  // Observer Content
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setContentVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (contentRef.current) observer.observe(contentRef.current);
+    return () => observer.disconnect();
+  }, []);
   return (
     <section
-      ref={sectionRef}
-      className="relative h-fit py-50 flex flex-col gap-20 items-center"
+      className="relative h-fit w-full py-50 flex flex-col gap-20 items-center"
     >
+      <img
+        className="absolute opacity-100 -z-1 -top-12 -right-21 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-100 z-0 -bottom-11 -left-21 rotate-180 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background BabackgroundRumah4"
+      />
       <WaveBottom />
-      <HeaderContent />
-      <ReserveForm />
+      <div ref={headerRef}>
+        <HeaderContent isVisible={headerVisible} />
+      </div>
+      <div ref={contentRef}>
+        <ReserveForm isVisible={contentVisible} />
+      </div>
+      <WaveTop />
     </section>
   );
 };

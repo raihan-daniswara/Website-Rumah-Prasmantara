@@ -1,8 +1,8 @@
 import './StatsSection.css';
 import Tilt from 'react-parallax-tilt';
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-// import gambar untuk masing-masing card
+// import gambar
 import cardImage1 from '/src/assets/home/card1.png';
 import cardImage2 from '/src/assets/home/card2.png';
 import cardImage3 from '/src/assets/home/card3.png';
@@ -38,7 +38,7 @@ const Header = ({ isVisible }) => (
   </header>
 );
 
-const TiltCard = ({ isVisible, children, slideClass = '-translate-x-5', bgImage }) => (
+const TiltCard = ({ isVisible, children, slideClass = '-translate-x-10', bgImage }) => (
   <Tilt
     tiltMaxAngleX={8}
     tiltMaxAngleY={8}
@@ -118,7 +118,7 @@ const Card2 = ({ isVisible }) => (
 );
 
 const Card3 = ({ isVisible }) => (
-  <TiltCard isVisible={isVisible} bgImage={cardImage3} slideClass="translate-x-5">
+  <TiltCard isVisible={isVisible} bgImage={cardImage3} slideClass="translate-x-10">
     <h1
       className="text-[80px] font-bold text-[#C54300]"
       style={{ fontFamily: font.cormorantUpright }}
@@ -153,51 +153,34 @@ const Content = ({ contentVisible }) => (
 export const StatsSection = () => {
   const [headerVisible, setHeaderVisible] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const headerObserverRef = useRef(null);
-  const contentObserverRef = useRef(null);
+  const headerRef = useRef(null);
+  const contentRef = useRef(null);
 
-  const handleHeaderIntersection = useCallback((entries) => {
-    const [entry] = entries;
-    if (entry.isIntersecting && !headerVisible) {
-      setTimeout(() => {
-        setHeaderVisible(true);
-      }, 100);
-      headerObserverRef.current?.unobserve(entry.target);
-    }
-  }, [headerVisible]);
-
-  const handleContentIntersection = useCallback((entries) => {
-    const [entry] = entries;
-    if (entry.isIntersecting && !contentVisible) {
-      setTimeout(() => {
-        setContentVisible(true);
-      }, 100);
-      contentObserverRef.current?.unobserve(entry.target);
-    }
-  }, [contentVisible]);
-
+  // Observer Header
   useEffect(() => {
-    headerObserverRef.current = new IntersectionObserver(handleHeaderIntersection, { threshold: 0.1 });
-    contentObserverRef.current = new IntersectionObserver(handleContentIntersection, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeaderVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (headerRef.current) observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      headerObserverRef.current.observe(sectionRef.current);
-      contentObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      headerObserverRef.current?.disconnect();
-      contentObserverRef.current?.disconnect();
-    };
-  }, [handleHeaderIntersection, handleContentIntersection]);
+  // Observer Content
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setContentVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (contentRef.current) observer.observe(contentRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className="h-fit w-full relative section py-50 rounded-3xl"
-    >
+    <div className="h-fit w-full relative section py-50 rounded-3xl">
       <WaveBottom />
+
+      {/* Background */}
       <div className="absolute w-full h-full">
         <img
           className="absolute -top-35 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
@@ -220,8 +203,21 @@ export const StatsSection = () => {
           alt="Background Batik"
         />
       </div>
-      <Header isVisible={headerVisible} />
-      <Content contentVisible={contentVisible} />
+
+      {/* Header Section */}
+      <div ref={headerRef}>
+        <Header isVisible={headerVisible} />
+      </div>
+
+      {/* Cards Section */}
+      <div ref={contentRef} className="mt-16 flex justify-center gap-6">
+        <div className="flex flex-col gap-6">
+          <Card1 isVisible={contentVisible} />
+          <Card2 isVisible={contentVisible} />
+        </div>
+        <Card3 isVisible={contentVisible} />
+      </div>
+
       <WaveTop />
     </div>
   );

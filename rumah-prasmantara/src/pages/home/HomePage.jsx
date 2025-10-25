@@ -7,16 +7,21 @@ import { FavoriteSection } from "./favorite/FavoriteSection";
 import './HomePage.css'
 import { WaveBottom } from "../../components/wave/WaveBottom";
 import { WaveTop } from "../../components/wave/WaveTop";
+import { Footer } from "../../components/footer/Footer";
 
 export function HomePage() {
   return (
     <>
       <HeroSection />
       <StatsSection />
-      <div className="relative w-full pt-30 bg-linear-to-b from-[#3C261A] to-[#442717] flex flex-col gap-15">
+      <div className="relative w-full pt-30 bg-[#3C261A] flex flex-col gap-15">
         <StrengthSection />
         <FavoriteSection />
         <CommentSection />
+      </div>
+      <div className="relative pt-25 h-fit w-full">
+      <WaveBottom />
+      <Footer />
       </div>
     </>
   );

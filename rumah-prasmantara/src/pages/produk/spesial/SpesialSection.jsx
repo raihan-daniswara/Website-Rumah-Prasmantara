@@ -1,26 +1,24 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./SpesialSection.css";
 import imageKapurung from "../../../assets/produk/spesial/kapurung.png";
 import imagePieSusuBali from "../../../assets/produk/spesial/pie-susu-bali.png";
 
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
 import { SpecialMenuCard } from "../../../components/menu/SpecialMenu";
 import { WaveTop } from "../../../components/wave/WaveTop";
 import { WaveBottom } from "../../../components/wave/WaveBottom";
+import backgroundLingkaran from "../../../assets/background/about/lingkaran.png";
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
-  cormorantInfant: '"Cormorant Infant", serif',
 };
 
-// 🔸 Custom Arrow Components
 const CustomPrevArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute -left-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:cursor-pointer hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3  rounded-full transition-all duration-300 z-10"
+    className="absolute -left-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3 rounded-full transition-all duration-300 z-10"
   >
     <FaArrowLeft className="text-4xl" />
   </button>
@@ -29,7 +27,7 @@ const CustomPrevArrow = ({ onClick }) => (
 const CustomNextArrow = ({ onClick }) => (
   <button
     onClick={onClick}
-    className="absolute -right-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:cursor-pointer hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3  rounded-full transition-all duration-300 z-10"
+    className="absolute -right-20 top-1/2 -translate-y-1/2 hover:bg-[#2D1F18] hover:border-[#2D1F18] border-[5px] border-[#EAAE8F]/45 hover:text-[#C54300] text-[#EAAE8F]/60 p-3 rounded-full transition-all duration-300 z-10"
   >
     <FaArrowRight className="text-4xl" />
   </button>
@@ -37,11 +35,11 @@ const CustomNextArrow = ({ onClick }) => (
 
 const TextContent = ({ isVisible }) => (
   <div
-    className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-      }`}
+    className={`flex flex-col gap-2.5 text-center transform transition-all duration-1200 ease-out
+      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
   >
     <h1
-      className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
+      className="text-[#EAAE8F] font-bold text-6xl leading-[78px]"
       style={{ fontFamily: font.cormorantUpright }}
     >
       Menu <span className="text-[#C54300]">Spesial</span> Kami
@@ -51,51 +49,12 @@ const TextContent = ({ isVisible }) => (
       style={{ fontFamily: font.cormorantGaramond }}
     >
       Sajian istimewa yang diracik dengan penuh dedikasi, menghadirkan paduan rasa
-      <br />
-      autentik khas Nusantara dan hanya hadir di hari spesial saja.
+      <br /> autentik khas Nusantara dan hanya hadir di hari spesial saja.
     </p>
   </div>
 );
 
-const CardContent = () => {
-  const SpecialData = [
-    {
-      name: "Kapurung",
-      image: imageKapurung,
-      rating: 4.5,
-      description:
-        "Kapurung khas Sulawesi Selatan berbahan sagu dengan kuah sayuran segar dan cita rasa asam gurih.",
-      price: '25.000',
-      day: "Senin",
-    },
-    // {
-    //   name: "Coto Makassar",
-    //   image: imageCotoMakassar,
-    //   rating: 4.6,
-    //   description:
-    //     "Coto Makassar yang gurih dengan kuah kacang dan potongan daging sapi lembut.",
-    //   price: 30000,
-    //   day: "Jumat",
-    // },
-    {
-      name: "Pie Susu Bali",
-      image: imagePieSusuBali,
-      rating: 4.2,
-      description:
-        "Pie khas Bali dengan kulit tipis renyah berpadu dengan isian susu manis lembut yang lumer di mulut.",
-      price: '5.000',
-      day: "Rabu",
-    },
-  ];
-  return (
-    <div className="flex flex-col gap-12 items-center mt-10">
-      {SpecialData.map((item, index) => (
-        <SpecialMenuCard key={index} {...item} />
-      ))}
-    </div>
-  );
-}
-const CategorySlider = () => {
+const CategorySlider = ({ isVisible }) => {
   const categories = ["Semua", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Lebaran"];
 
   const settings = {
@@ -106,16 +65,14 @@ const CategorySlider = () => {
     slidesToScroll: 6,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1441,
-        settings: { slidesToShow: 5, slidesToScroll: 5 },
-      },
-    ],
+    responsive: [{ breakpoint: 1441, settings: { slidesToShow: 5, slidesToScroll: 5 } }],
   };
 
   return (
-    <div className="special-section w-[80vw] px-10 mt-10 relative">
+    <div
+      className={`w-[80vw] px-10 mt-10 relative transform transition-all duration-1200 ease-out
+      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+    >
       <Slider {...settings}>
         {categories.map((category, index) => (
           <div key={index} className="px-2">
@@ -132,84 +89,115 @@ const CategorySlider = () => {
   );
 };
 
-const WaveSpecial = () => (
-  <div className="wave-container absolute bottom-0 left-0 w-full overflow-visible pointer-events-none">
-    <svg
-      className="relative block w-full h-[180px] z-10 filter drop-shadow-[0_-30px_30px_rgba(44,35,30,1)]"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1440 320"
-      preserveAspectRatio="none"
-    >
-      <path
-        fill="#3C261A"
-        d="M0,200 
-          C240,320 480,80 720,200 
-          C960,320 1200,80 1440,200 
-          L1440,320 L0,320 Z"
-      />
-    </svg>
-  </div>
-);
+const CardContent = ({ isVisible }) => {
+  const SpecialData = [
+    {
+      name: "Kapurung",
+      image: imageKapurung,
+      rating: 4.5,
+      description:
+        "Kapurung khas Sulawesi Selatan berbahan sagu dengan kuah sayuran segar dan cita rasa asam gurih.",
+      price: "25.000",
+      day: "Senin",
+    },
+    {
+      name: "Pie Susu Bali",
+      image: imagePieSusuBali,
+      rating: 4.2,
+      description:
+        "Pie khas Bali dengan kulit tipis renyah berpadu dengan isian susu manis lembut yang lumer di mulut.",
+      price: "5.000",
+      day: "Rabu",
+    },
+  ];
 
+  return (
+    <div
+      className={`mt-10 pb-10 w-[1200px] h-[500px] overflow-y-auto custom-scrollbar mask-fade transform transition-all duration-1200 ease-out
+      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+    >
+      <div className="flex flex-col gap-12 items-center mt-10">
+        {SpecialData.map((item, index) => (
+          <SpecialMenuCard key={index} {...item} />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export const SpecialSection = () => {
   const [textVisible, setTextVisible] = useState(false);
+  const [sliderVisible, setSliderVisible] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const cardObserverRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => setTextVisible(true), 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
+  const textRef = useRef(null);
+  const sliderRef = useRef(null);
+  const cardRef = useRef(null);
 
-  const handleCardIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !cardVisible) {
-        setTimeout(() => setCardVisible(true), 100);
-        cardObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [cardVisible]
-  );
-
+  // Observer Text
   useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    cardObserverRef.current = new IntersectionObserver(handleCardIntersection, {
-      threshold: 0.3,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setTextVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (textRef.current) observer.observe(textRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      cardObserverRef.current.observe(sectionRef.current);
-    }
+  // Observer Slider
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setSliderVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (sliderRef.current) observer.observe(sliderRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    return () => {
-      textObserverRef.current?.disconnect();
-      cardObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleCardIntersection]);
+  // Observer Card
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setCardVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="pt-40 w-full h-[120vh] overflow-hidden flex flex-col items-center relative"
-    >
+    <section className="pt-40 w-full h-[120vh] overflow-hidden flex flex-col items-center relative">
       <WaveBottom />
-      <TextContent isVisible={textVisible} />
-      <CategorySlider />
-      <CardContent />
-      <WaveSpecial />
+
+      {/* Background */}
+      <img
+        className="absolute opacity-50 -z-1 -top-11 scale-110 -right-21 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Right"
+      />
+      <img
+        className="absolute opacity-50 -z-1 -bottom-11 scale-110 -left-21 rotate-180 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Left"
+      />
+
+      {/* Konten */}
+      <div ref={textRef}>
+        <TextContent isVisible={textVisible} />
+      </div>
+
+      <div ref={sliderRef}>
+        <CategorySlider isVisible={sliderVisible} />
+      </div>
+
+      <div
+        ref={cardRef}
+        className="w-full flex items-center justify-center mx-auto"
+      >
+        <CardContent isVisible={cardVisible} />
+      </div>
+
+      <WaveTop />
     </section>
   );
 };
+

@@ -6,6 +6,9 @@ import blobStroke from '../../../assets/home/blob-stroke.svg';
 import './HeroSection.css';
 import { useEffect, useState } from 'react';
 
+import backgroundCircle from '../../../assets/background/background-circle.svg';
+import backgroundBatikBunga from '../../../assets/background/about/batik-bunga.png';
+import backgroundBatikDaun from '../../../assets/background/about/batik-daun.png';
 // Font
 const font = {
   greatVibes: '"Great Vibes", cursive',
@@ -15,20 +18,23 @@ const font = {
 
 const HeroBlob = ({ isVisible }) => {
   return (
-    <div className="blob-container absolute w-[700px] h-[700px] right-0 top-1/2 -translate-y-1/2 animate-pulse" style={{ zIndex: -1 }}>
+    <div className="blob-container absolute w-[700px] h-[700px] right-0 top-1/2 -translate-y-1/2" style={{ zIndex: -1 }}>
+      <img
+        className="absolute opacity-50 -top-20 left-100 rotate-180  pointer-events-none select-none"
+        src={backgroundBatikDaun}
+        alt="Background BabackgroundBatikDaun"
+      />
       <img
         src={blob}
-        className={`absolute top-0 left-0 scale-110 translate-x-5 transition-all duration-1000 ease-out ${
-          isVisible ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
-        }`}
+        className={`absolute top-0 left-0 scale-110 translate-x-5 transition-all duration-1000 animate-pulse ease-out ${isVisible ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
+          }`}
         alt="Blob"
         style={{ zIndex: 1 }}
       />
       <img
         src={blobStroke}
-        className={`blob-float absolute top-0 left-0 transition-all duration-1000 ease-out ${
-          isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-70'
-        }`}
+        className={`blob-float absolute top-0 left-0 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-70'
+          }`}
         alt="Blob Stroke"
         style={{ zIndex: 2 }}
       />
@@ -38,9 +44,8 @@ const HeroBlob = ({ isVisible }) => {
 
 const HeroText = ({ isVisible }) => (
   <div
-    className={`text flex flex-col items-start gap-5 transition-all duration-1000 ease-out relative ${
-      isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-    }`}
+    className={`text flex flex-col items-start gap-5 transition-all duration-1000 ease-out relative ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+      }`}
     style={{ zIndex: 10 }}
   >
     <div className="my-2.5 flex flex-col gap-2.5">
@@ -106,6 +111,16 @@ export const HeroSection = () => {
 
   return (
     <section className="relative flex h-screen w-full items-center justify-center">
+      <img
+        className="absolute scale-150 opacity-50 top-7 left-7 pointer-events-none select-none"
+        src={backgroundCircle}
+        alt="Background Circle"
+      />
+      <img
+        className="absolute opacity-50 top-30 -left-40 pointer-events-none select-none"
+        src={backgroundBatikBunga}
+        alt="Background BabackgroundBatikBunga"
+      />
       <div className="w-[1323px] absolute top-1/2 -translate-y-1/2">
         <HeroText isVisible={isVisible} />
         <HeroBlob isVisible={isVisible} />

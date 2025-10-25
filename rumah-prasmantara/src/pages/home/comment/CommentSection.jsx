@@ -10,6 +10,9 @@ import { NavLink } from "react-router-dom";
 import { CommentCard } from "../../../components/comment/Comment";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
+import BackgroundCommentBatik from "../../../assets/background/comment-batik.png"
+import BackgroundLemonSlice from "../../../assets/background/lemon-slice.png"
+import BackgroundOnion from "../../../assets/background/onion.png"
 // Font
 const font = {
   greatVibes: '"Great Vibes", cursive',
@@ -113,7 +116,22 @@ const CardContent = () => {
 
 export const CommentSection = () => {
   return (
-    <section className="py-16 px-4 mb-10 flex flex-col gap-[35px] items-center justify-center">
+    <section className="relative h-max py-16 px-4 mb-10 flex flex-col gap-[35px] items-center justify-center">
+      <img
+        className="absolute right-30 top-20 opacity-50 scale-120 z-0 pointer-events-none select-none"
+        src={BackgroundLemonSlice}
+        alt="Background ComBackgroundLemonSlice"
+      />
+      <img
+        className="absolute left-30 top-0 opacity-50 scale-120 z-0 pointer-events-none select-none"
+        src={BackgroundOnion}
+        alt="Background ComBackgroundOnion"
+      />
+      <img
+        className="absolute left-1/2 -translate-x-1/2 -bottom-45 opacity-50 scale-120 z-0 pointer-events-none select-none"
+        src={BackgroundCommentBatik}
+        alt="Background ComBackgroundCommentBatik"
+      />
       <TextContent />
       <CardContent />
       <NavLink

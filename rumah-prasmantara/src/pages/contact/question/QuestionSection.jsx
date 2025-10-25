@@ -1,17 +1,21 @@
 import "./QuestionSection.css";
 import questionLogo from '../../../assets/contact/question.svg';
 import questionMascott from '../../../assets/contact/question-mascott.svg';
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
+import backgroundQuestion from '../../../assets/background/contact/question.png';
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
   cormorantInfant: '"Cormorant Infant", serif',
 };
 
-const HeaderContent = () => (
-  <div className="header-content flex flex-col gap-2.5 text-center">
+const HeaderContent = ({ isVisible }) => (
+  <div
+    className={`header-content flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+      }`}
+  >
     <h1
       className="hero-paragraph text-center text-[#EAAE8F] font-bold text-6xl leading-[78px]"
       style={{ fontFamily: font.cormorantUpright }}
@@ -29,7 +33,7 @@ const HeaderContent = () => (
   </div>
 );
 
-const QuestionContent = () => {
+const QuestionContent = ({ isVisible }) => {
   const questionData = [
     {
       title: (
@@ -70,12 +74,15 @@ const QuestionContent = () => {
   ];
 
   return (
-    <div className="flex justify-center items-center gap-14">
-    <img src={questionMascott} className="" />
+    <div
+      className={`flex justify-center items-center gap-14 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+    >
+      <img src={questionMascott} className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
+        }`} />
       <div className="flex flex-col gap-[50px]">
         {questionData.map((item, index) => (
           <div key={index} className="flex gap-5 items-start">
-            {/* Icon box */}
             <div className="p-[15px] rounded-[10px] bg-[#EAAE8F]">
               <img src={questionLogo} alt="Question icon" className="size-[50px]" />
             </div>
@@ -89,7 +96,7 @@ const QuestionContent = () => {
                 {item.title}
               </h4>
               <p
-                className="font-semibold text-[#BDBDBD] text-[32px] leading-[39px]!"
+                className="font-semibold text-[#BDBDBD] text-[32px] leading-[39px]! "
                 style={{ fontFamily: font.cormorantGaramond }}
               >
                 {item.paragraph}
@@ -103,64 +110,46 @@ const QuestionContent = () => {
 };
 
 export const QuestionSection = () => {
-  const [textVisible, setTextVisible] = useState(false);
-  const [imageVisible, setImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const imageObserverRef = useRef(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
+  const headerRef = useRef(null);
+  const contentRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleImageIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !imageVisible) {
-        setTimeout(() => {
-          setImageVisible(true);
-        }, 100);
-        imageObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [imageVisible]
-  );
-
-  useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
-      threshold: 0.3,
-    });
-
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      imageObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      textObserverRef.current?.disconnect();
-      imageObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleImageIntersection]);
+  // Observer Header
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setHeaderVisible(entry.isIntersecting),
+        { threshold: 0.3 }
+      );
+      if (headerRef.current) observer.observe(headerRef.current);
+      return () => observer.disconnect();
+    }, []);
+  
+    // Observer Content
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setContentVisible(entry.isIntersecting),
+        { threshold: 0.3 }
+      );
+      if (contentRef.current) observer.observe(contentRef.current);
+      return () => observer.disconnect();
+    }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="h-fit py-50 flex flex-col gap-20 items-center"
+      className="relative h-fit py-50 flex flex-col gap-20 items-center"
     >
-      <HeaderContent />
-      <QuestionContent />
+      <img
+        className="absolute opacity-100 z-0 top-5 right-40 pointer-events-none select-none"
+        src={backgroundQuestion}
+        alt="Background BabackgroundRumah4"
+      />
+      <div ref={headerRef}>
+        <HeaderContent isVisible={headerVisible} />
+      </div>
+      <div ref={contentRef}>
+        <QuestionContent isVisible={contentVisible} />
+      </div>
     </section>
   );
 };

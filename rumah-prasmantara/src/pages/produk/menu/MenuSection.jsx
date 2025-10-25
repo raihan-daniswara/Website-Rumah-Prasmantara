@@ -1,4 +1,9 @@
 import "./MenuSection.css";
+import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { MenuCard } from "../../../components/menu/Menu";
+import Slider from "react-slick";
+
 import imageSotoBetawi from "../../../assets/home/soto-betawi.png";
 import imageCotoMakassar from "../../../assets/home/coto-makassar.png";
 import imageBaksoMalang from "../../../assets/home/bakso-malang.png";
@@ -16,10 +21,15 @@ import imageBirPletok from "../../../assets/home/bir-pletok.png";
 import imageBajigur from "../../../assets/home/bajigur.png";
 import imageTehTarik from "../../../assets/home/teh-tarik.png";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { MenuCard } from "../../../components/menu/Menu";
-import Slider from "react-slick";
+// background
+import backgroundMasak from '../../../assets/background/produk/masak.png';
+import backgroundPiring from '../../../assets/background/produk/piring.png';
+import backgroundMenyajikan from '../../../assets/background/produk/menyajikan.png';
+import backgroundKukusan from '../../../assets/background/produk/kukusan.png';
+import backgroundSup from '../../../assets/background/produk/sup.png';
+import backgroundWajan from '../../../assets/background/produk/wajan.png';
+import backgroundTeko from '../../../assets/background/produk/teko.png';
+import backgroundMinuman from '../../../assets/background/produk/minuman.png';
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
@@ -27,8 +37,11 @@ const font = {
   cormorantInfant: '"Cormorant Infant", serif',
 };
 
-const HeaderContent = () => (
-  <div className="header-content flex flex-col gap-2.5 text-center">
+const HeaderContent = ({ isVisible }) => (
+  <div
+    className={`header-content flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+      }`}
+  >
     <h1
       className="hero-paragraph text-center text-[#EAAE8F] font-bold text-6xl leading-[78px]"
       style={{ fontFamily: font.cormorantUpright }}
@@ -46,9 +59,10 @@ const HeaderContent = () => (
   </div>
 );
 
-const TextMainContent = ({ title, paragraph }) => (
+const TextMainContent = ({ title, paragraph, isVisible }) => (
   <div
-    className={`w-[70vh] flex flex-col items-center gap-8 transition-all duration-1000 ease-out`}
+    className={`w-[70vh] flex flex-col items-center gap-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
   >
     <div className="text-main-content flex flex-col gap-2.5">
       <h1
@@ -66,7 +80,7 @@ const TextMainContent = ({ title, paragraph }) => (
     </div>
     <NavLink
       to="/produk"
-      className={`px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300`}
+      className="px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300"
       style={{ fontFamily: font.cormorantGaramond }}
     >
       Lihat <span className="text-[#C54300]">Selengkapnya</span>
@@ -74,7 +88,7 @@ const TextMainContent = ({ title, paragraph }) => (
   </div>
 );
 
-const CardContent = ({ type }) => {
+const CardContent = ({ type, isVisible }) => {
   const menuData = [
     {
       type: "main",
@@ -201,10 +215,10 @@ const CardContent = ({ type }) => {
     swipeToSlide: true,
   };
 
-  
+
   return (
     <div
-      className={`menu-section w-[30vw] transition-all duration-1000 ease-out`}
+      className={`menu-section w-[30vw] transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-x-10"}`}
     >
       <Slider {...settings}>
         {menuType?.items.map((menu, index) => (
@@ -223,74 +237,180 @@ const CardContent = ({ type }) => {
 };
 
 export const MenuSection = () => {
-  const [textVisible, setTextVisible] = useState(false);
-  const [imageVisible, setImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const imageObserverRef = useRef(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [text1Visible, setText1Visible] = useState(false);
+  const [card1Visible, setCard1Visible] = useState(false);
+  const [text2Visible, setText2Visible] = useState(false);
+  const [card2Visible, setCard2Visible] = useState(false);
+  const [text3Visible, setText3Visible] = useState(false);
+  const [card3Visible, setCard3Visible] = useState(false);
+  const headerRef = useRef(null);
+  const text1Ref = useRef(null);
+  const card1Ref = useRef(null);
+  const text2Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const text3Ref = useRef(null);
+  const card3Ref = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleImageIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !imageVisible) {
-        setTimeout(() => {
-          setImageVisible(true);
-        }, 100);
-        imageObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [imageVisible]
-  );
-
+  // Observer Header
   useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
-      threshold: 0.3,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeaderVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (headerRef.current) observer.observe(headerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      imageObserverRef.current.observe(sectionRef.current);
-    }
+  // Observer Text1
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setText1Visible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (text1Ref.current) observer.observe(text1Ref.current);
+    return () => observer.disconnect();
+  }, []);
 
-    return () => {
-      textObserverRef.current?.disconnect();
-      imageObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleImageIntersection]);
+  // Observer Card1
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setCard1Visible(entry.isIntersecting),
+      { threshold: 0.4 }
+    );
+    if (card1Ref.current) observer.observe(card1Ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Observer Text2
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setText2Visible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (text2Ref.current) observer.observe(text2Ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Observer Card2
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setCard2Visible(entry.isIntersecting),
+      { threshold: 0.4 }
+    );
+    if (card2Ref.current) observer.observe(card2Ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Observer Text3
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setText3Visible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (text3Ref.current) observer.observe(text3Ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Observer Card3
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setCard3Visible(entry.isIntersecting),
+      { threshold: 0.4 }
+    );
+    if (card3Ref.current) observer.observe(card3Ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="h-fit py-20 flex flex-col gap-20 items-center"
-    >
-      <HeaderContent />
+    <section className="relative h-fit py-20 flex flex-col gap-20 items-center">
+      {/* Background */}
+      <img
+        className="absolute opacity-50 z-1 top-50 scale-120 left-0 pointer-events-none select-none"
+        src={backgroundMasak}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-1 top-90 scale-110 left-[40%] pointer-events-none select-none"
+        src={backgroundPiring}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-1 top-180 scale-110 left-0 pointer-events-none select-none"
+        src={backgroundMenyajikan}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-0 top-220 scale-110 left-[75%] pointer-events-none select-none"
+        src={backgroundKukusan}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-0 top-30 scale-110 left-[85%] pointer-events-none select-none"
+        src={backgroundSup}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-0 bottom-100 scale-110 left-[82%] pointer-events-none select-none"
+        src={backgroundWajan}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-0 bottom-230 scale-110 left-[45%] pointer-events-none select-none"
+        src={backgroundTeko}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-0 bottom-100 scale-110 -left-30 pointer-events-none select-none"
+        src={backgroundMinuman}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-0 bottom-10 scale-60 -rotate-30 left-170 pointer-events-none select-none"
+        src={backgroundMinuman}
+        alt="Background BabackgroundRumah4"
+      />
+      <div ref={headerRef}>
+        <HeaderContent isVisible={headerVisible} />
+      </div>
+
       <div className="w-full main-menu flex gap-20 justify-center items-center">
-        <TextMainContent title="Hidangan Utama" paragraph="Makanan utama pilihan khas nusantara yang gurih dan mengenyangkan, berupa lauk, sayur, nasi, dan lain-lain." />
-        <CardContent isVisible={imageVisible} type="main" />
+        <div ref={text1Ref}>
+          <TextMainContent
+            title="Hidangan Utama"
+            paragraph="Makanan utama pilihan khas nusantara yang gurih dan mengenyangkan, berupa lauk, sayur, nasi, dan lain-lain."
+            isVisible={text1Visible}
+          />
+        </div>
+        <div ref={card1Ref}>
+          <CardContent type="main" isVisible={card1Visible} />
+        </div>
       </div>
+
       <div className="main-menu flex gap-20 items-center">
-        <CardContent isVisible={imageVisible} type="snack" />
-        <TextMainContent title="Makanan Ringan" paragraph="Makanan ringan pilihan khas nusantara yang renyah dan lezat, cocok sebagai teman santai, tersedia dalam berbagai rasa gurih hingga manis." />
+        <div ref={card2Ref}>
+          <CardContent type="snack" isVisible={card2Visible} />
+        </div>
+        <div ref={text2Ref}>
+          <TextMainContent
+            title="Makanan Ringan"
+            paragraph="Makanan ringan pilihan khas nusantara yang renyah dan lezat, cocok sebagai teman santai, tersedia dalam berbagai rasa gurih hingga manis."
+            isVisible={text2Visible}
+          />
+        </div>
       </div>
+
       <div className="main-menu flex gap-20 items-center">
-        <TextMainContent title="Minuman Segar" paragraph="Minuman segar khas nusantara yang manis dan menyegarkan, hadir dengan berbagai pilihan rasa alami untuk melepas dahaga kapan saja." />
-        <CardContent isVisible={imageVisible} type="drink" />
+        <div ref={text3Ref}>
+          <TextMainContent
+            title="Minuman Segar"
+            paragraph="Minuman segar khas nusantara yang manis dan menyegarkan, hadir dengan berbagai pilihan rasa alami untuk melepas dahaga kapan saja."
+            isVisible={text3Visible}
+          />
+        </div>
+        <div ref={card3Ref}>
+          <CardContent type="drink" isVisible={card3Visible} />
+        </div>
       </div>
     </section>
   );

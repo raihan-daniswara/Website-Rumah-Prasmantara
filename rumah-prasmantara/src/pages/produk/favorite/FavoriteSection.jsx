@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./FavoriteSection.css";
 import imageSotoBetawi from "../../../assets/home/soto-betawi.png";
 import imageNasiLiwet from "../../../assets/home/nasi-liwet.png";
@@ -7,6 +7,8 @@ import imageRendang from "../../../assets/home/rendang.png";
 import { MenuCard } from "../../../components/menu/Menu";
 import Slider from "react-slick";
 
+import backgroundJempol from '../../../assets/background/produk/jempol.png';
+import backgroundStars from '../../../assets/background/produk/stars.png';
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
@@ -15,9 +17,8 @@ const font = {
 
 const TextContent = ({ isVisible }) => (
   <div
-    className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
-    }`}
+    className={`textContent flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+      }`}
   >
     <h1
       className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
@@ -116,13 +117,12 @@ const CardContent = ({ isVisible }) => {
 
   return (
     <div
-      className={`favorite-section card-wrapper w-[80vw] transition-all duration-1000 ease-out ${
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
-      }`}
+      className={`favorite-section card-wrapper w-[80vw] transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+        }`}
     >
       <Slider {...settings}>
         {menuData.map((menu, index) => (
-          <div key={index} className="px-4 my-[40px]">
+          <div key={index} className="px-4 my-10">
             <MenuCard
               image={menu.image}
               title={menu.title}
@@ -139,62 +139,62 @@ const CardContent = ({ isVisible }) => {
 export const FavoriteSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const cardObserverRef = useRef(null);
+  const textRef = useRef(null);
+  const cardRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleCardIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !cardVisible) {
-        setTimeout(() => {
-          setCardVisible(true);
-        }, 100);
-        cardObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [cardVisible]
-  );
-
-  useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    cardObserverRef.current = new IntersectionObserver(handleCardIntersection, {
-      threshold: 0.3,
-    });
-
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      cardObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      textObserverRef.current?.disconnect();
-      cardObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleCardIntersection]);
+  // Observer Text
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setTextVisible(entry.isIntersecting),
+        { threshold: 0.2 }
+      );
+      if (textRef.current) observer.observe(textRef.current);
+      return () => observer.disconnect();
+    }, []);
+  
+    // Observer Card
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => setCardVisible(entry.isIntersecting),
+        { threshold: 0.2 }
+      );
+      if (cardRef.current) observer.observe(cardRef.current);
+      return () => observer.disconnect();
+    }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="pb-40 pt-20 w-full flex flex-col items-center"
+      className="relative h-[120vh] w-full flex flex-col items-center justify-center"
     >
-      <TextContent isVisible={textVisible} />
-      <CardContent isVisible={cardVisible} />
+      {/* Background */}
+      <img
+        className="absolute opacity-50 z-1 top-20 scale-110 -left-6 pointer-events-none select-none"
+        src={backgroundJempol}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-1 top-20 scale-110 -right-6 rotate-y-180 pointer-events-none select-none"
+        src={backgroundJempol}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-1 bottom-20 scale-110 -right-6 pointer-events-none select-none"
+        src={backgroundStars}
+        alt="Background BabackgroundRumah4"
+      />
+      <img
+        className="absolute opacity-50 z-1 bottom-20 scale-110 -left-6 rotate-y-180 pointer-events-none select-none"
+        src={backgroundStars}
+        alt="Background BabackgroundRumah4"
+      />
+
+      {/* Konten */}
+      <div ref={textRef}>
+        <TextContent isVisible={textVisible} />
+      </div>
+      <div ref={cardRef}>
+        <CardContent isVisible={cardVisible} />
+      </div>
     </section>
   );
 };

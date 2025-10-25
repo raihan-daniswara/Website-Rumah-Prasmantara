@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./StrengthSection.css";
 import MasakanNusantara1 from "../../../assets/about/masakan-nusantara1.png";
 import MasakanNusantara2 from "../../../assets/about/masakan-nusantara2.png";
 import MakananGIF from "../../../assets/about/makanan.gif";
 import { NavLink } from "react-router-dom";
+
+import backgroundWayang from '../../../assets/background/about/wayang.png';
 
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
@@ -114,21 +116,20 @@ const TextContent = ({ isVisible }) => (
 );
 const ImageContent = ({ isVisible }) => (
   <div
-    className={`flex gap-5 h-[630px] duration-[1000ms] ease-out transition-all ${
-      isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
-    }`}
+    className={`flex gap-5 h-[630px] duration-1000 ease-out transition-all ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
+      }`}
   >
     {/* Kolom kiri */}
     <div className="flex flex-col gap-5 justify-end items-end">
       <img
         src={MasakanNusantara1}
         alt="Masakan Nusantara 1"
-        className="rounded-tr-[50px] rounded-tl-[300px] rounded-br-[50px] rounded-bl-[50px] object-cover w-[300px] h-[240px]"
+        className="rounded-tr-[50px] rounded-tl-[300px] rounded-br-[50px] rounded-bl-[50px] object-cover w-[300px] h-60"
       />
       <img
         src={MasakanNusantara2}
         alt="Masakan Nusantara 2"
-        className="strengthImage rounded-t-[100px] rounded-b-[300px] object-cover w-[240px] h-[340px]"
+        className="strengthImage rounded-t-[100px] rounded-b-[300px] object-cover w-60 h-[340px]"
       />
     </div>
 
@@ -146,62 +147,51 @@ const ImageContent = ({ isVisible }) => (
 export const StrengthSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const imageObserverRef = useRef(null);
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleImageIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !imageVisible) {
-        setTimeout(() => {
-          setImageVisible(true);
-        }, 100);
-        imageObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [imageVisible]
-  );
-
+  // Observer Text
   useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
-      threshold: 0.3,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setTextVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (textRef.current) observer.observe(textRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      imageObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      textObserverRef.current?.disconnect();
-      imageObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleImageIntersection]);
+  // Observer Image
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setImageVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (imageRef.current) observer.observe(imageRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
-      ref={sectionRef}
-      className="h-[100vh] flex gap-20 py-16 px-4 items-center justify-center"
+      className="h-screen relative flex gap-20 py-16 px-4 items-center justify-center"
     >
-      <ImageContent isVisible={imageVisible} />
-      <TextContent isVisible={textVisible} />
+      {/* Background */}
+      <img
+        className="absolute opacity-50 bottom-40 scale-120 -left-20 pointer-events-none select-none"
+        src={backgroundWayang}
+        alt="Background Wayang Kiri"
+      />
+      <img
+        className="absolute opacity-50 top-40 scale-120 -right-20 rotate-y-180 pointer-events-none select-none"
+        src={backgroundWayang}
+        alt="Background Wayang Kanan"
+      />
+
+      <div ref={imageRef}>
+        <ImageContent isVisible={imageVisible} />
+      </div>
+      <div ref={textRef}>
+        <TextContent isVisible={textVisible} />
+      </div>
     </section>
   );
 };

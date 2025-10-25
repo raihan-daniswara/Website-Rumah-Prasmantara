@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./StrengthSection.css";
 import chef from "../../../assets/home/chef.png";
 import iconVariasi from "../../../assets/home/icon-variasi.png";
@@ -151,65 +151,45 @@ const ImageContent = ({ isVisible }) => (
 export const StrengthSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const imageObserverRef = useRef(null);
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleImageIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !imageVisible) {
-        setTimeout(() => {
-          setImageVisible(true);
-        }, 100);
-        imageObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [imageVisible]
-  );
-
+  // Observer Text
   useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-      once: true
-    });
-    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
-      threshold: 0.3,
-      once: true
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setTextVisible(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    if (textRef.current) observer.observe(textRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      imageObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      textObserverRef.current?.disconnect();
-      imageObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleImageIntersection]);
+  // Observer Image
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setImageVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (imageRef.current) observer.observe(imageRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
-      ref={sectionRef}
       className="strength-section relative h-fit flex gap-20 py-16 px-4 items-center justify-center"
     >
-    <img src={BackgroundCircleBig} className="absolute opacity-50 -right-75 pointer-events-none select-none" />
-      <ImageContent isVisible={imageVisible} />
-      <TextContent isVisible={textVisible} />
+      <img
+        src={BackgroundCircleBig}
+        className="absolute opacity-50 -right-75 pointer-events-none select-none"
+      />
+
+      <div ref={imageRef}>
+        <ImageContent isVisible={imageVisible} />
+      </div>
+
+      <div ref={textRef}>
+        <TextContent isVisible={textVisible} />
+      </div>
     </section>
   );
 };

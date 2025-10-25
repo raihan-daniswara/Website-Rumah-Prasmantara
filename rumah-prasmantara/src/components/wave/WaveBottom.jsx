@@ -2,7 +2,7 @@
 export const WaveBottom = () => (
   <div className="wave-container absolute top-0 left-0 w-full overflow-visible rotate-180 pointer-events-none">
     <svg
-      className="wave-svg relative block w-full h-[150px] filter drop-shadow-[0_-30px_20px_rgba(0,0,0,0.2)]"
+      className="wave-svg relative block w-full h-[150px] z-10 filter drop-shadow-[0_-30px_20px_rgba(0,0,0,0.2)]"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1440 320"
       preserveAspectRatio="none"

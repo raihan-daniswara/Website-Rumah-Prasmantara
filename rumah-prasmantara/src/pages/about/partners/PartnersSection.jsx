@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./PartnersSection.css";
 import qrisLogo from "../../../assets/about/qris.png";
 import shopeeFoodLogo from "../../../assets/about/shopee-food.png";
@@ -7,6 +7,11 @@ import grabLogo from "../../../assets/about/grab.png";
 import maximLogo from "../../../assets/about/maxim.png";
 import { NavLink } from "react-router-dom";
 
+import backgroundRumah1 from '../../../assets/background/about/rumah1.png';
+import backgroundRumah2 from '../../../assets/background/about/rumah2.png';
+import backgroundRumah3 from '../../../assets/background/about/rumah3.png';
+import backgroundOndelCewe from '../../../assets/background/about/ondel-cewe.png';
+import backgroundOndelLaki from '../../../assets/background/about/ondel-laki.png';
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
@@ -56,11 +61,21 @@ const TextContent = ({ isVisible }) => (
 
 const ImageContent = ({ isVisible }) => (
   <div
-    className={`flex gap-[15px] h-max duration-[1000ms] ease-out transition-all ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+    className={`flex gap-[15px] h-max duration-1000 ease-out transition-all ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
       }`}
   >
     {/* Kolom kiri */}
-    <div className="flex flex-col gap-[15px] items-end">
+    <div className="relative flex flex-col gap-[15px] items-end">
+      <img
+        className="absolute opacity-50 -top-35 scale-120 -z-1 -left-15 pointer-events-none select-none"
+        src={backgroundOndelCewe}
+        alt="Background BabackgroundOndelCewe"
+      />
+      <img
+        className="absolute opacity-50 -top-35 scale-120 -z-1 -right-55 pointer-events-none select-none"
+        src={backgroundOndelLaki}
+        alt="Background BabackgroundOndelCewe"
+      />
       <div className="largePartnerImage rounded-[40px] bg-[#C54300] w-[316px] h-[316px] overflow-hidden">
         <img
           src={qrisLogo}
@@ -109,62 +124,54 @@ const ImageContent = ({ isVisible }) => (
 export const PartnersSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setImageVisible] = useState(false);
-  const sectionRef = useRef(null);
-  const textObserverRef = useRef(null);
-  const imageObserverRef = useRef(null);
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
 
-  const handleTextIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !textVisible) {
-        setTimeout(() => {
-          setTextVisible(true);
-        }, 100);
-        textObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [textVisible]
-  );
-
-  const handleImageIntersection = useCallback(
-    (entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !imageVisible) {
-        setTimeout(() => {
-          setImageVisible(true);
-        }, 100);
-        imageObserverRef.current?.unobserve(entry.target);
-      }
-    },
-    [imageVisible]
-  );
-
+  // Observer Text
   useEffect(() => {
-    textObserverRef.current = new IntersectionObserver(handleTextIntersection, {
-      threshold: 0.3,
-    });
-    imageObserverRef.current = new IntersectionObserver(handleImageIntersection, {
-      threshold: 0.3,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setTextVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (textRef.current) observer.observe(textRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    if (sectionRef.current) {
-      textObserverRef.current.observe(sectionRef.current);
-      imageObserverRef.current.observe(sectionRef.current);
-    }
-
-    return () => {
-      textObserverRef.current?.disconnect();
-      imageObserverRef.current?.disconnect();
-    };
-  }, [handleTextIntersection, handleImageIntersection]);
+  // Observer Image
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setImageVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (imageRef.current) observer.observe(imageRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="h-[100vh] flex gap-20 py-16 px-4 items-center justify-center"
-    >
-      <TextContent isVisible={textVisible} />
-      <ImageContent isVisible={imageVisible} />
+    <section className="relative h-screen flex gap-20 py-16 px-4 items-center justify-center">
+      {/* Background */}
+      <img
+        className="absolute opacity-50 top-0 scale-110 left-70 pointer-events-none select-none"
+        src={backgroundRumah1}
+        alt="Background Rumah 1"
+      />
+      <img
+        className="absolute opacity-50 bottom-50 scale-110 left-130 pointer-events-none select-none"
+        src={backgroundRumah2}
+        alt="Background Rumah 2"
+      />
+      <img
+        className="absolute opacity-50 bottom-0 scale-110 right-50 pointer-events-none select-none"
+        src={backgroundRumah3}
+        alt="Background Rumah 3"
+      />
+
+      <div ref={textRef}>
+        <TextContent isVisible={textVisible} />
+      </div>
+      <div ref={imageRef}>
+        <ImageContent isVisible={imageVisible} />
+      </div>
     </section>
   );
 };

@@ -4,6 +4,9 @@ import './ContactPage.css'
 import { QuestionSection } from "./question/QuestionSection";
 import { WaveBottom } from "../../components/wave/WaveBottom";
 import { ReserveSection } from "./reserve/ReserveSection";
+import { Footer } from "../../components/footer/Footer";
+
+
 export function ContactPage() {
   return (
     <>
@@ -12,6 +15,9 @@ export function ContactPage() {
         <QuestionSection />
       </div>
       <ReserveSection />
+      <div className="relative bg-[#3C261A] overflow-hidden">
+        <Footer />
+      </div>
     </>
   )
 }

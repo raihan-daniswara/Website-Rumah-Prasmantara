@@ -16,20 +16,20 @@ export const CommentCard = ({ image, name, rating, comment, date, index }) => {
 
   return (
     <div
-      className="commentCard w-[505px] h-[220px] flex flex-col gap-[10px] justify-between px-[20px] py-[25px] rounded-[30px] relative transition-all duration-300 hover:scale-105"
+      className="commentCard w-[505px] h-[220px] flex flex-col gap-2.5 justify-between px-5 py-[25px] rounded-[30px] relative transition-all duration-300 hover:scale-105"
       style={{
         backgroundColor: index % 2 === 0 ? "#3C261A" : "#31211A",
       }}
     >
       <p
-        className="text-2xl font-normal text-[#BDBDBD] leading-[28px]"
+        className="text-2xl font-normal text-[#BDBDBD] leading-7"
         style={{ fontFamily: "Roboto" }}
       >
         {comment}
       </p>
 
       <div className="flex items-end justify-between w-full mt-4">
-        <div className="flex items-center gap-[12px]">
+        <div className="flex items-center gap-3">
           <img
             src={image}
             className="rounded-full object-cover w-[60px] h-[60px]"
@@ -42,7 +42,7 @@ export const CommentCard = ({ image, name, rating, comment, date, index }) => {
             >
               {name}
             </p>
-            <div className="flex gap-[3px] mt-[2px]">{stars}</div>
+            <div className="flex gap-[3px] mt-0.5">{stars}</div>
           </div>
         </div>
 

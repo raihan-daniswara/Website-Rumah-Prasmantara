@@ -1,3 +1,4 @@
+import { Footer } from "../../components/footer/Footer";
 import { NavigationBar } from "../../components/navigation/NavigationBar";
 import { WaveBottom } from "../../components/wave/WaveBottom";
 import { WaveTop } from "../../components/wave/WaveTop";
@@ -12,11 +13,14 @@ export function ProdukPage() {
       <div className="relative bg-[#3C261A]">
         <HeroSection />
         <FavoriteSection />
-        <WaveBottom />
       </div>
       <SpecialSection />
-      <div className="w-full h-max relative bg-linear-to-b from-[#3C261A] to-[#442717]">
+      <div className="w-full h-max relative bg-[#3C261A]">
         <MenuSection />
+      </div>
+      <div className="relative pt-25 h-fit w-full">
+        <WaveBottom />
+        <Footer />
       </div>
     </>
   )
