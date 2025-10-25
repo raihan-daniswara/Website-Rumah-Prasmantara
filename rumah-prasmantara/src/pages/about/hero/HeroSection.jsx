@@ -18,15 +18,18 @@ const font = {
 
 const HeroBlob = ({ isVisible }) => {
   return (
-    <div className="blob-container absolute w-[700px] h-[700px] right-0 top-1/2 -translate-y-1/2" style={{ zIndex: -1 }}>
+    <div className="blob-container absolute w-[400px] h-[400px] lg:w-[700px] lg:h-[700px] left-1/2 top-1/2 -translate-y-1/2 lg:translate-x-0 -translate-x-1/2" style={{ zIndex: -1 }}>
+      {/* Background */}
       <img
-        className="absolute opacity-50 -top-20 left-100 rotate-180  pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 -top-20 left-100 rotate-180  pointer-events-none select-none"
         src={backgroundBatikDaun}
         alt="Background BabackgroundBatikDaun"
       />
+
+      {/* Konten */}
       <img
         src={blob}
-        className={`absolute top-0 left-0 scale-110 translate-x-5 transition-all duration-1000 animate-pulse ease-out ${isVisible ? 'opacity-100 scale-110' : 'opacity-0 scale-90'
+        className={`absolute top-0 left-0 lg:translate-x-5 transition-all duration-1000 animate-pulse ease-out ${isVisible ? 'opacity-80 scale-110' : 'opacity-0 scale-90'
           }`}
         alt="Blob"
         style={{ zIndex: 1 }}
@@ -43,56 +46,111 @@ const HeroBlob = ({ isVisible }) => {
 };
 
 const HeroText = ({ isVisible }) => (
-  <div
-    className={`text flex flex-col items-start gap-5 transition-all duration-1000 ease-out relative ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-      }`}
-    style={{ zIndex: 10 }}
-  >
-    <div className="my-2.5 flex flex-col gap-2.5">
-      <h2
-        className="hero-header-2 text-[#DBCECE] text-5xl font-medium transition-all duration-1000 ease-out"
-        style={{ fontFamily: font.greatVibes }}
-      >
-        Tentang Kami
-      </h2>
-      <h1
-        className="hero-header-1 text-[80px] text-[#EAAE8F] font-bold transition-all duration-1000 ease-out"
-        style={{ fontFamily: font.cormorantUpright }}
-      >
-        Alasan <span className="text-[#C54300]">Rumah<br />Prasmantara</span> Hadir
-      </h1>
-      <p
-        className="hero-paragraph text-4xl font-semibold text-[#BDBDBD] transition-all duration-1000 ease-out"
-        style={{ fontFamily: font.cormorantGaramond }}
-      >
-        Kami hadir untuk menyatukan berbagai masakan khas<br />Nusantara dengan cita
-        rasa autentik yang disajikan melalui <br />prasmanan.
-      </p>
+  <>
+    {/* Large */}
+    <div
+      className={`hidden lg:flex text flex-col items-start gap-5 transition-all duration-1000 ease-out relative ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+        }`}
+      style={{ zIndex: 10 }}
+    >
+      <div className="my-2.5 flex flex-col gap-2.5">
+        <h2
+          className="hero-header-2 text-[#DBCECE] text-5xl font-medium transition-all duration-1000 ease-out"
+          style={{ fontFamily: font.greatVibes }}
+        >
+          Tentang Kami
+        </h2>
+        <h1
+          className="hero-header-1 text-[80px] text-[#EAAE8F] font-bold transition-all duration-1000 ease-out"
+          style={{ fontFamily: font.cormorantUpright }}
+        >
+          Alasan <span className="text-[#C54300]">Rumah<br />Prasmantara</span> Hadir
+        </h1>
+        <p
+          className="hero-paragraph text-4xl font-semibold text-[#BDBDBD] transition-all duration-1000 ease-out"
+          style={{ fontFamily: font.cormorantGaramond }}
+        >
+          Kami hadir untuk menyatukan berbagai masakan khas<br />Nusantara dengan cita
+          rasa autentik yang disajikan melalui <br />prasmanan.
+        </p>
+      </div>
+      <div className="flex gap-[15px]">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src={facebook}
+            alt="Facebook"
+            className="media-icon w-[60px] h-[60px] hover:scale-110 transition-all ease-in"
+          />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src={instagram}
+            alt="Instagram"
+            className="media-icon w-[60px] h-[60px] hover:scale-110 transition-all ease-in"
+          />
+        </a>
+        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src={whatsapp}
+            alt="WhatsApp"
+            className="media-icon w-[60px] h-[60px] hover:scale-110 transition-all ease-in"
+          />
+        </a>
+      </div>
     </div>
-    <div className="flex gap-[15px]">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-        <img
-          src={facebook}
-          alt="Facebook"
-          className="media-icon w-[60px] h-[60px] hover:scale-110 transition-all ease-in"
-        />
-      </a>
-      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-        <img
-          src={instagram}
-          alt="Instagram"
-          className="media-icon w-[60px] h-[60px] hover:scale-110 transition-all ease-in"
-        />
-      </a>
-      <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
-        <img
-          src={whatsapp}
-          alt="WhatsApp"
-          className="media-icon w-[60px] h-[60px] hover:scale-110 transition-all ease-in"
-        />
-      </a>
+
+    {/* Small */}
+    <div
+      className={`flex lg:hidden text flex-col items-center justify-center gap-2.5 transition-all duration-1000 ease-out relative ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+        }`}
+      style={{ zIndex: 10 }}
+    >
+      <div className="my-2.5 flex flex-col gap-2.5 justify-center items-center">
+        <h2
+          className="hero-header-2 text-[#DBCECE] text-2xl font-medium text-center transition-all duration-1000 ease-out"
+          style={{ fontFamily: font.greatVibes }}
+        >
+          Tentang Kami
+        </h2>
+        <h1
+          className="hero-header-1 text-[40px] text-[#EAAE8F] text-center max-w-[400px] font-bold transition-all duration-1000 ease-out"
+          style={{ fontFamily: font.cormorantUpright }}
+        >
+          Alasan <span className="text-[#C54300]">Rumah Prasmantara</span> Hadir
+        </h1>
+        <p
+          className="hero-paragraph text-xl font-semibold block text-center max-w-[365px] text-[#BDBDBD] transition-all duration-1000 ease-out"
+          style={{ fontFamily: font.cormorantGaramond }}
+        >
+          Kami hadir untuk menyatukan berbagai masakan khas Nusantara dengan cita
+          rasa autentik yang disajikan melalui  prasmanan.
+        </p>
+      </div>
+      <div className="flex gap-[15px]">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src={facebook}
+            alt="Facebook"
+            className="media-icon w-[33px] h-[33px] hover:scale-110 transition-all ease-in"
+          />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src={instagram}
+            alt="Instagram"
+            className="media-icon w-[33px] h-[33px] hover:scale-110 transition-all ease-in"
+          />
+        </a>
+        <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer">
+          <img
+            src={whatsapp}
+            alt="WhatsApp"
+            className="media-icon w-[33px] h-[33px] hover:scale-110 transition-all ease-in"
+          />
+        </a>
+      </div>
     </div>
-  </div>
+  </>
 );
 
 // Main Hero Section
@@ -112,12 +170,12 @@ export const HeroSection = () => {
   return (
     <section className="relative flex h-screen w-full items-center justify-center">
       <img
-        className="absolute scale-150 opacity-50 top-7 left-7 pointer-events-none select-none"
+        className="hidden lg:block absolute scale-150 opacity-50 top-7 left-7 pointer-events-none select-none"
         src={backgroundCircle}
         alt="Background Circle"
       />
       <img
-        className="absolute opacity-50 top-30 -left-40 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 top-30 -left-40 pointer-events-none select-none"
         src={backgroundBatikBunga}
         alt="Background BabackgroundBatikBunga"
       />
