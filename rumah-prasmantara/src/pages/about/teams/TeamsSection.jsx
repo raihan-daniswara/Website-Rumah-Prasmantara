@@ -113,7 +113,7 @@ const TeamsSlider = ({ teamsData, isVisible }) => {
   return (
     <div className="block lg:hidden w-full mt-10 relative">
       {/* Container scroll horizontal */}
-      <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+      <div className="flex overflow-x-auto overflow-y-clip snap-x snap-mandatory scrollbar-hide">
         {slides.map((slide, slideIndex) => (
           <div key={slideIndex} className="grid grid-cols-2 gap-4 snap-center min-w-full px-4">
             {slide.map((team, index) => (
@@ -129,7 +129,7 @@ const TeamsSlider = ({ teamsData, isVisible }) => {
                   loading="lazy"
                 />
                 <div className="flex flex-col items-center mt-4">
-                  <p className="font-bold text-2xl text-[#C54300]" style={{ fontFamily: font.cormorantUpright }}>
+                  <p className="font-bold text-2xl text-[#C54300] whitespace-nowrap" style={{ fontFamily: font.cormorantUpright }}>
                     {team.name}
                   </p>
                   <p className="text-[18px] font-bold text-[#EAAE8F]" style={{ fontFamily: font.cormorantGaramond }}>
