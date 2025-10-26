@@ -5,7 +5,7 @@ import imagePieSusuBali from "../../../assets/produk/spesial/pie-susu-bali.png";
 
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { SpecialMenuCard } from "../../../components/menu/SpecialMenu";
+import { SpecialMenuCard, SpecialMenuModal } from "../../../components/menu/SpecialMenu";
 import { WaveTop } from "../../../components/wave/WaveTop";
 import { WaveBottom } from "../../../components/wave/WaveBottom";
 import backgroundLingkaran from "../../../assets/background/about/lingkaran.png";
@@ -172,10 +172,10 @@ const CategorySlider = ({ isVisible }) => {
   );
 };
 
-const CardContent = ({ isVisible }) => {
+const CardContent = ({ isVisible, onDetail }) => {
   const SpecialData = [
     {
-      name: "Kapurung",
+      title: "Kapurung",
       image: imageKapurung,
       rating: 4.5,
       description:
@@ -184,7 +184,7 @@ const CardContent = ({ isVisible }) => {
       day: "Senin",
     },
     {
-      name: "Pie Susu Bali",
+      title: "Pie Susu Bali",
       image: imagePieSusuBali,
       rating: 4.2,
       description:
@@ -200,8 +200,17 @@ const CardContent = ({ isVisible }) => {
       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
       <div className="flex flex-col lg:gap-12 gap-5 items-center lg:m-10 mt-5">
-        {SpecialData.map((item, index) => (
-          <SpecialMenuCard key={index} {...item} />
+        {SpecialData.map((menu, index) => (
+          <SpecialMenuCard
+            key={index}
+            image={menu.image}
+            title={menu.title}
+            rating={menu.rating}
+            description={menu.description}
+            price={menu.price}
+            day={menu.day}
+            onDetail={() => onDetail(menu)}
+          />
         ))}
       </div>
     </div>
@@ -212,6 +221,7 @@ export const SpecialSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [sliderVisible, setSliderVisible] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   const textRef = useRef(null);
   const sliderRef = useRef(null);
@@ -288,9 +298,14 @@ export const SpecialSection = () => {
         ref={cardRef}
         className="w-full flex items-center justify-center mx-auto"
       >
-        <CardContent isVisible={cardVisible} />
+        <CardContent isVisible={cardVisible} onDetail={setModalData} />
       </div>
 
+      <SpecialMenuModal
+        isOpen={!!modalData}
+        onClose={() => setModalData(null)}
+        menu={modalData}
+      />
       <WaveTop />
     </section>
   );

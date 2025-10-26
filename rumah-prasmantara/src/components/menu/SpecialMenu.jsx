@@ -1,3 +1,4 @@
+import { HiOutlineX } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 
 // font
@@ -7,7 +8,78 @@ const font = {
   cormorantInfant: '"Cormorant Infant", serif',
 };
 
-export const SpecialMenuCard = ({ image, name, description, price, day, rating }) => {
+export const SpecialMenuModal = ({ isOpen, onClose, menu }) => {
+  if (!isOpen || !menu) return null;
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/20 flex justify-center items-center z-50 backdrop-blur-sm transition-all duration-1000"
+      onClick={onClose}
+    >
+      <div
+        className="relative bg-[#3C261A] border border-[#C54300] rounded-3xl p-6 w-[500px] max-h-[80vh] overflow-y-auto transition-all duration-1000"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Tombol Tutup */}
+        <button
+          className="absolute top-5 right-5 text-[#EAAE8F] text-2xl hover:text-[#C54300] transition"
+          onClick={onClose}
+        >
+          <HiOutlineX />
+        </button>
+
+        <div className="tape-day absolute z-10 top-8 -left-25 -rotate-45 bg-[#EAAE8F] w-[330px] py-3">
+          <h4
+            className="text-[32px] text-[#C54300] font-bold text-center"
+            style={{ fontFamily: font.cormorantUpright }}
+          >
+            Tiap {menu.day}!
+          </h4>
+        </div>
+        <img
+          src={menu.image}
+          alt={menu.title}
+          className="w-full h-[300px] mt-8 mb-6 rounded-2xl object-cover"
+        />
+        <div className="flex w-full items-center justify-between px-2 mb-4">
+          <h2
+            className="text-[#EAAE8F] text-5xl font-bold text-center"
+            style={{ fontFamily: font.cormorantUpright }}
+          >
+            {menu.title.split(" ")[0]}{" "}
+            <span className="text-[#C54300]">{menu.title.split(" ")[1]}</span>
+          </h2>
+          {/* Rating */}
+          <div
+            className="flex items-center text-[#DFB200] font-semibold mt-1 gap-[5px]"
+            style={{ fontFamily: font.cormorantInfant }}
+          >
+            <span className="text-yellow-400 text-4xl">★</span>
+            <span className="ml-1 text-4xl">{menu.rating}</span>
+          </div>
+        </div>
+
+        {/* Deskripsi */}
+        <p
+          className="text-[#BDBDBD] lg:text-2xl text-xl font-medium mb-6 px-2"
+          style={{ fontFamily: font.cormorantGaramond }}
+        >
+          {menu.description}
+        </p>
+
+        {/* Harga */}
+        <p
+          className="text-[#EAAE8F] text-3xl font-bold text-center mt-4 bg-[#C54300] rounded-full py-2"
+          style={{ fontFamily: font.cormorantUpright }}
+        >
+          Rp {menu.price.toLocaleString("id-ID")}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export const SpecialMenuCard = ({ image, title, description, price, day, rating, onDetail }) => {
   return (
     <>
       {/* Large */}
@@ -24,7 +96,7 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
         <div className="relative w-fit h-full">
           <img
             src={image}
-            alt={name}
+            alt={title}
             className="w-auto h-full object-cover -translate-x-[13px]"
           />
           <div className="absolute right-0 top-0 h-full w-[70px] bg-linear-to-l from-[#3C261A] via-[#3C261A] to-transparent" />
@@ -41,7 +113,7 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
               className="text-5xl font-bold text-[#EAAE8F]"
               style={{ fontFamily: font.cormorantUpright }}
             >
-              <span className="text-[#C54300]">{name}</span>
+              <span className="text-[#C54300]">{title}</span>
             </h3>
             <div
               className="flex items-center text-[#DFB200] font-semibold mt-1 gap-[5px]"
@@ -63,13 +135,13 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
           >
             Rp. <span className="text-[#C54300]">{price}</span>
           </h3>
-          <NavLink
-            to=""
+          <button
+            onClick={onDetail}
             className="w-full h-[75px] text-center bg-[#C54300] rounded-3xl text-[#EAAE8F] text-4xl font-bold transition-colors duration-300 flex items-center justify-center z-10 hover:bg-[#a83a00]"
             style={{ fontFamily: font.cormorantUpright }}
           >
             Detail
-          </NavLink>
+          </button>
         </div>
       </div>
 
@@ -89,7 +161,7 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
         <div className="relative h-full w-[60%] overflow-hidden">
           <img
             src={image}
-            alt={name}
+            alt={title}
             className="h-full w-full object-cover scale-110 translate-x-[-15px] z-0"
           />
           <div className="absolute right-0 top-0 w-[100px] h-full bg-linear-to-l from-[#3C261A] via-[#3C261A]/70 to-transparent z-1"></div>
@@ -102,7 +174,7 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
               className="text-[28px] font-bold text-[#EAAE8F]"
               style={{ fontFamily: font.cormorantUpright }}
             >
-              <span className="text-[#C54300]">{name}</span>
+              <span className="text-[#C54300]">{title}</span>
             </h3>
 
             {/* Rating */}
@@ -132,13 +204,13 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
           </h3>
 
           {/* Tombol Detail */}
-          <NavLink
-            to=""
+          <button
+            onClick={onDetail}
             className="w-full h-10 text-center bg-[#C54300] rounded-full text-[#EAAE8F] text-[20px] font-bold transition-colors duration-300 flex items-center justify-center hover:bg-[#a83a00]"
             style={{ fontFamily: font.cormorantUpright }}
           >
             Detail
-          </NavLink>
+          </button>
         </div>
       </div>
     </>

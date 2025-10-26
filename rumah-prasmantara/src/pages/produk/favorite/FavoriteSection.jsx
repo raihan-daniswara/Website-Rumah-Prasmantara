@@ -4,11 +4,12 @@ import imageSotoBetawi from "../../../assets/home/soto-betawi.png";
 import imageNasiLiwet from "../../../assets/home/nasi-liwet.png";
 import imageSateLilit from "../../../assets/home/sate-lilit.png";
 import imageRendang from "../../../assets/home/rendang.png";
-import { MenuCard } from "../../../components/menu/Menu";
+import { MenuCard, MenuModal } from "../../../components/menu/Menu";
 import Slider from "react-slick";
 
 import backgroundJempol from '../../../assets/background/produk/jempol.png';
 import backgroundStars from '../../../assets/background/produk/stars.png';
+
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',
@@ -60,12 +61,13 @@ const TextContent = ({ isVisible }) => (
   </>
 );
 
-const CardContent = ({ isVisible }) => {
+const CardContent = ({ isVisible, onDetail }) => {
   const menuData = [
     {
       image: imageSotoBetawi,
       title: "Soto Betawi",
       rating: 4.8,
+      price: 35000,
       description:
         "Soto khas Betawi dengan kuah santan dan susu yang gurih, berpadu dengan daging sapi empuk.",
     },
@@ -73,6 +75,7 @@ const CardContent = ({ isVisible }) => {
       image: imageNasiLiwet,
       title: "Nasi Liwet",
       rating: 4.6,
+      price: 30000,
       description:
         "Nasi gurih dengan bumbu rempah khas Jawa, disajikan bersama ayam dan sayuran segar.",
     },
@@ -80,6 +83,7 @@ const CardContent = ({ isVisible }) => {
       image: imageSateLilit,
       title: "Sate Lilit",
       rating: 4.7,
+      price: 40000,
       description:
         "Sate khas Bali dari daging ikan atau ayam yang dibalut dengan bumbu rempah.",
     },
@@ -87,6 +91,7 @@ const CardContent = ({ isVisible }) => {
       image: imageRendang,
       title: "Rendang",
       rating: 4.8,
+      price: 45000,
       description:
         "Rendang khas Minangkabau dengan daging sapi empuk dimasak lama dengan santan dan rempah.",
     },
@@ -179,6 +184,7 @@ const CardContent = ({ isVisible }) => {
                 title={menu.title}
                 rating={menu.rating}
                 description={menu.description}
+                onDetail={() => onDetail(menu)}
               />
             </div>
           ))}
@@ -196,6 +202,7 @@ const CardContent = ({ isVisible }) => {
                 title={menu.title}
                 rating={menu.rating}
                 description={menu.description}
+                onDetail={() => onDetail(menu)}
               />
             </div>
           ))}
@@ -205,9 +212,11 @@ const CardContent = ({ isVisible }) => {
   );
 };
 
+
 export const FavoriteSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
+  const [modalData, setModalData] = useState(null);
   const textRef = useRef(null);
   const cardRef = useRef(null);
 
@@ -235,57 +244,63 @@ export const FavoriteSection = () => {
     <section
       className="relative h-screen lg:h-[120vh] w-full flex flex-col items-center justify-center"
     >
-        {/* Background Large */}
-        <img
-          className="hidden lg:block absolute opacity-50 top-20 scale-110 -left-6"
-          src={backgroundJempol}
-          alt="Background Jempol"
-        />
-        <img
-          className="hidden lg:block absolute opacity-50 top-20 scale-110 -right-6 rotate-y-180"
-          src={backgroundJempol}
-          alt="Background Jempol Kanan"
-        />
-        <img
-          className="hidden lg:block absolute opacity-50 bottom-20 scale-110 -right-6"
-          src={backgroundStars}
-          alt="Background Stars"
-        />
-        <img
-          className="hidden lg:block absolute opacity-50 bottom-20 scale-110 -left-6 rotate-y-180"
-          src={backgroundStars}
-          alt="Background Stars Kiri"
-        />
+      {/* Background Large */}
+      <img
+        className="hidden lg:block absolute opacity-50 top-20 scale-110 -left-6"
+        src={backgroundJempol}
+        alt="Background Jempol"
+      />
+      <img
+        className="hidden lg:block absolute opacity-50 top-20 scale-110 -right-6 rotate-y-180"
+        src={backgroundJempol}
+        alt="Background Jempol Kanan"
+      />
+      <img
+        className="hidden lg:block absolute opacity-50 bottom-20 scale-110 -right-6"
+        src={backgroundStars}
+        alt="Background Stars"
+      />
+      <img
+        className="hidden lg:block absolute opacity-50 bottom-20 scale-110 -left-6 rotate-y-180"
+        src={backgroundStars}
+        alt="Background Stars Kiri"
+      />
 
-        {/* Background Small */}
-        <img
-          className="block lg:hidden absolute opacity-70 top-35 scale-50 -left-20"
-          src={backgroundJempol}
-          alt="Background Jempol Mobile"
-        />
-        <img
-          className="block lg:hidden absolute opacity-70 top-35 scale-50 -right-20 rotate-y-180"
-          src={backgroundJempol}
-          alt="Background Jempol Mobile Kanan"
-        />
-        <img
-          className="block lg:hidden absolute opacity-70 bottom-10 scale-50 -right-18 rotate-180"
-          src={backgroundStars}
-          alt="Background Stars Mobile"
-        />
-        <img
-          className="block lg:hidden absolute opacity-70 bottom-10 scale-50 -left-18 rotate-180 rotate-y-180"
-          src={backgroundStars}
-          alt="Background Stars Mobile Kiri"
-        />
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute opacity-70 top-35 scale-50 -left-20"
+        src={backgroundJempol}
+        alt="Background Jempol Mobile"
+      />
+      <img
+        className="block lg:hidden absolute opacity-70 top-35 scale-50 -right-20 rotate-y-180"
+        src={backgroundJempol}
+        alt="Background Jempol Mobile Kanan"
+      />
+      <img
+        className="block lg:hidden absolute opacity-70 bottom-10 scale-50 -right-18 rotate-180"
+        src={backgroundStars}
+        alt="Background Stars Mobile"
+      />
+      <img
+        className="block lg:hidden absolute opacity-70 bottom-10 scale-50 -left-18 rotate-180 rotate-y-180"
+        src={backgroundStars}
+        alt="Background Stars Mobile Kiri"
+      />
 
       {/* Konten */}
-      <div ref={textRef} className="z-10">
+      <div ref={textRef}>
         <TextContent isVisible={textVisible} />
       </div>
-      <div ref={cardRef} className="z-10">
-        <CardContent isVisible={cardVisible} />
+      <div ref={cardRef}>
+        <CardContent isVisible={cardVisible} onDetail={setModalData} />
       </div>
+
+      <MenuModal
+        isOpen={!!modalData}
+        onClose={() => setModalData(null)}
+        menu={modalData}
+      />
     </section>
   );
 };

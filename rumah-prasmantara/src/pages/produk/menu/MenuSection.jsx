@@ -1,7 +1,7 @@
 import "./MenuSection.css";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { MenuCard } from "../../../components/menu/Menu";
+import { MenuCard, MenuModal } from "../../../components/menu/Menu";
 import Slider from "react-slick";
 
 import imageSotoBetawi from "../../../assets/home/soto-betawi.png";
@@ -62,7 +62,7 @@ const HeaderContent = ({ isVisible }) => (
   </>
 );
 
-export const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType, isVisible, isExpanded, setIsExpanded }) => {
+export const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType, isVisible, isExpanded, setIsExpanded, onDetail }) => {
   return (
     <>
       {/* Large */}
@@ -95,7 +95,7 @@ export const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType,
         </div>
       )}
 
-      {/* Expanded View */}
+      {/* Expand */}
       {isExpanded && (
         <div className={`hidden lg:flex flex-col items-center gap-6 mt-6 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <h1
@@ -127,13 +127,13 @@ export const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType,
           </p>
         </div>
 
-        <CardContent type={mobileType} isVisible={isVisible} />
+        <CardContent type={mobileType} isVisible={isVisible} onDetail={onDetail} />
       </div>
     </>
   );
 };
 
-const CardContent = ({ type, isVisible, isExpanded }) => {
+const CardContent = ({ type, isVisible, isExpanded, onDetail }) => {
   const menuData = [
     {
       type: "main",
@@ -144,6 +144,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.6,
           description:
             "Nasi gurih dengan bumbu rempah khas Jawa, disajikan bersama ayam dan sayuran segar.",
+          price: 35000,
         },
         {
           image: imageSotoBetawi,
@@ -151,6 +152,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.8,
           description:
             "Soto khas Betawi dengan kuah santan dan susu yang gurih, berpadu dengan daging sapi empuk.",
+          price: 40000,
         },
         {
           image: imageCotoMakassar,
@@ -158,6 +160,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.3,
           description:
             "Coto Makassar khas Sulawesi Selatan dengan kuah kental rempah dan daging sapi lembut.",
+          price: 30000,
         },
         {
           image: imageBaksoMalang,
@@ -165,6 +168,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.4,
           description:
             "Bakso Malang khas Malang dengan kuah gurih, bakso kenyal, dan pelengkap yang beragam.",
+          price: 25000,
         },
         {
           image: imageSateLilit,
@@ -172,6 +176,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.7,
           description:
             "Sate khas Bali dari daging ikan atau ayam yang dibalut dengan bumbu rempah.",
+          price: 45000,
         },
         {
           image: imageRendang,
@@ -179,6 +184,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.8,
           description:
             "Rendang khas Minangkabau dengan daging sapi empuk dimasak lama dengan santan dan rempah.",
+          price: 50000,
         },
       ],
     },
@@ -191,6 +197,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.1,
           description:
             "Dadar gulung khas Jawa, berisi parutan kelapa manis yang dimasak dengan gula merah harum.",
+          price: 15000,
         },
         {
           image: imagePempek,
@@ -198,6 +205,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.6,
           description:
             "Pempek khas Palembang dengan tekstur kenyal gurih, yang disajikan dengan cuko asam manis pedas.",
+          price: 20000,
         },
         {
           image: imageKlepon,
@@ -205,13 +213,15 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.5,
           description:
             "Klepon kenyal khas Jawa berisi gula merah cair dengan taburan kelapa parut wangi.",
+          price: 12000,
         },
         {
           image: imageAnekaGorengan,
           title: "Gorengan",
           rating: 4.7,
           description:
-            "Bakso Malang khas Malang dengan kuah gurih, bakso kenyal, dan pelengkap yang beragam.",
+            "Gorengan khas Nusantara dengan tekstur renyah dan pilihan isian beragam.",
+          price: 10000,
         },
       ],
     },
@@ -224,6 +234,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.8,
           description:
             "Es dawet khas Jawa Tengah segar dengan cendol kenyal, santan gurih, dan gula merah manis.",
+          price: 12000,
         },
         {
           image: imageBirPletok,
@@ -231,6 +242,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.3,
           description:
             "Bir pletok segar khas Betawi beraroma jahe dan rempah pilihan tanpa alkohol.",
+          price: 15000,
         },
         {
           image: imageBajigur,
@@ -238,6 +250,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.6,
           description:
             "Bajigur berasal dari Jawa Barat berbahan santan, gula aren, dan rempah yang menenangkan.",
+          price: 15000,
         },
         {
           image: imageTehTarik,
@@ -245,6 +258,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
           rating: 4.4,
           description:
             "Teh tarik berasal dari Aceh dengan buih lembut dan rasa manis yang khas dan segar.",
+          price: 10000,
         },
       ],
     },
@@ -282,6 +296,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
                 title={menu.title}
                 rating={menu.rating}
                 description={menu.description}
+                onDetail={() => onDetail(menu)}
               />
             </div>
           ))}
@@ -296,6 +311,7 @@ const CardContent = ({ type, isVisible, isExpanded }) => {
                 title={menu.title}
                 rating={menu.rating}
                 description={menu.description}
+                onDetail={() => onDetail(menu)}
               />
             </div>
           ))}
@@ -309,6 +325,7 @@ export const MenuSection = () => {
   const [isExpandedMain, setIsExpandedMain] = useState(false);
   const [isExpandedSnack, setIsExpandedSnack] = useState(false);
   const [isExpandedDrink, setIsExpandedDrink] = useState(false);
+  const [modalData, setModalData] = useState(null);
 
   const [headerVisible, setHeaderVisible] = useState(false);
   const [text1Visible, setText1Visible] = useState(false);
@@ -533,10 +550,16 @@ export const MenuSection = () => {
             isVisible={text1Visible}
             isExpanded={isExpandedMain}
             setIsExpanded={setIsExpandedMain}
+            onDetail={setModalData}
           />
         </div>
         <div ref={card1Ref} className="hidden lg:block">
-          <CardContent type="main" isVisible={card1Visible} isExpanded={isExpandedMain} />
+          <CardContent
+            type="main"
+            isVisible={card1Visible}
+            isExpanded={isExpandedMain}
+            onDetail={setModalData}
+          />
         </div>
         {isExpandedMain && (
           <button
@@ -558,6 +581,7 @@ export const MenuSection = () => {
             type="snack"
             isVisible={card2Visible}
             isExpanded={isExpandedSnack}
+            onDetail={setModalData}
           />
         </div>
         <div ref={text2Ref}>
@@ -569,6 +593,7 @@ export const MenuSection = () => {
             isVisible={text2Visible}
             isExpanded={isExpandedSnack}
             setIsExpanded={setIsExpandedSnack}
+            onDetail={setModalData}
           />
         </div>
       </div>
@@ -589,6 +614,7 @@ export const MenuSection = () => {
             isVisible={text2ExpandVisible}
             isExpanded={isExpandedSnack}
             setIsExpanded={setIsExpandedSnack}
+            onDetail={setModalData}
           />
         </div>
 
@@ -597,6 +623,7 @@ export const MenuSection = () => {
             type="snack"
             isVisible={card2ExpandVisible}
             isExpanded={isExpandedSnack}
+            onDetail={setModalData}
           />
         </div>
 
@@ -620,10 +647,11 @@ export const MenuSection = () => {
             isVisible={text3Visible}
             isExpanded={isExpandedDrink}
             setIsExpanded={setIsExpandedDrink}
+            onDetail={setModalData}
           />
         </div>
         <div ref={card3Ref} className="hidden lg:block">
-          <CardContent type="drink" isVisible={card3Visible} isExpanded={isExpandedDrink} />
+          <CardContent type="drink" isVisible={card3Visible} isExpanded={isExpandedDrink} onDetail={setModalData} />
         </div>
         {isExpandedDrink && (
           <button
@@ -635,7 +663,12 @@ export const MenuSection = () => {
           </button>
         )}
       </div>
-    </section >
+      <MenuModal
+        isOpen={!!modalData}
+        onClose={() => setModalData(null)}
+        menu={modalData}
+      />
+    </section>
   );
 
 };
