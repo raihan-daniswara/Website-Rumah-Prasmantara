@@ -95,7 +95,7 @@ const TextContent = ({ isVisible }) => (
 const CategorySlider = ({ isVisible }) => {
   const categories = ["Semua", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Lebaran"];
 
-  const settings = {
+  const largeSettings = {
     dots: false,
     infinite: false,
     speed: 500,
@@ -105,34 +105,70 @@ const CategorySlider = ({ isVisible }) => {
     prevArrow: <CustomPrevArrow />,
     responsive: [
       { breakpoint: 1441, settings: { slidesToShow: 5, slidesToScroll: 5 } },
-      { breakpoint: 640, settings: { slidesToShow: 3, slidesToScroll: 3 } },
     ],
+  };
+  const smallSettings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
   };
 
   return (
-    <div
-      className={`w-[80vw] px-10 mt-10 relative transform transition-all duration-1200 ease-out
+    <>
+      {/* Large */}
+      <div
+        className={`hidden lg:block w-[80vw] px-10 mt-10 relative transform transition-all duration-1200 ease-out
       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-    >
-      <Slider {...settings}>
-        {categories.map((category, index) => (
-          <div key={index} className="px-2">
-            <div
-              className="hidden lg:block hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
-              style={{ fontFamily: font.cormorantUpright }}
-            >
-              {category}
+      >
+        <Slider {...largeSettings}>
+          {categories.map((category, index) => (
+            <div key={index} className="px-2">
+              <div
+                className="hidden lg:block hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
+                style={{ fontFamily: font.cormorantUpright }}
+              >
+                {category}
+              </div>
+              <div
+                className="block lg:hidden hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-xl font-bold rounded-full leading-6 py-2 text-center transition-all duration-300 hover:cursor-pointer"
+                style={{ fontFamily: font.cormorantUpright }}
+              >
+                {category}
+              </div>
             </div>
-            <div
-              className="block lg:hidden hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-xl font-bold rounded-full leading-6 py-2 text-center transition-all duration-300 hover:cursor-pointer"
-              style={{ fontFamily: font.cormorantUpright }}
-            >
-              {category}
+          ))}
+        </Slider>
+      </div>
+
+      {/* Small */}
+      <div
+        className={`block lg:hidden w-[80vw] px-10 mt-10 relative transform transition-all duration-1200 ease-out
+      ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+      >
+        <Slider {...smallSettings}>
+          {categories.map((category, index) => (
+            <div key={index} className="px-2">
+              <div
+                className="hidden lg:block hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
+                style={{ fontFamily: font.cormorantUpright }}
+              >
+                {category}
+              </div>
+              <div
+                className="block lg:hidden hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-xl font-bold rounded-full leading-6 py-2 text-center transition-all duration-300 hover:cursor-pointer"
+                style={{ fontFamily: font.cormorantUpright }}
+              >
+                {category}
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
-    </div>
+          ))}
+        </Slider>
+      </div>
+    </>
   );
 };
 

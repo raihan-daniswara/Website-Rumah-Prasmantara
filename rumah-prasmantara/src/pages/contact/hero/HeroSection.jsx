@@ -30,7 +30,7 @@ const TiltCard = ({ logo, title, address, paragraph, mobileParagraph, delay, isV
     scale={1.03}
     transitionSpeed={400}
     tiltReverse={true}
-    className={`relative lg:w-[310px] w-[180px] mx-auto transition-all duration-1000 ease-out transform
+    className={`contact-hero-card relative lg:w-[310px] w-[180px] mx-auto transition-all duration-1000 ease-out transform
       ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
     `}
     style={{
@@ -99,7 +99,51 @@ const HeroText = ({ isVisible }) => {
     <>
       {/* Large */}
       <div
-        className={`flex flex-col items-center gap-[25px] text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+        className={`hidden lg:flex flex-col items-center gap-[25px] text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
+          }`}
+      >
+        <div className="my-2.5 flex flex-col items-center gap-2.5">
+          <h2
+            className="hero-header-2 text-[#DBCECE] text-[40px] font-medium"
+            style={{ fontFamily: font.greatVibes }}
+          >
+            Hubungi Kami
+          </h2>
+          <h1
+            className="produk-hero-header-1 text-[80px] text-[#EAAE8F] font-bold"
+            style={{ fontFamily: font.cormorantUpright }}
+          >
+            Bertanya Seputar{" "}
+            <span className="text-[#C54300]">Rumah Prasmantara</span>?
+          </h1>
+          <p
+            className="hero-paragraph text-[36px] font-semibold text-[#BDBDBD]"
+            style={{ fontFamily: font.cormorantGaramond }}
+          >
+            Ada hal yang belum jelas? Kami dengan senang hati menjawab setiap pertanyaan Anda.
+          </p>
+        </div>
+
+        {/* Contact Cards */}
+        <div className="flex flex-wrap justify-center lg:gap-[30px] gap-2 mt-6">
+          {contactData.map((contact, index) => (
+            <TiltCard
+              key={index}
+              logo={contact.logo}
+              title={contact.title}
+              address={contact.address}
+              paragraph={contact.paragraph}
+              mobileParagraph={contact.mobileParagraph}
+              delay={index * 0.4}
+              isVisible={isVisible}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Small */}
+      <div
+        className={`flex lg:hidden flex-col items-center gap-[25px] text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
           }`}
       >
         <div className="my-2.5 flex flex-col items-center gap-2.5">
@@ -158,27 +202,27 @@ export const HeroSection = () => {
   return (
     <section className="relative flex flex-col h-screen w-full items-center justify-end overflow-hidden">
       <img
-        className="absolute opacity-50 z-0 top-3 scale-110 -left-3 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 z-0 top-3 scale-110 -left-3 pointer-events-none select-none"
         src={backgroundCircle}
         alt="Background BabackgroundRumah4"
       />
       <img
-        className="absolute opacity-50 z-0 top-3 scale-110 -right-3 rotate-y-180 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 z-0 top-3 scale-110 -right-3 rotate-y-180 pointer-events-none select-none"
         src={backgroundCircle}
         alt="Background BabackgroundRumah4"
       />
       <img
-        className="absolute opacity-50 z-0 top-1/2 scale-110 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 z-0 top-1/2 scale-110 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
         src={backgroundRumahPrasmantaraMap}
         alt="Background BabackgroundRumah4"
       />
       <img
-        className="absolute opacity-100 z-0 top-40 right-80 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-100 z-0 top-40 right-80 pointer-events-none select-none"
         src={backgroundCall}
         alt="Background BabackgroundRumah4"
       />
       <img
-        className="absolute opacity-100 z-0 bottom-20 left-20 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-100 z-0 bottom-20 left-20 pointer-events-none select-none"
         src={backgroundSend}
         alt="Background BabackgroundRumah4"
       />

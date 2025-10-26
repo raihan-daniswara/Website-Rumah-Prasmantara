@@ -161,10 +161,10 @@ export const QuestionSection = () => {
 
   return (
     <section
-      className="relative h-fit py-50 flex flex-col gap-20 items-center"
+      className="relative h-fit py-20 lg:pt-50 flex flex-col gap-20 items-center"
     >
       <img
-        className="absolute opacity-100 z-0 top-5 right-40 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-100 z-0 top-5 right-40 pointer-events-none select-none"
         src={backgroundQuestion}
         alt="Background BabackgroundRumah4"
       />

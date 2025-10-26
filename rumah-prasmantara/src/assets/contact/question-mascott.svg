@@ -7,7 +7,7 @@
 <path d="M0 207C0 92.6771 92.6771 0 207 0C321.323 0 414 92.6771 414 207V270.5V491C414 518.614 391.614 541 364 541H330H213.5C202.454 541 193.5 532.046 193.5 521V440.75C193.5 413.136 171.114 390.75 143.5 390.75H20C8.9543 390.75 0 381.796 0 370.75V240.5V207Z" fill="#C54300"/>
 </mask>
 <g mask="url(#mask0_2132_65)">
-<rect width="473" height="536" transform="matrix(-1 0 0 1 454 15)" fill="url(#pattern0_2132_65)"/>
+<rect width="473" height="562" transform="matrix(-1 0 0 1 454 -11)" fill="url(#pattern0_2132_65)"/>
 </g>
 <defs>
 <pattern id="pattern0_2132_65" patternContentUnits="objectBoundingBox" width="1" height="1">

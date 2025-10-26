@@ -94,7 +94,7 @@ const CardContent = ({ isVisible }) => {
     },
   ];
 
-  const settings = {
+  const largeSettings = {
     dots: true,
     arrows: false,
     infinite: true,
@@ -105,7 +105,7 @@ const CardContent = ({ isVisible }) => {
     autoplay: true,
     autoplaySpeed: 3000,
     centerMode: true,
-    centerPadding: "0px",
+    centerPadding: "3%",
     appendDots: (dots) => (
       <ul
         style={{
@@ -137,34 +137,73 @@ const CardContent = ({ isVisible }) => {
           centerPadding: "20%",
         },
       },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "18%",
-        },
-      },
     ],
+  };
+  const smallSettings = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    pauseOnHover: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    centerMode: true,
+    centerPadding: "20%",
+    appendDots: (dots) => (
+      <ul
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "40px",
+          marginTop: "20px",
+        }}
+      >
+        {dots}
+      </ul>
+    ),
+    customPaging: () => <div className="custom-dot" />
   };
 
   return (
-    <div
-      className={`favorite-section-home card-wrapper w-[110vw] lg:w-[80vw] transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"}`}
-    >
-      <Slider {...settings}>
-        {menuData.map((menu, index) => (
-          <div key={index} className="px-4 my-10">
-            <MenuCard
-              image={menu.image}
-              title={menu.title}
-              rating={menu.rating}
-              description={menu.description}
-            />
-          </div>
-        ))}
-      </Slider>
-    </div>
+    <>
+      {/* Large */}
+      <div
+        className={`hidden lg:block favorite-section-home card-wrapper w-[80vw] transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"}`}
+      >
+        <Slider {...largeSettings}>
+          {menuData.map((menu, index) => (
+            <div key={index} className="px-4 my-10">
+              <MenuCard
+                image={menu.image}
+                title={menu.title}
+                rating={menu.rating}
+                description={menu.description}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+      {/* Small */}
+      <div
+        className={`block lg:hidden favorite-section-home card-wrapper w-[120vw] transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"}`}
+      >
+        <Slider {...smallSettings}>
+          {menuData.map((menu, index) => (
+            <div key={index} className="px-4 my-10">
+              <MenuCard
+                image={menu.image}
+                title={menu.title}
+                rating={menu.rating}
+                description={menu.description}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </>
   );
 };
 

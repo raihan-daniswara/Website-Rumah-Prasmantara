@@ -89,7 +89,7 @@ const ReserveForm = ({ isVisible }) => {
             <input
               type="date"
               placeholder="Tanggal Reservasi"
-              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[16px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
+              className="w-1/2 bg-[#2C231E] text-[#BDBDBD] text-[13px] lg:text-[24px] font-bold placeholder-[#BDBDBD]/40 px-6 py-3 rounded-full focus:outline-none focus:ring-1 focus:ring-[#C54300]"
               style={{ fontFamily: font.cormorantGaramond }}
             />
             <input
