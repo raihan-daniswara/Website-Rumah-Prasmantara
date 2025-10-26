@@ -160,7 +160,6 @@ const ImageContent = ({ isVisible }) => (
       className={`hidden lg:flex gap-5 h-[630px] duration-1000 ease-out transition-all ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
         }`}
     >
-      {/* Kolom kiri */}
       <div className="flex flex-col gap-5 justify-end items-end">
         <img
           src={MasakanNusantara1}
@@ -173,8 +172,6 @@ const ImageContent = ({ isVisible }) => (
           className="strengthImage rounded-t-[100px] rounded-b-[300px] object-cover w-60 h-[340px]"
         />
       </div>
-
-      {/* Kolom kanan (GIF) */}
       <div className="strengthImage rounded-l-[50px] rounded-r-[220px] overflow-hidden w-[300px] h-[600px]">
         <img
           src={MakananGIF}
@@ -188,7 +185,6 @@ const ImageContent = ({ isVisible }) => (
     <div
       className={`flex lg:hidden gap-[15px] h-[346px] duration-1000 ease-out items-center transition-all `}
     >
-      {/* Kolom kiri */}
       <div className="flex flex-col gap-[15px] justify-end items-end">
         <div
           className="relative flex flex-col justify-center items-center text-center rounded-tr-[20px] rounded-tl-[200px] rounded-br-[20px] rounded-bl-[20px] w-[155px] h-[150px] overflow-hidden"
@@ -202,7 +198,7 @@ const ImageContent = ({ isVisible }) => (
           <div className="absolute inset-0 bg-black/60 z-0" />
           <div className="absolute inset-0 bg-radial from-[#C54300]/30 to-[#C54300]/0 z-0" />
 
-          {/* Teks */}
+          {/* Content */}
           <div className="relative z-10 ml-5">
             <p
               className="cardValue text-[48px] text-[#C54300] font-bold"
@@ -233,7 +229,7 @@ const ImageContent = ({ isVisible }) => (
           <div className="absolute inset-0 bg-black/60 z-0" />
           <div className="absolute inset-0 bg-radial from-[#C54300]/30 to-[#C54300]/0 z-0" />
 
-          {/* Teks */}
+          {/* Content */}
           <div className="relative z-10 mt-4">
             <p
               className="cardValue text-[48px] text-[#C54300] font-bold text-center"
@@ -253,7 +249,6 @@ const ImageContent = ({ isVisible }) => (
         </div>
       </div>
 
-      {/* Kolom kanan (GIF) */}
       <div
         className="relative rounded-l-[50px] rounded-r-[220px] overflow-hidden w-[155px] h-[330px]"
         style={{
@@ -266,7 +261,7 @@ const ImageContent = ({ isVisible }) => (
         <div className="absolute inset-0 bg-black/60 z-0" />
         <div className="absolute inset-0 bg-radial from-[#C54300]/30 to-[#C54300]/0 z-0" />
 
-        {/* Teks */}
+        {/* Content */}
         <div className="relative z-10 mt-25">
           <p
             className="cardValue text-[48px] text-[#C54300] font-bold text-center"
@@ -318,14 +313,26 @@ export const StrengthSection = () => {
     <section
       className="h-screen relative flex flex-col lg:flex-row gap-20 py-16 px-4 items-center justify-center"
     >
-      {/* Background */}
+      {/* Background Large */}
       <img
-        className="absolute opacity-50 bottom-40 scale-120 -left-20 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 bottom-40 scale-120 -left-20 pointer-events-none select-none"
         src={backgroundWayang}
         alt="Background Wayang Kiri"
       />
       <img
-        className="absolute opacity-50 top-40 scale-120 -right-20 rotate-y-180 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 top-40 scale-120 -right-20 rotate-y-180 pointer-events-none select-none"
+        src={backgroundWayang}
+        alt="Background Wayang Kanan"
+      />
+
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute opacity-50 bottom-10 scale-50 -left-30 pointer-events-none select-none"
+        src={backgroundWayang}
+        alt="Background Wayang Kiri"
+      />
+      <img
+        className="block lg:hidden absolute opacity-50 top-40 scale-50 -right-30 rotate-y-180 pointer-events-none select-none"
         src={backgroundWayang}
         alt="Background Wayang Kanan"
       />

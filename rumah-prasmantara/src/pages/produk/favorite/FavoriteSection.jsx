@@ -235,33 +235,55 @@ export const FavoriteSection = () => {
     <section
       className="relative h-screen lg:h-[120vh] w-full flex flex-col items-center justify-center"
     >
-      {/* Background */}
-      <img
-        className="hidden lg:block absolute opacity-50 z-1 top-20 scale-110 -left-6 pointer-events-none select-none"
-        src={backgroundJempol}
-        alt="Background BabackgroundRumah4"
-      />
-      <img
-        className="hidden lg:block absolute opacity-50 z-1 top-20 scale-110 -right-6 rotate-y-180 pointer-events-none select-none"
-        src={backgroundJempol}
-        alt="Background BabackgroundRumah4"
-      />
-      <img
-        className="hidden lg:block absolute opacity-50 z-1 bottom-20 scale-110 -right-6 pointer-events-none select-none"
-        src={backgroundStars}
-        alt="Background BabackgroundRumah4"
-      />
-      <img
-        className="hidden lg:block absolute opacity-50 z-1 bottom-20 scale-110 -left-6 rotate-y-180 pointer-events-none select-none"
-        src={backgroundStars}
-        alt="Background BabackgroundRumah4"
-      />
+        {/* Background Large */}
+        <img
+          className="hidden lg:block absolute opacity-50 top-20 scale-110 -left-6"
+          src={backgroundJempol}
+          alt="Background Jempol"
+        />
+        <img
+          className="hidden lg:block absolute opacity-50 top-20 scale-110 -right-6 rotate-y-180"
+          src={backgroundJempol}
+          alt="Background Jempol Kanan"
+        />
+        <img
+          className="hidden lg:block absolute opacity-50 bottom-20 scale-110 -right-6"
+          src={backgroundStars}
+          alt="Background Stars"
+        />
+        <img
+          className="hidden lg:block absolute opacity-50 bottom-20 scale-110 -left-6 rotate-y-180"
+          src={backgroundStars}
+          alt="Background Stars Kiri"
+        />
+
+        {/* Background Small */}
+        <img
+          className="block lg:hidden absolute opacity-70 top-35 scale-50 -left-20"
+          src={backgroundJempol}
+          alt="Background Jempol Mobile"
+        />
+        <img
+          className="block lg:hidden absolute opacity-70 top-35 scale-50 -right-20 rotate-y-180"
+          src={backgroundJempol}
+          alt="Background Jempol Mobile Kanan"
+        />
+        <img
+          className="block lg:hidden absolute opacity-70 bottom-10 scale-50 -right-18 rotate-180"
+          src={backgroundStars}
+          alt="Background Stars Mobile"
+        />
+        <img
+          className="block lg:hidden absolute opacity-70 bottom-10 scale-50 -left-18 rotate-180 rotate-y-180"
+          src={backgroundStars}
+          alt="Background Stars Mobile Kiri"
+        />
 
       {/* Konten */}
-      <div ref={textRef}>
+      <div ref={textRef} className="z-10">
         <TextContent isVisible={textVisible} />
       </div>
-      <div ref={cardRef}>
+      <div ref={cardRef} className="z-10">
         <CardContent isVisible={cardVisible} />
       </div>
     </section>

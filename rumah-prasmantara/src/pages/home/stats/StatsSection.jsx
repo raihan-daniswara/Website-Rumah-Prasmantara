@@ -313,24 +313,42 @@ export const StatsSection = () => {
       <WaveBottom />
 
       {/* Background */}
-      <div className="hidden lg:block absolute w-full h-full">
+      <div className="absolute w-full h-full">
+        {/* Background Large */}
         <img
-          className="absolute -top-35 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
+          className="hidden lg:block absolute -top-35 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
           src={backgroundIndonesia}
           alt="Background Indonesia"
         />
         <img
-          className="absolute -bottom-10 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
+          className="hidden lg:block absolute -bottom-10 left-1/2 -translate-x-1/2 scale-115 opacity-50 pointer-events-none select-none"
           src={BackgroundCircleBig}
           alt="Background Circle"
         />
         <img
-          className="absolute bottom-20 left-20 scale-115 rotate-y-180 rotate-10 opacity-50 pointer-events-none select-none"
+          className="hidden lg:block absolute bottom-20 left-20 scale-115 rotate-y-180 rotate-10 opacity-50 pointer-events-none select-none"
           src={BackgroundBatik}
           alt="Background Batik"
         />
         <img
-          className="absolute bottom-20 right-20 scale-115 opacity-50 pointer-events-none select-none"
+          className="hidden lg:block absolute bottom-20 right-20 scale-115 opacity-50 pointer-events-none select-none"
+          src={BackgroundBatik}
+          alt="Background Batik"
+        />
+
+        {/* Background Small */}
+        <img
+          className="block lg:hidden absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-500 opacity-50 pointer-events-none select-none"
+          src={backgroundIndonesia}
+          alt="Background Indonesia"
+        />
+        <img
+          className="block lg:hidden absolute bottom-0 -left-30 scale-50 rotate-y-180 opacity-50 pointer-events-none select-none"
+          src={BackgroundBatik}
+          alt="Background Batik"
+        />
+        <img
+          className="block lg:hidden absolute bottom-0 -right-30 scale-50 opacity-50 pointer-events-none select-none"
           src={BackgroundBatik}
           alt="Background Batik"
         />

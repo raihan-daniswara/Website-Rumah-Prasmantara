@@ -152,9 +152,9 @@ const TextContent = ({ isVisible }) => (
 
 const ImageContent = ({ isVisible }) => (
   <div className="relative">
-    {/* background */}
-    <img src={BackgroundFlower} className="absolute -left-20 -bottom-20 scale-150 opacity-50 pointer-events-none select-none" />
-    <img src={BackgroundFlowerBig} className="absolute left-60 -top-20 scale-125 opacity-50 pointer-events-none select-none" />
+    {/* background Large*/}
+    <img src={BackgroundFlower} className="hidden lg:block absolute -left-20 -bottom-20 scale-150 opacity-50 pointer-events-none select-none" />
+    <img src={BackgroundFlowerBig} className="hidden lg:block absolute left-60 -top-20 scale-125 opacity-50 pointer-events-none select-none" />
 
     {/* image content */}
     <div
@@ -220,11 +220,25 @@ export const StrengthSection = () => {
 
   return (
     <section
-      className="strength-section relative h-fit flex flex-col lg:flex-row gap-10 lg:gap-20 py-5 lg:py-16 px-4 items-center justify-center"
+      className="strength-section relative h-fit flex flex-col lg:flex-row gap-10 lg:gap-20 lg:py-16 pb-4 px-4 items-center justify-center"
     >
+
+      {/* Background Small*/}
+      <img src={BackgroundFlower} className="lg:hidden block absolute -left-50 top-20 scale-75 opacity-70 rotate-x-180 rotate-90 pointer-events-none select-none" />
       <img
         src={BackgroundCircleBig}
-        className="absolute opacity-50 -right-75 pointer-events-none select-none"
+        className="lg:hidden block absolute opacity-50 scale-90 -right-60 -top-40 pointer-events-none select-none"
+      />
+      <img src={BackgroundFlowerBig} className="lg:hidden block absolute -right-40 bottom-20 scale-75 opacity-70 -rotate-60 pointer-events-none select-none" />
+      <img
+        src={BackgroundCircleBig}
+        className="lg:hidden block absolute opacity-50 scale-90 -left-60 -bottom-40 rotate-y-180 pointer-events-none select-none"
+      />
+
+      {/* Background Large*/}
+      <img
+        src={BackgroundCircleBig}
+        className="hidden lg:block absolute opacity-50 -right-75 pointer-events-none select-none"
       />
 
       <div ref={imageRef}>

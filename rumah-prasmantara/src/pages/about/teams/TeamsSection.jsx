@@ -256,7 +256,7 @@ export const TeamsSection = () => {
 
   return (
     <section className="relative py-16 px-4 mb-20 flex flex-col items-center justify-start overflow-hidden">
-      {/* Backgrounds */}
+      {/* Background Large */}
       <img
         className="hidden lg:block absolute opacity-50 top-0 z-0 scale-110 left-70 pointer-events-none select-none"
         src={backgroundRumah4}
@@ -269,6 +269,18 @@ export const TeamsSection = () => {
       />
       <img
         className="hidden lg:block absolute opacity-50 bottom-30 scale-110 left-60 pointer-events-none select-none"
+        src={backgroundRumah6}
+        alt="Background Rumah 6"
+      />
+
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute opacity-50 top-50 scale-110 -right-20 rotate-y-180 pointer-events-none select-none"
+        src={backgroundRumah5}
+        alt="Background Rumah 5"
+      />
+      <img
+        className="block lg:hidden absolute opacity-50 bottom-0 scale-110 -left-10 rotate-y-180 pointer-events-none select-none"
         src={backgroundRumah6}
         alt="Background Rumah 6"
       />

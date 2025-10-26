@@ -93,7 +93,7 @@ const TextContent = ({ isVisible }) => (
 );
 
 const CategorySlider = ({ isVisible }) => {
-  const categories = ["Semua", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Lebaran"];
+  const categories = ["Semua", "Senin", "Selasa", "Rabu", "Kamis", "Jumat"];
 
   const largeSettings = {
     dots: false,
@@ -179,7 +179,7 @@ const CardContent = ({ isVisible }) => {
       image: imageKapurung,
       rating: 4.5,
       description:
-        "Kapurung khas Sulawesi Selatan berbahan sagu dengan kuah sayuran segar dan cita rasa asam gurih.",
+        "Kapurung khas Sulawesi Selatan berbahan sagu dengan kuah sayuran segar dan rasa asam gurih.",
       price: "25.000",
       day: "Senin",
     },
@@ -196,10 +196,10 @@ const CardContent = ({ isVisible }) => {
 
   return (
     <div
-      className={`lg:m-10 m-5 w-[1200px] h-[500px] overflow-y-auto lg:custom-scrollbar mask-fade transform transition-all duration-600 ease-out
+      className={`lg:m-10 m-5 w-[1200px] h-[500px] overflow-y-auto custom-scrollbar mask-fade transform transition-all duration-600 ease-out
       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
-      <div className="flex flex-col lg:gap-12 gap-5 items-center lg:mt-10 mt-5">
+      <div className="flex flex-col lg:gap-12 gap-5 items-center lg:m-10 mt-5">
         {SpecialData.map((item, index) => (
           <SpecialMenuCard key={index} {...item} />
         ))}
@@ -251,14 +251,26 @@ export const SpecialSection = () => {
     <section className="pt-40 w-full h-[120vh] overflow-hidden flex flex-col items-center relative">
       <WaveBottom />
 
-      {/* Background */}
+      {/* Background Large */}
       <img
-        className="absolute opacity-50 -z-1 -top-11 scale-110 -right-21 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 -z-1 -top-11 scale-110 -right-21 pointer-events-none select-none"
         src={backgroundLingkaran}
         alt="Background Right"
       />
       <img
-        className="absolute opacity-50 -z-1 -bottom-11 scale-110 -left-21 rotate-180 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 -z-1 -bottom-11 scale-110 -left-21 rotate-180 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Left"
+      />
+
+      {/* Background Small */}
+      <img
+        className="lg:hidden block absolute opacity-50 -z-1 -top-14 scale-70 -right-24 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Right"
+      />
+      <img
+        className="lg:hidden block absolute opacity-50 -z-1 -top-14 scale-70 -left-24 rotate-y-180 pointer-events-none select-none"
         src={backgroundLingkaran}
         alt="Background Left"
       />

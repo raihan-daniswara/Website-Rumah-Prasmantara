@@ -172,16 +172,30 @@ export const ReserveSection = () => {
     <section
       className="relative h-fit w-full py-50 flex flex-col lg:gap-20 gap-5 items-center"
     >
+      {/* Background Large */}
       <img
-        className="absolute opacity-100 -z-1 -top-12 -right-21 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-100 -z-1 -top-12 -right-21 pointer-events-none select-none"
         src={backgroundLingkaran}
-        alt="Background BabackgroundRumah4"
+        alt="Background Lingkaran"
       />
       <img
-        className="absolute opacity-100 z-0 -bottom-11 -left-21 rotate-180 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-100 z-0 -bottom-11 -left-21 rotate-180 pointer-events-none select-none"
         src={backgroundLingkaran}
-        alt="Background BabackgroundRumah4"
+        alt="Background Lingkaran"
       />
+
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute opacity-50 -z-10 -top-14 scale-70 -right-24 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Lingkaran"
+      />
+      <img
+        className="block lg:hidden absolute opacity-50 -z-1 -bottom-13 scale-70 -left-24 rotate-180 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Lingkaran"
+      />
+
       <WaveBottom />
       <div ref={headerRef}>
         <HeaderContent isVisible={headerVisible} />

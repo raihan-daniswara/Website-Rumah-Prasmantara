@@ -9,6 +9,8 @@ import { useEffect, useState } from 'react';
 import backgroundCircle from '../../../assets/background/background-circle.svg';
 import backgroundBatikBunga from '../../../assets/background/about/batik-bunga.png';
 import backgroundBatikDaun from '../../../assets/background/about/batik-daun.png';
+import BackgroundFlower from "../../../assets/background/flower.png"
+import BackgroundFlowerBig from "../../../assets/background/flower-big.png"
 // Font
 const font = {
   greatVibes: '"Great Vibes", cursive',
@@ -169,6 +171,7 @@ export const HeroSection = () => {
 
   return (
     <section className="relative flex h-screen w-full items-center justify-center">
+      {/* Background Large */}
       <img
         className="hidden lg:block absolute scale-150 opacity-50 top-7 left-7 pointer-events-none select-none"
         src={backgroundCircle}
@@ -179,6 +182,17 @@ export const HeroSection = () => {
         src={backgroundBatikBunga}
         alt="Background BabackgroundBatikBunga"
       />
+
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute scale-100 opacity-70 top-0 left-0 pointer-events-none select-none"
+        src={backgroundCircle}
+        alt="Background Circle"
+      />
+      <img src={BackgroundFlower} className="lg:hidden block absolute -left-60 bottom-30 scale-175 opacity-70 rotate-180 rotate-x-180 pointer-events-none select-none" />
+      <img src={BackgroundFlowerBig} className="lg:hidden block absolute -right-40 top-20 scale-125 opacity-70 -rotate-60 pointer-events-none select-none" />
+
+      {/* Konten */}
       <div className="w-[1323px] absolute top-1/2 -translate-y-1/2">
         <HeroText isVisible={isVisible} />
         <HeroBlob isVisible={isVisible} />

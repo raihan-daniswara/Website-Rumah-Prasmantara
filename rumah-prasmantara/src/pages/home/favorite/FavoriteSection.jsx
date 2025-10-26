@@ -237,19 +237,36 @@ export const FavoriteSection = () => {
     <section
       className="relative h-fit lg:h-[120vh] w-full flex flex-col items-center justify-center"
     >
-      {/* Background */}
+      {/* Background Large*/}
       <img
-        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 opacity-50 pointer-events-none select-none"
+        className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 bottom-0 opacity-50 pointer-events-none select-none"
         src={BackgroundDaun}
         alt="Background Daun"
       />
       <img
-        className="absolute left-60 top-30 opacity-50 pointer-events-none select-none"
+        className="hidden lg:block absolute left-60 top-30 opacity-50 pointer-events-none select-none"
         src={BackgroundSereh}
         alt="Background Sereh"
       />
       <img
-        className="absolute right-60 top-30 opacity-50 pointer-events-none select-none"
+        className="hidden lg:block absolute right-60 top-30 opacity-50 pointer-events-none select-none"
+        src={BackgroundTomat}
+        alt="Background Tomat"
+      />
+
+      {/* Background Small*/}
+      <img
+        className="block lg:hidden absolute left-1/2 transform -translate-x-1/2 scale-50 rotate-x-180 -bottom-30 opacity-50 pointer-events-none select-none"
+        src={BackgroundDaun}
+        alt="Background Daun"
+      />
+      <img
+        className="block lg:hidden absolute -left-10 top-0 opacity-70 scale-50 pointer-events-none select-none"
+        src={BackgroundSereh}
+        alt="Background Sereh"
+      />
+      <img
+        className="block lg:hidden absolute -right-10 -top-10 scale-60 opacity-70 rotate-y-180 pointer-events-none select-none"
         src={BackgroundTomat}
         alt="Background Tomat"
       />

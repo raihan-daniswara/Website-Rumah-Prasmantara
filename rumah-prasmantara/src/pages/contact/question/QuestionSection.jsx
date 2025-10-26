@@ -163,10 +163,16 @@ export const QuestionSection = () => {
     <section
       className="relative h-fit py-20 lg:pt-50 flex flex-col gap-20 items-center"
     >
+      {/* Background */}
       <img
         className="hidden lg:block absolute opacity-100 z-0 top-5 right-40 pointer-events-none select-none"
         src={backgroundQuestion}
-        alt="Background BabackgroundRumah4"
+        alt="Background Question"
+      />
+      <img
+        className="block lg:hidden absolute opacity-100 z-0 -top-10 left-0 scale-80 rotate-y-180 -rotate-20 pointer-events-none select-none"
+        src={backgroundQuestion}
+        alt="Background Question"
       />
       <div ref={headerRef}>
         <HeaderContent isVisible={headerVisible} />

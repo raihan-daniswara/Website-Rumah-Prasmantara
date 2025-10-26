@@ -201,6 +201,7 @@ export const HeroSection = () => {
   return (
     <>
       <section className="relative flex flex-col h-[90vh] w-full items-center justify-center lg:justify-end bg-linear-to-b from-[#442717] to-[#3C261A] overflow-hidden">
+        {/* Background Large */}
         <img
           className="hidden lg:block absolute scale-150 opacity-50 top-7 left-7 pointer-events-none select-none"
           src={backgroundCircle}
@@ -233,6 +234,61 @@ export const HeroSection = () => {
           style={{ animation: 'mendungMove1 14s infinite ease-in-out' }}
           src={backgroundMendungKecil}
           alt="Mendung Kecil 2"
+        />
+
+        {/* Background Small */}
+        <img
+          className="block lg:hidden absolute scale-100 opacity-70 top-0 left-0 pointer-events-none select-none"
+          src={backgroundCircle}
+          alt="Background Circle"
+        />
+
+        <img
+          className="block lg:hidden absolute scale-50 opacity-50 top-[20%] -left-[20%] pointer-events-none select-none"
+          style={{ animation: 'mendungMove1 8s infinite ease-in-out' }}
+          src={backgroundMendungKecil}
+          alt="Mendung Kecil 1"
+        />
+
+        <img
+          className="block lg:hidden absolute scale-50 opacity-60 -top-[2%] -right-[20%] rotate-170 mendung-anim pointer-events-none select-none"
+          style={{ animation: 'mendungMove2 11s infinite ease-in-out' }}
+          src={backgroundMendungBesar}
+          alt="Mendung Besar 1"
+        />
+
+        <img
+          className="block lg:hidden absolute scale-50 opacity-60 top-[30%] -right-[40%] rotate-170 mendung-anim pointer-events-none select-none"
+          style={{ animation: 'mendungMove2 8s infinite ease-in-out' }}
+          src={backgroundMendungBesar}
+          alt="Mendung Besar 1"
+        />
+
+        <img
+          className="block lg:hidden absolute scale-50 opacity-50 bottom-[30%] -left-[30%] mendung-anim pointer-events-none select-none"
+          style={{ animation: 'mendungMove1 14s infinite ease-in-out' }}
+          src={backgroundMendungKecil}
+          alt="Mendung Kecil 2"
+        />
+        <img
+          className="block lg:hidden absolute scale-50 opacity-50 bottom-[35%] right-[-5%] mendung-anim pointer-events-none select-none"
+          style={{ animation: 'mendungMove3 13s infinite ease-in-out' }}
+          src={backgroundMendungBesar}
+          alt="Mendung Besar 2"
+        />
+
+        <img
+          className="block lg:hidden absolute scale-50 opacity-50 bottom-[10%] left-[30%] mendung-anim pointer-events-none select-none"
+          style={{ animation: 'mendungMove1 10s infinite ease-in-out' }}
+          src={backgroundMendungKecil}
+          alt="Mendung Kecil 2"
+        />
+
+        <img
+          className="block lg:hidden absolute scale-40 opacity-50 -bottom-[5%] -left-[20%] mendung-anim pointer-events-none select-none"
+          style={{ animation: 'mendungMove3 9s infinite ease-in-out' }}
+          src={backgroundMendungBesar}
+          alt="Mendung Besar 2"
         />
 
         <div className="flex gap-10 items-center justify-center lg:pb-5">

@@ -201,30 +201,53 @@ export const HeroSection = () => {
 
   return (
     <section className="relative flex flex-col h-screen w-full items-center justify-end overflow-hidden">
+      {/* Background Large */}
       <img
         className="hidden lg:block absolute opacity-50 z-0 top-3 scale-110 -left-3 pointer-events-none select-none"
         src={backgroundCircle}
-        alt="Background BabackgroundRumah4"
+        alt="Background Circle"
       />
       <img
         className="hidden lg:block absolute opacity-50 z-0 top-3 scale-110 -right-3 rotate-y-180 pointer-events-none select-none"
         src={backgroundCircle}
-        alt="Background BabackgroundRumah4"
+        alt="Background Circle"
       />
       <img
         className="hidden lg:block absolute opacity-50 z-0 top-1/2 scale-110 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none"
         src={backgroundRumahPrasmantaraMap}
-        alt="Background BabackgroundRumah4"
+        alt="Background Map"
       />
       <img
         className="hidden lg:block absolute opacity-100 z-0 top-40 right-80 pointer-events-none select-none"
         src={backgroundCall}
-        alt="Background BabackgroundRumah4"
+        alt="Background Call"
       />
       <img
         className="hidden lg:block absolute opacity-100 z-0 bottom-20 left-20 pointer-events-none select-none"
         src={backgroundSend}
-        alt="Background BabackgroundRumah4"
+        alt="Background Send"
+      />
+
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute opacity-70 z-0 -top-21 scale-30 -left-29 pointer-events-none select-none"
+        src={backgroundCircle}
+        alt="Background Circle"
+      />
+      <img
+        className="block lg:hidden absolute opacity-70 z-0 -top-21 scale-30 -right-29 rotate-y-180 pointer-events-none select-none"
+        src={backgroundCircle}
+        alt="Background Circle"
+      />
+      <img
+        className="block lg:hidden absolute opacity-50 z-0 top-45 scale-90 left-1/2 transform -translate-x-1/2 pointer-events-none select-none"
+        src={backgroundRumahPrasmantaraMap}
+        alt="Background Map"
+      />
+      <img
+        className="block lg:hidden absolute opacity-100 z-0 bottom-20 right-0 rotate-y-180 scale-70 pointer-events-none select-none"
+        src={backgroundSend}
+        alt="Background Send"
       />
 
       <div className="flex gap-10 items-center justify-center absolute top-1/2 -translate-y-1/2 z-10">

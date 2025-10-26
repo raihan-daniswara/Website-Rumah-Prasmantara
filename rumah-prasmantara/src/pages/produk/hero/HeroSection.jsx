@@ -33,7 +33,7 @@ const HeroText = ({ isVisible }) => (
           dalam <span className="text-[#C54300]">Setiap Sajiannya</span>
         </h1>
         <p
-          className="hero-paragraph text-4xl font-semibold text-[#BDBDBD]"
+          className="hero-paragraph text-4xl font-semibold text-[#BDBDBD] leading-[52px]!"
           style={{ fontFamily: font.cormorantGaramond }}
         >
           Nikmati beragam hidangan khas Nusantara dari Sabang hingga Merauke.
@@ -42,12 +42,16 @@ const HeroText = ({ isVisible }) => (
         </p>
       </div>
       <NavLink
-        to="/produk"
+        to="#"
+        onClick={(e) => {
+          e.preventDefault();
+          const section = document.getElementById("menu-section");
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
         className={({ isActive }) =>
-          `px-10 py-4 text-4xl rounded-full font-bold button-text bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive
-            ? "border-[#C54300]"
-            : "border-transparent hover:text-[#EAAE8F]"
-          }`
+          `lg:px-10 lg:py-4 lg:text-4xl px-5 py-[5px] text-[22px] mx-auto rounded-full font-bold button-text bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"}`
         }
         style={{ fontFamily: font.cormorantGaramond }}
       >
@@ -55,7 +59,7 @@ const HeroText = ({ isVisible }) => (
       </NavLink>
     </div>
 
-    {/* Large */}
+    {/* Small */}
     <div
       className={`flex lg:hidden text flex-col items-center gap-[25px] text-center transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
         }`}
@@ -84,12 +88,20 @@ const HeroText = ({ isVisible }) => (
         </p>
       </div>
       <NavLink
-        to="/produk"
-        className={({ isActive }) => `lg:px-10 lg:py-4 lg:text-4xl px-5 py-[5px] text-[22px] mx-auto rounded-full font-bold button-text bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
-          }`}
+        to="#"
+        onClick={(e) => {
+          e.preventDefault();
+          const section = document.getElementById("menu-section");
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+        className={({ isActive }) =>
+          `lg:px-10 lg:py-4 lg:text-4xl px-5 py-[5px] text-[22px] mx-auto rounded-full font-bold button-text bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"}`
+          }
         style={{ fontFamily: font.cormorantGaramond }}
       >
-        Lihat <span className='text-[#C54300]'>Menu</span>
+        Jelajahi <span className="text-[#C54300]">Kategori</span>
       </NavLink>
     </div>
   </>

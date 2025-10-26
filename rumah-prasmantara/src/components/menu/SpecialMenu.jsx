@@ -74,7 +74,7 @@ export const SpecialMenuCard = ({ image, name, description, price, day, rating }
       </div>
 
       {/* Small */}
-      <div className="flex lg:hidden menu-card relative w-[360px] h-[221px] bg-[#3C261A] rounded-[30px] overflow-hidden shadow-lg items-center">
+      <div className="flex lg:hidden menu-card relative w-[340px] h-[221px] bg-[#3C261A] rounded-[30px] overflow-hidden shadow-lg items-center">
         {/* Pita Hari */}
         <div className="tape-day absolute z-20 top-4 -left-9 -rotate-45 bg-[#EAAE8F] w-[150px] py-1.5">
           <h4

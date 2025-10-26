@@ -1,23 +1,30 @@
 /* Scrollbar container */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 40px;
-  height: 100px;
+@media (min-width: 1024px) {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 40px;
+    height: 100px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(60, 38, 27, 0.4);
+    border-radius: 80px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c54300;
+    border-radius: 80px;
+    border: 10px solid transparent;
+    background-clip: content-box;
+  }
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(60, 38, 27, 0.4);
-  border-radius: 80px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #C54300;
-  border-radius: 80px;
-  border: 10px solid transparent;
-  background-clip: content-box;
-}
-
-/* === Fade Mask Effect === */
+/* Border mask */
 .mask-fade {
-  /* Membuat fade di atas & bawah */
-  mask-image: linear-gradient( to bottom, transparent 0%, black 8%, black 92%, transparent 100% );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }

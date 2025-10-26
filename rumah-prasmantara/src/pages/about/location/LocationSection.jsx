@@ -306,12 +306,29 @@ export const LocationSection = () => {
 
   return (
     <section className="relative h-screen flex gap-10 py-16 px-4 items-center justify-center overflow-hidden">
-      {/* Background */}
       <WaveBottom />
+      {/* Background Large*/}
       <img
-        className="absolute opacity-50 -z-10 -top-12 scale-110 -right-20 pointer-events-none select-none"
+        className="hidden lg:block absolute opacity-50 -z-10 -top-12 scale-110 -right-20 pointer-events-none select-none"
         src={backgroundLingkaran}
         alt="Background Lingkaran"
+      />
+      <img
+        className="hidden lg:block absolute opacity-50 -z-1 -bottom-10 scale-110 -left-20 rotate-180 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background BabackgroundRumah4"
+      />
+
+      {/* Background Small*/}
+      <img
+        className="block lg:hidden absolute opacity-50 -z-10 -top-14 scale-70 -right-24 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background Lingkaran"
+      />
+      <img
+        className="block lg:hidden absolute opacity-50 -z-1 -bottom-14 scale-70 -left-24 rotate-180 pointer-events-none select-none"
+        src={backgroundLingkaran}
+        alt="Background BabackgroundRumah4"
       />
 
       {/* Konten */}
@@ -322,11 +339,6 @@ export const LocationSection = () => {
         <TextContent isVisible={textVisible} />
       </div>
       <WaveTop />
-      <img
-        className="absolute opacity-50 -z-1 -bottom-10 scale-110 -left-20 rotate-180 pointer-events-none select-none"
-        src={backgroundLingkaran}
-        alt="Background BabackgroundRumah4"
-      />
     </section>
   );
 };

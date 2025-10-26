@@ -143,6 +143,7 @@ const CardContent = () => {
 export const CommentSection = () => {
   return (
     <section className="relative h-max py-16 px-4 mb-10 flex flex-col gap-[35px] items-center justify-center">
+      {/* Background Large */}
       <img
         className="hidden lg:block absolute right-30 top-20 opacity-50 scale-120 z-0 pointer-events-none select-none"
         src={BackgroundLemonSlice}
@@ -157,6 +158,18 @@ export const CommentSection = () => {
         className="hidden lg:block absolute left-1/2 -translate-x-1/2 -bottom-45 opacity-50 scale-120 z-0 pointer-events-none select-none"
         src={BackgroundCommentBatik}
         alt="Background ComBackgroundCommentBatik"
+      />
+
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute -right-15 top-20 opacity-70 rotate-y-180 -rotate-30 scale-80 z-0 pointer-events-none select-none"
+        src={BackgroundLemonSlice}
+        alt="Background ComBackgroundLemonSlice"
+      />
+      <img
+        className="block lg:hidden absolute -left-15 top-0 opacity-50 scale-70 rotate-y-180 z-0 pointer-events-none select-none"
+        src={BackgroundOnion}
+        alt="Background ComBackgroundOnion"
       />
       <TextContent />
       <CardContent />

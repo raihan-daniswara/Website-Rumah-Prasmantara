@@ -6,6 +6,7 @@ import gojekLogo from "../../../assets/about/gojek.png";
 import grabLogo from "../../../assets/about/grab.png";
 import maximLogo from "../../../assets/about/maxim.png";
 import { NavLink } from "react-router-dom";
+import { HiOutlineX } from "react-icons/hi";
 
 import backgroundRumah1 from '../../../assets/background/about/rumah1.png';
 import backgroundRumah2 from '../../../assets/background/about/rumah2.png';
@@ -18,7 +19,7 @@ const font = {
   cormorantSC: '"Cormorant SC", serif',
 };
 
-const TextContent = ({ isVisible }) => (
+const TextContent = ({ isVisible, onOpenModal }) => (
   <>
     {/* Large */}
     <div
@@ -48,16 +49,13 @@ const TextContent = ({ isVisible }) => (
           e-wallet favorit Anda.
         </p>
       </div>
-      <NavLink
-        to="/produk"
-        className={({ isActive }) =>
-          `px-10 py-4 text-4xl rounded-full font-bold button-text hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
-          }`
-        }
+      <button
+        onClick={onOpenModal}
+        className="px-10 py-4 text-4xl rounded-full font-bold button-text hover:cursor-pointer hover:scale-103 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300"
         style={{ fontFamily: font.cormorantGaramond }}
       >
         Lihat <span className="text-[#C54300]">Selengkapnya</span>
-      </NavLink>
+      </button>
     </div>
 
     {/* Small */}
@@ -85,17 +83,92 @@ const TextContent = ({ isVisible }) => (
         </p>
       </div>
       <ImageContent />
-      <NavLink
-        to="/produk"
-        className={({ isActive }) => `lg:px-10 lg:py-4 lg:text-4xl px-5 py-[5px] text-[22px] mx-auto rounded-full font-bold button-text bg-[#2D1F18] text-[#C54300] transition-all duration-300 ${isActive ? "border-[#C54300]" : "border-transparent hover:text-[#EAAE8F]"
-          }`}
+      <button
+        onClick={onOpenModal}
+        className="lg:px-10 lg:py-4 lg:text-4xl px-5 py-[5px] text-[22px] hover:cursor-pointer mx-auto rounded-full font-bold button-text bg-[#2D1F18] text-[#C54300] transition-all duration-300"
         style={{ fontFamily: font.cormorantGaramond }}
       >
         Selengkapnya
-      </NavLink>
+      </button>
     </div>
   </>
 );
+
+const PartnersModal = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  const partners = [
+    {
+      src: qrisLogo,
+      alt: "QRIS",
+      url: "https://qris.interactive.co.id/homepage"
+    },
+    {
+      src: shopeeFoodLogo,
+      alt: "ShopeeFood",
+      url: "https://shopee.co.id/m/shopeefood"
+    },
+    {
+      src: gojekLogo,
+      alt: "Gojek",
+      url: "https://www.gojek.com/gofood"
+    },
+    {
+      src: grabLogo,
+      alt: "Grab",
+      url: "https://www.grab.com/id/food"
+    },
+    {
+      src: maximLogo,
+      alt: "Maxim",
+      url: "https://taximaxim.com/id"
+    },
+  ];
+
+  return (
+    <div
+      className="fixed inset-0 bg-black/20 flex justify-center items-center z-50 backdrop-blur-sm transition-all duration-1000"
+      onClick={onClose}
+    >
+      <div
+        className="relative bg-[#3C261A] border border-[#C54300] rounded-3xl p-5 w-[80%] lg:w-[70%] max-h-[80vh] overflow-y-auto transition-all duration-1000"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          className="absolute top-5 right-5 text-[#EAAE8F] text-2xl hover:text-[#C54300] transition"
+          onClick={onClose}
+        >
+          <HiOutlineX />
+        </button>
+
+        <h2
+          className="text-[#EAAE8F] text-6xl font-bold mb-8 text-center"
+          style={{ fontFamily: font.cormorantUpright }}
+        >
+          Mitra <span className="text-[#C54300]">Kami</span>
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 justify-items-center gap-4">
+          {partners.map((partner, i) => (
+            <a
+              key={i}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#EAAE8F]/10 hover:bg-[#EAAE8F]/20 transition-all p-6 rounded-2xl border border-[#C54300]/30 w-[120px] h-[120px] flex items-center justify-center hover:scale-105 duration-300"
+            >
+              <img
+                src={partner.src}
+                alt={partner.alt}
+                className="w-full h-full object-contain"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ImageContent = ({ isVisible }) => (
   <>
@@ -214,6 +287,8 @@ const ImageContent = ({ isVisible }) => (
 export const PartnersSection = () => {
   const [textVisible, setTextVisible] = useState(false);
   const [imageVisible, setImageVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const textRef = useRef(null);
   const imageRef = useRef(null);
 
@@ -239,7 +314,7 @@ export const PartnersSection = () => {
 
   return (
     <section className="relative h-screen flex gap-20 py-16 px-4 items-center justify-center">
-      {/* Background */}
+      {/* Background Large */}
       <img
         className="hidden lg:block absolute opacity-50 top-0 scale-110 left-70 pointer-events-none select-none"
         src={backgroundRumah1}
@@ -256,12 +331,26 @@ export const PartnersSection = () => {
         alt="Background Rumah 3"
       />
 
+      {/* Background Small */}
+      <img
+        className="block lg:hidden absolute opacity-50 top-0 scale-110 -right-30 pointer-events-none select-none"
+        src={backgroundRumah1}
+        alt="Background Rumah 1"
+      />
+      <img
+        className="block lg:hidden absolute opacity-50 bottom-0 scale-110 -left-10 pointer-events-none select-none"
+        src={backgroundRumah3}
+        alt="Background Rumah 3"
+      />
+
       <div ref={textRef}>
-        <TextContent isVisible={textVisible} />
+        <TextContent isVisible={textVisible} onOpenModal={() => setIsModalOpen(true)} />
       </div>
       <div ref={imageRef} className="hidden lg:block">
         <ImageContent isVisible={imageVisible} />
       </div>
+
+      <PartnersModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

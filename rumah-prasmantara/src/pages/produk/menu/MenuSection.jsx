@@ -62,15 +62,7 @@ const HeaderContent = ({ isVisible }) => (
   </>
 );
 
-export const TextMainContent = ({
-  title,
-  paragraph,
-  paragraphMobile,
-  mobileType,
-  isVisible,
-  isExpanded,
-  setIsExpanded,
-}) => {
+export const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType, isVisible, isExpanded, setIsExpanded }) => {
   return (
     <>
       {/* Large */}
@@ -436,8 +428,8 @@ export const MenuSection = () => {
   }, []);
 
   return (
-    <section className="relative h-fit py-20 flex flex-col gap-20 items-center overflow-visible">
-      {/* Background */}
+    <section className="relative h-fit py-20 flex flex-col gap-20 items-center overflow-visible" id="menu-section">
+      {/* Background Large*/}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <img
           className="hidden lg:block absolute opacity-50 top-50 scale-120 left-0"
@@ -483,6 +475,45 @@ export const MenuSection = () => {
           className="hidden lg:block absolute opacity-50 bottom-10 scale-60 -rotate-30 left-170"
           src={backgroundMinuman}
           alt="Background Minuman 2"
+        />
+      </div>
+
+      {/* Background Small */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <img
+          className="block lg:hidden absolute opacity-50 top-20 scale-120 -left-20"
+          src={backgroundMasak}
+          alt="Background Masak"
+        />
+        <img
+          className="block lg:hidden absolute opacity-50 top-10 scale-110 rotate-20 -right-10"
+          src={backgroundPiring}
+          alt="Background Piring"
+        />
+        <img
+          className="block lg:hidden absolute opacity-50 top-100 scale-110 left-[85%]"
+          src={backgroundSup}
+          alt="Background Sup"
+        />
+        <img
+          className="block lg:hidden absolute opacity-50 top-130 scale-70 -left-10"
+          src={backgroundMenyajikan}
+          alt="Background Menyajikan"
+        />
+        <img
+          className="block lg:hidden absolute opacity-50 bottom-250 scale-110 right-0"
+          src={backgroundTeko}
+          alt="Background Teko"
+        />
+        <img
+          className="block lg:hidden absolute opacity-50 bottom-50 scale-110 rotate-y-180 -right-30"
+          src={backgroundWajan}
+          alt="Background Wajan"
+        />
+        <img
+          className="block lg:hidden absolute opacity-50 bottom-150 scale-110 -left-30"
+          src={backgroundMinuman}
+          alt="Background Minuman"
         />
       </div>
 
