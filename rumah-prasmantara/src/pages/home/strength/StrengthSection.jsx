@@ -164,10 +164,10 @@ const ImageContent = ({ isVisible }) => (
       `}
     >
       {/* efek */}
-      <div className="absolute w-3 h-3 right-0 bottom-0 rounded-full bg-[#C54300] shadow-[0_0_32px_6px_rgba(197,67,0,0.49)] 
+      <div className="absolute w-3 h-3 lg:w-6 lg:h-6 right-0 bottom-0 lg:right-20 lg:bottom-20 lg:group-hover:right-0 lg:group-hover:bottom-0 rounded-full bg-[#C54300] shadow-[0_0_32px_6px_rgba(197,67,0,0.49)] 
         opacity-100 transition-all duration-500 ease-in-out pointer-events-none select-none"
       />
-      <div className="absolute w-6 h-6 -left-3 -top-3 rounded-full bg-[#C54300] shadow-[0_0_43px_17px_rgba(197,67,0,0.49)] 
+      <div className="absolute w-6 h-6 lg:w-12 lg:h-12 -left-3 -top-3 lg:left-20 lg:top-20 lg:group-hover:left-0 lg:group-hover:top-0 rounded-full bg-[#C54300] shadow-[0_0_43px_17px_rgba(197,67,0,0.49)] 
         opacity-50 transition-all duration-500 ease-in-out pointer-events-none select-none"
       />
 

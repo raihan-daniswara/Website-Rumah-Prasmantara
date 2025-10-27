@@ -54,7 +54,7 @@ const HeroText = ({ isVisible }) => (
         to="#"
         onClick={(e) => {
           e.preventDefault();
-          const section = document.getElementById("testimoni-section");
+          const section = document.getElementById("rating-section");
           if (section) {
             section.scrollIntoView({ behavior: "smooth" });
           }
@@ -107,7 +107,7 @@ const HeroText = ({ isVisible }) => (
         to="#"
         onClick={(e) => {
           e.preventDefault();
-          const section = document.getElementById("testimoni-section");
+          const section = document.getElementById("rating-section");
           if (section) {
             section.scrollIntoView({ behavior: "smooth" });
           }

@@ -21,7 +21,6 @@ import backgroundKoki from '../../../assets/background/testimoni/koki.png';
 import backgroundSpoon from '../../../assets/background/testimoni/spoon.png';
 import backgroundDish from '../../../assets/background/testimoni/dish.png';
 
-// =================== COMPONENT: RatingDisplay ===================
 function RatingDisplay({ rating, reviewCount, isVisible }) {
   const getStarType = (index) => {
     if (rating >= index) return "full";
@@ -168,7 +167,8 @@ const HeaderContent = ({ isVisible }) => {
     </>
   )
 }
-// =================== COMPONENT: FoodCollage ===================
+
+
 const FoodCollage = ({ imageUrls = [], isVisible }) => {
   return (
     <div
@@ -354,7 +354,7 @@ export function RatingSection() {
   }, []);
 
   return (
-    <div className="rating-section relative bg-[#3C261A] overflow-hidden">
+    <div className="relative bg-[#3C261A] overflow-hidden" id="rating-section">
       {/* Background Large */}
       <img
         className="hidden lg:block absolute opacity-50 top-70 left-50"
@@ -389,6 +389,7 @@ export function RatingSection() {
         alt="Background Dish"
       />
 
+      {/* Konten */}
       <div className="flex flex-col lg:gap-0 gap-8 items-center justify-center my-20 mx-auto">
         <div ref={headerRef}>
           <HeaderContent isVisible={headerVisible} />
