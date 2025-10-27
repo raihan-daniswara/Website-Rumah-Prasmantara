@@ -5,6 +5,7 @@ import { WaveTop } from "../../components/wave/WaveTop";
 import { CommentSection } from "./comment/CommentSection";
 import { CurhatanSection } from "./curhatan/CurhatanSection";
 import { HeroSection } from "./hero/HeroSection";
+import { RatingSection } from "./rating/RatingSection";
 import './TestimoniPage.css'
 export function TestimoniPage() {
   return (
@@ -17,6 +18,9 @@ export function TestimoniPage() {
         <WaveBottom />
         <CommentSection />
         <WaveTop />
+      </div>
+      <div className="relative bg-[#3C261A]">
+        <RatingSection />
       </div>
       <div className="relative pt-25 h-fit w-full">
         <WaveBottom />

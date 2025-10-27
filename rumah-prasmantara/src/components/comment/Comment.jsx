@@ -1,7 +1,6 @@
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
 export const CommentCard = ({ image, name, rating, comment, date, index }) => {
-  // Buat array bintang berdasarkan rating (mendukung setengah)
   const stars = Array.from({ length: 5 }, (_, i) => {
     const full = i + 1 <= Math.floor(rating);
     const half = !full && rating - i >= 0.5;

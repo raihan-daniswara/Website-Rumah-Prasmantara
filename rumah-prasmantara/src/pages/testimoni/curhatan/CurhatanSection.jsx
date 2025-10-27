@@ -1,3 +1,4 @@
+import "./CurhatanSection.css";
 import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 import { FaStar, FaArrowRight, FaArrowLeft } from "react-icons/fa";
@@ -11,7 +12,6 @@ import OrangNunjukMobile from '../../../assets/testimoni/orangnunjukmobile.png';
 import backgroundThumb from '../../../assets/background/testimoni/thumb.png';
 import backgroundPhonebook from '../../../assets/background/testimoni/phonebook.png';
 import backgroundChat from '../../../assets/background/testimoni/chat.png';
-import { Autoplay } from "swiper/modules";
 
 function InteractiveArrowButton({
   direction = "left",
