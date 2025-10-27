@@ -66,7 +66,7 @@ const TextContent = ({ isVisible }) => (
 
     {/* Small */}
     <div
-      className={`flex flex-col items-center justify-center lg:hidden mb-2 px-4 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      className={`flex flex-col items-center justify-center lg:hidden mb-2 px-4 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
     >
       <p
@@ -85,7 +85,7 @@ const TextContent = ({ isVisible }) => (
         <span className="text-[#EAAE8F]">Curhatan dari</span>
         <span className="text-[#C54300]"> Para Reviewer</span>
       </h1>
-      <img src={OrangNunjukMobile} alt="Orang Nunjuk" className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"}`} />
+      <img src={OrangNunjukMobile} alt="Orang Nunjuk" className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`} />
     </div>
   </>
 );
@@ -94,7 +94,8 @@ const CardContent = ({
   reviews,
   currentSlide,
   setCurrentSlide,
-  sliderRef,
+  sliderRefDesktop,
+  sliderRefMobile,
   isVisible,
 }) => {
   const settings = {
@@ -117,7 +118,7 @@ const CardContent = ({
           }`}
       >
         <div className="relative">
-          <Slider ref={sliderRef} {...settings}>
+          <Slider ref={sliderRefDesktop} {...settings}>
             {reviews.map((review) => (
               <div key={review.id} className="outline-none">
                 {/* Profile & Rating */}
@@ -211,7 +212,7 @@ const CardContent = ({
         {/* Navigation */}
         <div className="flex items-center justify-center h-20 gap-4">
           <InteractiveArrowButton
-            onClick={() => sliderRef.current?.slickPrev()}
+            onClick={() => sliderRefDesktop.current?.slickPrev()}
             direction="left"
             size={55}
           />
@@ -220,7 +221,7 @@ const CardContent = ({
             {reviews.map((review, index) => (
               <button
                 key={review.id}
-                onClick={() => sliderRef.current?.slickGoTo(index)}
+                onClick={() => sliderRefDesktop.current?.slickGoTo(index)}
                 className={`rounded-full overflow-hidden transition-all ${currentSlide === index
                   ? "w-16 h-16 scale-110"
                   : "w-14 h-14 opacity-70 hover:opacity-90"
@@ -239,7 +240,7 @@ const CardContent = ({
           </div>
 
           <InteractiveArrowButton
-            onClick={() => sliderRef.current?.slickNext()}
+            onClick={() => sliderRefDesktop.current?.slickNext()}
             direction="right"
             size={55}
           />
@@ -248,11 +249,11 @@ const CardContent = ({
 
       {/* Small */}
       <div
-        className={`flex lg:hidden max-w-[400px] w-full flex-col gap-8 ml-4 -mt-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+        className={`flex lg:hidden max-w-[400px] w-full flex-col gap-8 ml-4 -mt-8 transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
           }`}
       >
         <div className="relative">
-          <Slider ref={sliderRef} {...settings}>
+          <Slider ref={sliderRefMobile} {...settings}>
             {reviews.map((review) => {
               const nameParts = review.name.split(" ");
               const firstName = nameParts[0];
@@ -351,7 +352,7 @@ const CardContent = ({
           {reviews.map((review, index) => (
             <button
               key={review.id}
-              onClick={() => sliderRef.current?.slickGoTo(index)}
+              onClick={() => sliderRefMobile.current?.slickGoTo(index)}
               className={`rounded-full overflow-hidden transition-all ${currentSlide === index
                 ? "w-16 h-16 scale-110"
                 : "w-14 h-14 opacity-50 hover:opacity-80 hover:border-orange-600/50"
@@ -374,7 +375,8 @@ const CardContent = ({
 };
 
 export const CurhatanSection = () => {
-  const sliderRef = useRef(null);
+  const sliderRefDesktop = useRef(null);
+  const sliderRefMobile = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [textVisible, setTextVisible] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
@@ -478,7 +480,8 @@ export const CurhatanSection = () => {
             reviews={reviews}
             currentSlide={currentSlide}
             setCurrentSlide={setCurrentSlide}
-            sliderRef={sliderRef}
+            sliderRefDesktop={sliderRefDesktop}
+            sliderRefMobile={sliderRefMobile}
             isVisible={cardVisible}
           />
         </div>
