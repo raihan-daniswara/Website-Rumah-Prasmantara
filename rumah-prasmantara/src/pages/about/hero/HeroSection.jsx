@@ -69,7 +69,7 @@ const HeroText = ({ isVisible }) => (
           Alasan <span className="text-[#C54300]">Rumah<br />Prasmantara</span> Hadir
         </h1>
         <p
-          className="hero-paragraph text-4xl font-semibold text-[#BDBDBD] transition-all duration-1000 ease-out"
+          className="hero-paragraph text-4xl font-semibold text-[#BDBDBD] transition-all duration-1000 ease-out leading-[52px]"
           style={{ fontFamily: font.cormorantGaramond }}
         >
           Kami hadir untuk menyatukan berbagai masakan khas<br />Nusantara dengan cita

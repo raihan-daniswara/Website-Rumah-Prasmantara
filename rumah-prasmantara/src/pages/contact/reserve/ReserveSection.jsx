@@ -116,17 +116,17 @@ const ReserveForm = ({ isVisible }) => {
             style={{ fontFamily: font.cormorantGaramond }}
           ></textarea>
 
-          <p className="text-[#EAAE8F] text-[13px] lg:text-[24px] lg:leading-[52px] font-semibold" style={{ fontFamily: font.cormorantGaramond }}>
+          <p className="text-[#EAAE8F] text-[13px] lg:text-[24px] lg:leading-[52px] px-2 font-semibold" style={{ fontFamily: font.cormorantGaramond }}>
             <span className="font-bold text-[#C54300]">*</span> Kami akan hubungi Anda untuk reservasi
             <span className="text-[#C54300]"> maksimal 24 jam</span>.
           </p>
 
           <button
             type="submit"
-            className="bg-[#2D1F18] text-[#EAAE8F] text-[18px] font-bold py-3 rounded-full transition duration-300"
+            className="bg-[#2D1F18] text-[#EAAE8F] text-[18px] lg:text-[28px] font-bold py-3 hover:cursor-pointer hover:scale-101 hover:shadow-lg rounded-full transition duration-300"
             style={{ fontFamily: font.cormorantGaramond }}
           >
-            Kirim <span className="text-[#C54300] hover:text-white">Reservasi</span>
+            Kirim <span className="text-[#C54300]">Reservasi</span>
           </button>
         </form>
       </div>

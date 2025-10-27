@@ -22,7 +22,7 @@ export const SpecialMenuModal = ({ isOpen, onClose, menu }) => {
       >
         {/* Tombol Tutup */}
         <button
-          className="absolute top-5 right-5 text-[#EAAE8F] text-2xl hover:text-[#C54300] transition"
+          className="absolute top-5 right-5 text-[#EAAE8F] hover:scale-101 hover:cursor-pointer transition-all duration-500 text-2xl hover:text-[#C54300]"
           onClick={onClose}
         >
           <HiOutlineX />
@@ -137,7 +137,7 @@ export const SpecialMenuCard = ({ image, title, description, price, day, rating,
           </h3>
           <button
             onClick={onDetail}
-            className="w-full h-[75px] text-center bg-[#C54300] rounded-3xl text-[#EAAE8F] text-4xl font-bold transition-colors duration-300 flex items-center justify-center z-10 hover:bg-[#a83a00]"
+            className="w-full h-[75px] text-center bg-[#C54300] rounded-3xl text-[#EAAE8F] hover:scale-101 hover:cursor-pointer text-4xl font-bold transition-all duration-500 flex items-center justify-center z-10 hover:bg-[#a83a00]"
             style={{ fontFamily: font.cormorantUpright }}
           >
             Detail
@@ -206,7 +206,7 @@ export const SpecialMenuCard = ({ image, title, description, price, day, rating,
           {/* Tombol Detail */}
           <button
             onClick={onDetail}
-            className="w-full h-10 text-center bg-[#C54300] rounded-full text-[#EAAE8F] text-[20px] font-bold transition-colors duration-300 flex items-center justify-center hover:bg-[#a83a00]"
+            className="w-full h-10 text-center bg-[#C54300] rounded-full text-[#EAAE8F] text-[20px] hover:scale-101 hover:cursor-pointer font-bold transition-all duration-500 flex items-center justify-center hover:bg-[#a83a00]"
             style={{ fontFamily: font.cormorantUpright }}
           >
             Detail

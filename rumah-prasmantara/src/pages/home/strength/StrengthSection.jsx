@@ -177,7 +177,7 @@ const ImageContent = ({ isVisible }) => (
           <img
             src={chef}
             alt="Chef"
-            className="w-[300px] h-full object-cover pointer-events-none select-none"
+            className="w-[300px] lg:w-[600px] h-full object-cover pointer-events-none select-none"
             style={{
               transform: "translateY(-49px)",
               clipPath: "inset(0 0 0 round 250px)",

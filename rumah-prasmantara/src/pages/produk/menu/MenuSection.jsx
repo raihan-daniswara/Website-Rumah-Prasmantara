@@ -86,7 +86,7 @@ export const TextMainContent = ({ title, paragraph, paragraphMobile, mobileType,
 
             <button
               onClick={() => setIsExpanded(true)}
-              className="mt-6 px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#EAAE8F] transition-all duration-300"
+              className="mt-6 px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#EAAE8F] hover:cursor-pointer transition-all duration-300"
               style={{ fontFamily: font.cormorantGaramond }}
             >
               Lihat <span className="text-[#C54300]">Selengkapnya</span>
@@ -564,7 +564,7 @@ export const MenuSection = () => {
         {isExpandedMain && (
           <button
             onClick={() => setIsExpandedMain(false)}
-            className={`hidden lg:block px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#C54300] transition-all duration-1000 ${card1Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`hidden lg:block px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] hover:cursor-pointer text-[#C54300] transition-all duration-1000 ${card1Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             style={{ fontFamily: font.cormorantGaramond }}
           >
             Kembali
@@ -629,7 +629,7 @@ export const MenuSection = () => {
 
         <button
           onClick={() => setIsExpandedSnack(false)}
-          className={`hidden lg:block px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#C54300] transition-all duration-1000 ${card2ExpandVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          className={`hidden lg:block px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#C54300] hover:cursor-pointer transition-all duration-1000 ${card2ExpandVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           style={{ fontFamily: font.cormorantGaramond }}
         >
           Kembali
@@ -656,7 +656,7 @@ export const MenuSection = () => {
         {isExpandedDrink && (
           <button
             onClick={() => setIsExpandedDrink(false)}
-            className={`hidden lg:block px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#C54300] transition-all duration-1000 ${card3Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`hidden lg:block px-10 py-4 text-4xl rounded-full font-bold hover:scale-105 bg-[#2D1F18] text-[#C54300] hover:cursor-pointer transition-all duration-1000 ${card3Visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
             style={{ fontFamily: font.cormorantGaramond }}
           >
             Kembali

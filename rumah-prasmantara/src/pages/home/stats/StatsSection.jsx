@@ -24,15 +24,15 @@ const font = {
 const Header = ({ isVisible }) => (
   <>
     {/* Large */}
-    <header className={`hidden lg:block transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+    <header className={`hidden lg:flex flex-col gap-2.5 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
       <h1
-        className="hero-header-1 text-6xl text-center text-[#EAAE8F] font-bold"
+        className="hero-header-1 text-6xl text-center text-[#EAAE8F] font-bold leading-[78px]!"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Perpaduan <span className="text-[#C54300]">Makanan Nusantara</span> Yang Menyatu
       </h1>
       <h2
-        className="hero-header-2 text-4xl text-center text-[#BDBDBD] font-semibold"
+        className="hero-header-2 text-4xl text-center text-[#BDBDBD] font-semibold leading-11!"
         style={{ fontFamily: font.cormorantUpright }}
       >
         Ragam Makanan Nusantara Yang Bisa Kalian Rasakan di Rumah Prasmantara

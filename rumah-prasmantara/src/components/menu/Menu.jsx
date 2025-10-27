@@ -20,7 +20,7 @@ export const MenuModal = ({ isOpen, onClose, menu }) => {
       >
         {/* Tombol Tutup */}
         <button
-          className="absolute top-5 right-5 text-[#EAAE8F] text-2xl hover:text-[#C54300] transition"
+          className="absolute top-5 right-5 hover:scale-101 hover:cursor-pointer text-[#EAAE8F] text-2xl hover:text-[#C54300] transition-all duration-500"
           onClick={onClose}
         >
           <HiOutlineX />
@@ -108,7 +108,7 @@ export const MenuCard = ({ image, title, rating, description, onDetail }) => {
         </div>
         <button
           onClick={onDetail}
-          className="w-full h-[65px] text-center bg-[#C54300] rounded-full text-[#EAAE8F] text-4xl font-bold transition-colors duration-300 flex items-center justify-center"
+          className="w-full h-[65px] text-center bg-[#C54300] hover:scale-101 hover:cursor-pointer rounded-full text-[#EAAE8F] text-4xl font-bold transition-all duration-500 flex items-center justify-center"
           style={{ fontFamily: font.cormorantGaramond }}
         >
           Detail
@@ -151,7 +151,7 @@ export const MenuCard = ({ image, title, rating, description, onDetail }) => {
         </div>
         <button
           onClick={onDetail}
-          className="w-full h-10 text-center bg-[#C54300] rounded-full text-[#EAAE8F] text-xl font-bold transition-colors duration-300 flex items-center justify-center"
+          className="w-full h-10 text-center bg-[#C54300] rounded-full text-[#EAAE8F] hover:scale-101 hover:cursor-pointer text-xl font-bold transition-all duration-500 flex items-center justify-center"
           style={{ fontFamily: font.cormorantGaramond }}
 
         >
