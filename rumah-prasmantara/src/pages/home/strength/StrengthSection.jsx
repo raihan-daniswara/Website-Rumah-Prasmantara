@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./StrengthSection.css";
 import chef from "../../../assets/home/chef.png";
 import iconVariasi from "../../../assets/home/icon-variasi.png";

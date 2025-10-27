@@ -12,8 +12,6 @@ import backgroundRumah5 from '../../../assets/background/about/rumah5.png';
 import backgroundRumah6 from '../../../assets/background/about/rumah6.png';
 import { useEffect, useRef, useState } from "react";
 
-import Slider from "react-slick";
-
 const font = {
   cormorantUpright: '"Cormorant Upright", serif',
   cormorantGaramond: '"Cormorant Garamond", serif',

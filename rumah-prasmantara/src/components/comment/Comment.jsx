@@ -1,6 +1,6 @@
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
-export const CommentCard = ({ image, name, rating, comment, date, index }) => {
+export const CommentCard = ({ image, name, rating, comment, date, page }) => {
   const stars = Array.from({ length: 5 }, (_, i) => {
     const full = i + 1 <= Math.floor(rating);
     const half = !full && rating - i >= 0.5;
@@ -17,9 +17,9 @@ export const CommentCard = ({ image, name, rating, comment, date, index }) => {
     <>
       {/* Large */}
       <div
-        className="hidden lg:flex commentCard w-[505px] h-[220px] flex-col gap-2.5 justify-between px-5 py-[25px] rounded-[30px] relative transition-all duration-300 hover:scale-105"
+        className="hidden lg:flex w-[505px] h-[220px] flex-col gap-2.5 justify-between px-5 py-[25px] rounded-[30px] relative transition-all duration-300 hover:scale-105"
         style={{
-          backgroundColor: index % 2 === 0 ? "#3C261A" : "#31211A",
+          backgroundColor: page === "testimoni" ? "#3C261A" : "#31211A",
         }}
       >
         <p
@@ -58,9 +58,9 @@ export const CommentCard = ({ image, name, rating, comment, date, index }) => {
 
       {/* Small */}
       <div
-        className="flex lg:hidden commentCard w-[320px] h-fit-[170px] flex-col items-baseline justify-between px-[15px] py-5 rounded-[20px] relative transition-all duration-300 hover:scale-105"
+        className="flex lg:hidden w-[320px] h-[170px] flex-col items-baseline justify-between px-[15px] py-5 rounded-[20px] relative transition-all duration-300 hover:scale-105"
         style={{
-          backgroundColor: index % 2 === 0 ? "#3C261A" : "#31211A",
+          backgroundColor: page === "testimoni" ? "#3C261A" : "#31211A",
         }}
       >
         <p

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./StrengthSection.css";
 import MasakanNusantara1 from "../../../assets/about/masakan-nusantara1.png";
 import MasakanNusantara2 from "../../../assets/about/masakan-nusantara2.png";

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./LocationSection.css";
 import indonesiaMap from "../../../assets/about/indonesia-map.png";
-import { NavLink } from "react-router-dom";
 import { WaveBottom } from "../../../components/wave/WaveBottom";
 
 import backgroundLingkaran from '../../../assets/background/about/lingkaran.png';

@@ -1,5 +1,5 @@
 import "./CurhatanSection.css";
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 import { FaStar, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { BiSolidQuoteAltLeft, BiSolidQuoteAltRight } from "react-icons/bi";

@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./PartnersSection.css";
 import qrisLogo from "../../../assets/about/qris.png";
 import shopeeFoodLogo from "../../../assets/about/shopee-food.png";
 import gojekLogo from "../../../assets/about/gojek.png";
 import grabLogo from "../../../assets/about/grab.png";
 import maximLogo from "../../../assets/about/maxim.png";
-import { NavLink } from "react-router-dom";
 import { HiOutlineX } from "react-icons/hi";
 
 import backgroundRumah1 from '../../../assets/background/about/rumah1.png';

@@ -6,14 +6,10 @@ import ImageNoorBetty from "../../../assets/home/noor-betty.png";
 import ImageAntoSubianto from "../../../assets/home/anto-subianto.png";
 import ImageDeniIrawan from "../../../assets/home/deni-irawan.png";
 import ImageRosmanHarianto from "../../../assets/home/rosman-haryanto.png";
-import { NavLink } from "react-router-dom";
 import { CommentCard } from "../../../components/comment/Comment";
-import { FaStar, FaRegStar } from "react-icons/fa";
 
 import backgroundLingkaran from '../../../assets/background/about/lingkaran.png';
-import BackgroundCommentBatik from "../../../assets/background/comment-batik.png"
-import BackgroundLemonSlice from "../../../assets/background/lemon-slice.png"
-import BackgroundOnion from "../../../assets/background/onion.png"
+import { useEffect, useRef, useState } from "react";
 // Font
 const font = {
   greatVibes: '"Great Vibes", cursive',
@@ -21,10 +17,10 @@ const font = {
   cormorantGaramond: '"Cormorant Garamond", serif',
 };
 
-const TextContent = () => (
+const TextContent = ({ isVisible }) => (
   <>
     {/* Large */}
-    <div className="hidden textContent lg:flex flex-col gap-2.5 text-center">
+    <div className={`hidden textContent lg:flex flex-col gap-2.5 text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"}`}>
       <h1
         className="hero-paragraph text-[#EAAE8F] font-bold text-6xl leading-[78px]"
         style={{ fontFamily: font.cormorantUpright }}
@@ -43,7 +39,7 @@ const TextContent = () => (
     </div>
 
     {/* Small */}
-    <div className="flex textContent lg:hidden flex-col gap-[5px] text-center">
+    <div className={`flex textContent lg:hidden flex-col gap-[5px] text-center transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
       <h1
         className="hero-paragraph text-[#EAAE8F] font-bold text-[32px]"
         style={{ fontFamily: font.cormorantUpright }}
@@ -62,7 +58,7 @@ const TextContent = () => (
 );
 
 
-const CardContent = () => {
+const CardContent = ({ isVisible }) => {
   const commentData = [
     {
       image: ImageNayataDewi,
@@ -115,36 +111,86 @@ const CardContent = () => {
     },
   ];
 
-  const topRow = commentData.slice(0, 3);
-  const bottomRow = commentData.slice(3);
-
   return (
-    <div className="flex flex-col gap-[30px]">
-      <div className="flex justify-center gap-[30px]">
-        {topRow.map((comment, index) => (
-          <CommentCard key={index} index={index} {...comment} />
-        ))}
+    <div className={`flex flex-col overflow-hidden transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+      {/* Row 1 */}
+      <div className="marquee translate-x-500 py-4">
+        <div className="marquee-track">
+          {commentData.map((c, i) => (
+            <div key={i} className="marquee-item">
+              <CommentCard key={i} page="testimoni" {...c} />
+            </div>
+          ))}
+          {commentData.map((c, i) => (
+            <div key={`dup-${i}`} className="marquee-item">
+              <CommentCard key={i} page="testimoni" {...c} />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="flex justify-center gap-[30px]">
-        {bottomRow.map((comment, index) => (
-          <CommentCard key={index + 3} index={index + 3} {...comment} />
-        ))}
+      {/* Row 2 */}
+      <div className="marquee marquee-right translate-x-500 py-4">
+        <div className="marquee-track">
+          {commentData.map((c, i) => (
+            <div key={i} className="marquee-item">
+              <CommentCard key={i} page="testimoni" {...c} />
+            </div>
+          ))}
+          {commentData.map((c, i) => (
+            <div key={`dup-${i}`} className="marquee-item">
+              <CommentCard key={i} page="testimoni" {...c} />
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="flex lg:hidden justify-center gap-[30px]">
-        {topRow.map((comment, index) => (
-          <CommentCard key={index} index={index} {...comment} />
-        ))}
+      {/* Row 3 mobile */}
+      <div className="lg:hidden marquee translate-x-500 py-4">
+        <div className="marquee-track">
+          {commentData.map((c, i) => (
+            <div key={i} className="marquee-item">
+              <CommentCard key={i} page="testimoni" {...c} />
+            </div>
+          ))}
+          {commentData.map((c, i) => (
+            <div key={`dup-${i}`} className="marquee-item">
+              <CommentCard key={i} page="testimoni" {...c} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
 export const CommentSection = () => {
+  const [textVisible, setTextVisible] = useState(false);
+  const [cardVisible, setCardVisible] = useState(false);
+  const textRef = useRef(null);
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setTextVisible(entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    if (textRef.current) observer.observe(textRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setCardVisible(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    if (cardRef.current) observer.observe(cardRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="relative h-max py-16 px-4 mb-10 flex flex-col gap-[35px] items-center justify-center">
-      {/* Background Large*/}
+      {/* Background Large */}
       <img
         className="hidden lg:block absolute opacity-50 -z-1 -top-32 scale-110 -right-20 pointer-events-none select-none"
         src={backgroundLingkaran}
@@ -153,10 +199,10 @@ export const CommentSection = () => {
       <img
         className="hidden lg:block absolute opacity-50 -z-1 -bottom-40 scale-110 -left-20 rotate-180 pointer-events-none select-none"
         src={backgroundLingkaran}
-        alt="Background BabackgroundRumah4"
+        alt="Background Lingkaran"
       />
 
-      {/* Background Small*/}
+      {/* Background Small */}
       <img
         className="block lg:hidden absolute opacity-50 -z-1 -top-24 scale-70 -right-24 pointer-events-none select-none"
         src={backgroundLingkaran}
@@ -165,12 +211,16 @@ export const CommentSection = () => {
       <img
         className="block lg:hidden absolute opacity-50 -z-1 -bottom-32 scale-70 -left-24 rotate-180 pointer-events-none select-none"
         src={backgroundLingkaran}
-        alt="Background BabackgroundRumah4"
+        alt="Background Lingkaran"
       />
-      
-      {/* Konten */}
-      <TextContent />
-      <CardContent />
+
+      {/* Konten dengan animasi */}
+      <div ref={textRef}>
+        <TextContent isVisible={textVisible} />
+      </div>
+      <div ref={cardRef}>
+        <CardContent isVisible={cardVisible} />
+      </div>
     </section>
   );
 };

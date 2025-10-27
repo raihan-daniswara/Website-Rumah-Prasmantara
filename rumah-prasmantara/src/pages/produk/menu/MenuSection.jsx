@@ -1,6 +1,5 @@
 import "./MenuSection.css";
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { MenuCard, MenuModal } from "../../../components/menu/Menu";
 import Slider from "react-slick";
 

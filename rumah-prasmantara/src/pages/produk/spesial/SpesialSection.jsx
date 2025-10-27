@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./SpesialSection.css";
 import imageKapurung from "../../../assets/produk/spesial/kapurung.png";
 import imagePieSusuBali from "../../../assets/produk/spesial/pie-susu-bali.png";

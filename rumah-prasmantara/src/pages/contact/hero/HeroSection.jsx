@@ -1,13 +1,10 @@
-// import heroImage from '../../../assets/contact/hero-image.png';
 import Tilt from 'react-parallax-tilt';
 
 import contactCard from '../../../assets/contact/contact-card.svg';
 import instagramLogo from '../../../assets/contact/instagram.svg';
 import whatsappLogo from '../../../assets/contact/whatsapp.svg';
 import locationLogo from '../../../assets/contact/location.svg';
-import { FaInstagram } from "react-icons/fa";
 import './HeroSection.css';
-import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 import backgroundCircle from '../../../assets/background/contact/circle.png';

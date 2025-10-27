@@ -1,5 +1,4 @@
 import { Footer } from "../../components/footer/Footer";
-import { NavigationBar } from "../../components/navigation/NavigationBar";
 import { WaveBottom } from "../../components/wave/WaveBottom";
 import './AboutPage.css'
 import { HeroSection } from "./hero/HeroSection";
