@@ -41,7 +41,7 @@ const cardData = [
 
 const StrengthCard = ({ icon, title, highlight, width, isVisible }) => (
   <div
-    className={`card group px-6 py-4 lg:py-5 w-[165px] lg:w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-300 ease-out hover:cursor-pointer hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+    className={`card group px-6 py-4 lg:py-5 w-[165px] lg:w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center gap-4 transition-all duration-300 ease-out hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
       }`}
     style={{
       borderRadius: "32px",
@@ -159,7 +159,7 @@ const ImageContent = ({ isVisible }) => (
     {/* image content */}
     <div
       className={`chef-border relative w-[250px] h-[250px] lg:w-[500px] lg:h-[500px] bg-[#C54300] rounded-full overflow-visible flex items-center justify-center 
-        hover:cursor-pointer hover:scale-105 duration-300 ease-out transition-all group
+        hover:scale-105 duration-300 ease-out transition-all group
         ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"}
       `}
     >
