@@ -18,7 +18,7 @@ const HeroText = ({ isVisible }) => {
     "Kamu mencari rasa… tapi halaman ini cuma aroma harapan.",
     "Ups, ini bukan lauk yang kamu cari. Tapi masih banyak menu lezat di beranda!",
     "Halaman ini nggak ada di daftar menu. Tapi cinta chef rinto tetap ada untukmu.",
-    "Rintonya gak ngumpet di sini, cari lagi di beranda yuk!",
+    "Menunya gak ngumpet di sini, cari lagi di beranda yuk!",
     "Ayu lagi masak halaman ini, jangan diganggu!",
   ];
 
