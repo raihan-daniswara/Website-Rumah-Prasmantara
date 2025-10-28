@@ -25,7 +25,7 @@ const HeroImages = ({ isVisible }) => (
     {/* Large */}
     <div className={`hidden lg:flex image-container gap-5 items-center transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-x-0 floating-container' : 'opacity-0 translate-x-20'
       }`}>
-      <div className="relative image-wrapper rounded-full floating-item hover:scale-102x transition-all duration-400" style={{
+      <div className="relative image-wrapper rounded-full floating-item hover:scale-102 transition-all duration-400" style={{
         '--float-delay': '0.6s',
         '--float-duration': '6s',
         '--float-amplitude': '8px'
@@ -36,7 +36,7 @@ const HeroImages = ({ isVisible }) => (
           className="rounded-full w-[165px] h-[450px] object-cover darken-20"
         />
       </div>
-      <div className="relative image-wrapper rounded-full floating-item hover:scale-102x transition-all duration-400" style={{
+      <div className="relative image-wrapper rounded-full floating-item hover:scale-102 transition-all duration-400" style={{
         '--float-delay': '1s',
         '--float-duration': '7s',
         '--float-amplitude': '12px'
@@ -47,7 +47,7 @@ const HeroImages = ({ isVisible }) => (
           className="rounded-full w-[165px] h-[650px] object-cover darken-20"
         />
       </div>
-      <div className="relative image-wrapper rounded-full floating-item hover:scale-102x transition-all duration-400" style={{
+      <div className="relative image-wrapper rounded-full floating-item hover:scale-102 transition-all duration-400" style={{
         '--float-delay': '1.4s',
         '--float-duration': '5.5s',
         '--float-amplitude': '6px'
