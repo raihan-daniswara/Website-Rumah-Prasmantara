@@ -36,7 +36,7 @@ const cardData = [
 
 const StrengthCard = ({ value, title, highlight, size, isVisible }) => (
   <div
-    className={`card py-8 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center transition-all duration-1000 ease-out hover:cursor-pointer hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+    className={`card py-8 w-[205px] rounded-4xl bg-[#2D1F18] flex flex-col items-center justify-center transition-all duration-1000 ease-out hover:scale-105 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
       }`}
     style={{
       borderRadius: "32px",
@@ -164,15 +164,15 @@ const ImageContent = ({ isVisible }) => (
         <img
           src={MasakanNusantara1}
           alt="Masakan Nusantara 1"
-          className="strengthImage rounded-tr-[50px] rounded-tl-[300px] rounded-br-[50px] rounded-bl-[50px] object-cover w-[300px] h-60"
+          className="strengthImage rounded-tr-[50px] hover:scale-105 rounded-tl-[300px] rounded-br-[50px] rounded-bl-[50px] object-cover w-[300px] h-60"
         />
         <img
           src={MasakanNusantara2}
           alt="Masakan Nusantara 2"
-          className="strengthImage rounded-t-[100px] rounded-b-[300px] object-cover w-60 h-[340px]"
+          className="strengthImage rounded-t-[100px] hover:scale-105 rounded-b-[300px] object-cover w-60 h-[340px]"
         />
       </div>
-      <div className="strengthImage rounded-l-[50px] rounded-r-[220px] overflow-hidden w-[300px] h-[600px]">
+      <div className="strengthImage rounded-l-[50px] hover:scale-105 rounded-r-[220px] overflow-hidden w-[300px] h-[600px]">
         <img
           src={MakananGIF}
           alt="Masakan Animasi"
