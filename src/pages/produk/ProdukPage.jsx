@@ -17,7 +17,7 @@ export function ProdukPage() {
       <div className="w-full h-max relative bg-[#3C261A]">
         <MenuSection />
       </div>
-      <div className="relative pt-25 h-fit w-full">
+      <div className="relative pt-25 w-full">
         <WaveBottom />
         <Footer />
       </div>

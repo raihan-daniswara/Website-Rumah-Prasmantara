@@ -1,8 +1,8 @@
 .menu-section .slick-slide {
-  padding: 0 20px; /* jarak horizontal antar kartu */
+  padding: 0 20px;
 }
 
 .menu-section .slick-list {
-  margin: 0 -20px; /* agar padding tetap seimbang kiri-kanan */
+  margin: 0 -20px;
   mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }

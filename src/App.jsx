@@ -9,6 +9,7 @@ import { NavigationBar } from './components/navigation/NavigationBar';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,8 @@ function App() {
         <Route path="/produk" element={<ProdukPage />} />
         <Route path="/testimoni" element={<TestimoniPage />} />
         <Route path="/kontak" element={<ContactPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

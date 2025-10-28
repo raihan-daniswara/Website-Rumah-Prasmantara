@@ -1,6 +1,6 @@
 import "./QuestionSection.css";
 import questionLogo from '../../../assets/contact/question.svg';
-import questionMascott from '../../../assets/contact/question-mascott.svg';
+import questionMascott from '../../../assets/contact/question-mascott.png';
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 

@@ -19,7 +19,7 @@ export function HomePage() {
         <FavoriteSection />
         <CommentSection />
       </div>
-      <div className="relative pt-25 h-fit w-full">
+      <div className="relative pt-25 w-full">
       <WaveBottom />
       <Footer />
       </div>

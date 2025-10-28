@@ -92,7 +92,7 @@ const TextContent = ({ isVisible }) => (
   </>
 );
 
-const CategorySlider = ({ isVisible }) => {
+const CategorySlider = ({ isVisible, selectedCategory, onCategoryChange }) => {
   const categories = ["Semua", "Senin", "Selasa", "Rabu", "Kamis", "Jumat"];
 
   const largeSettings = {
@@ -107,6 +107,7 @@ const CategorySlider = ({ isVisible }) => {
       { breakpoint: 1441, settings: { slidesToShow: 5, slidesToScroll: 5 } },
     ],
   };
+
   const smallSettings = {
     dots: false,
     infinite: false,
@@ -128,13 +129,12 @@ const CategorySlider = ({ isVisible }) => {
           {categories.map((category, index) => (
             <div key={index} className="px-2">
               <div
-                className="hidden lg:block hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
-                style={{ fontFamily: font.cormorantUpright }}
-              >
-                {category}
-              </div>
-              <div
-                className="block lg:hidden hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-xl font-bold rounded-full leading-6 py-2 text-center transition-all duration-300 hover:cursor-pointer"
+                onClick={() => onCategoryChange(category)}
+                className={`border-[5px] rounded-full py-4 text-center text-4xl font-bold transition-all duration-300 hover:cursor-pointer ${
+                  selectedCategory === category
+                    ? "bg-[#2D1F18] border-[#2D1F18] text-[#C54300]"
+                    : "border-[#EAAE8F]/45 text-[#EAAE8F]/60 hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300]"
+                }`}
                 style={{ fontFamily: font.cormorantUpright }}
               >
                 {category}
@@ -151,15 +151,14 @@ const CategorySlider = ({ isVisible }) => {
       >
         <Slider {...smallSettings}>
           {categories.map((category, index) => (
-            <div key={index} className="px-2">
+            <div key={index} className="px-1">
               <div
-                className="hidden lg:block hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-[5px] border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-4xl font-bold rounded-full leading-6 py-5 text-center transition-all duration-300 hover:cursor-pointer"
-                style={{ fontFamily: font.cormorantUpright }}
-              >
-                {category}
-              </div>
-              <div
-                className="block lg:hidden hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300] border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 text-xl font-bold rounded-full leading-6 py-2 text-center transition-all duration-300 hover:cursor-pointer"
+                onClick={() => onCategoryChange(category)}
+                className={`rounded-full py-2 text-center text-xl font-bold transition-all duration-300 hover:cursor-pointer ${
+                  selectedCategory === category
+                    ? "bg-[#2D1F18] border-[#2D1F18] text-[#C54300] border-3"
+                    : "border-3 border-[#EAAE8F]/45 text-[#EAAE8F]/60 hover:bg-[#2D1F18] hover:border-[#2D1F18] hover:text-[#C54300]"
+                }`}
                 style={{ fontFamily: font.cormorantUpright }}
               >
                 {category}
@@ -172,7 +171,7 @@ const CategorySlider = ({ isVisible }) => {
   );
 };
 
-const CardContent = ({ isVisible, onDetail }) => {
+const CardContent = ({ isVisible, onDetail, selectedCategory }) => {
   const SpecialData = [
     {
       title: "Kapurung",
@@ -194,24 +193,38 @@ const CardContent = ({ isVisible, onDetail }) => {
     },
   ];
 
+  const filteredData =
+    selectedCategory === "Semua"
+      ? SpecialData
+      : SpecialData.filter((menu) => menu.day === selectedCategory);
+
   return (
     <div
       className={`lg:m-10 m-5 w-[1200px] h-[500px] overflow-y-auto custom-scrollbar mask-fade transform transition-all duration-600 ease-out
       ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
-      <div className="flex flex-col lg:gap-12 gap-5 items-center lg:m-10 mt-5">
-        {SpecialData.map((menu, index) => (
-          <SpecialMenuCard
-            key={index}
-            image={menu.image}
-            title={menu.title}
-            rating={menu.rating}
-            description={menu.description}
-            price={menu.price}
-            day={menu.day}
-            onDetail={() => onDetail(menu)}
-          />
-        ))}
+      <div className="relative flex flex-col lg:gap-12 gap-5 items-center lg:m-10 mt-5">
+        {filteredData.length > 0 ? (
+          filteredData.map((menu, index) => (
+            <SpecialMenuCard
+              key={index}
+              image={menu.image}
+              title={menu.title}
+              rating={menu.rating}
+              description={menu.description}
+              price={menu.price}
+              day={menu.day}
+              onDetail={() => onDetail(menu)}
+            />
+          ))
+        ) : (
+          <p
+            className={`text-[#BDBDBD]/40 text-xl lg:text-4xl w-full self-center text-center font-semibold mt-20 lg:mt-30 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            style={{ fontFamily: font.cormorantGaramond }}
+          >
+            Tidak ada menu spesial untuk hari {String(selectedCategory)}.
+          </p>
+        )}
       </div>
     </div>
   );
@@ -222,12 +235,13 @@ export const SpecialSection = () => {
   const [sliderVisible, setSliderVisible] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
   const [modalData, setModalData] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("Semua");
 
   const textRef = useRef(null);
   const sliderRef = useRef(null);
   const cardRef = useRef(null);
 
-  // Observer Text
+  // Observers
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setTextVisible(entry.isIntersecting),
@@ -237,7 +251,6 @@ export const SpecialSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Observer Slider
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setSliderVisible(entry.isIntersecting),
@@ -247,7 +260,6 @@ export const SpecialSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Observer Card
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setCardVisible(entry.isIntersecting),
@@ -261,7 +273,7 @@ export const SpecialSection = () => {
     <section className="pt-40 w-full h-[120vh] overflow-hidden flex flex-col items-center relative">
       <WaveBottom />
 
-      {/* Background Large */}
+      {/* Background */}
       <img
         className="hidden lg:block absolute opacity-50 -z-1 -top-11 scale-110 -right-21 pointer-events-none select-none"
         src={backgroundLingkaran}
@@ -273,7 +285,7 @@ export const SpecialSection = () => {
         alt="Background Left"
       />
 
-      {/* Background Small */}
+      {/* Small Background */}
       <img
         className="lg:hidden block absolute opacity-50 -z-1 -top-14 scale-70 -right-24 pointer-events-none select-none"
         src={backgroundLingkaran}
@@ -285,20 +297,25 @@ export const SpecialSection = () => {
         alt="Background Left"
       />
 
-      {/* Konten */}
+      {/* Content */}
       <div ref={textRef}>
         <TextContent isVisible={textVisible} />
       </div>
 
       <div ref={sliderRef}>
-        <CategorySlider isVisible={sliderVisible} />
+        <CategorySlider
+          isVisible={sliderVisible}
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+        />
       </div>
 
-      <div
-        ref={cardRef}
-        className="w-full flex items-center justify-center mx-auto"
-      >
-        <CardContent isVisible={cardVisible} onDetail={setModalData} />
+      <div ref={cardRef} className="w-full flex items-center justify-center mx-auto">
+        <CardContent
+          isVisible={cardVisible}
+          onDetail={setModalData}
+          selectedCategory={selectedCategory}
+        />
       </div>
 
       <SpecialMenuModal
