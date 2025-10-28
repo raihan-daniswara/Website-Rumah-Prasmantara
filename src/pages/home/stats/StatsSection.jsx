@@ -66,7 +66,7 @@ const TiltCard = ({ isVisible, children, slideClass = '-translate-x-10', bgImage
     transitionSpeed={400}
     tiltReverse={true}
     className={`tilt-card relative rounded-2xl bg-[#3C261A] flex flex-col justify-end items-start text-white p-8 
-      transition-all duration-1000 ease-out hover:cursor-pointer overflow-hidden 
+      transition-all duration-1000 ease-out overflow-hidden 
       ${isVisible ? 'opacity-100 translate-x-0' : `opacity-0 ${slideClass}`} 
       group`}
     style={{
