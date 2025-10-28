@@ -19,7 +19,7 @@ const font = {
   cormorantGaramond: '"Cormorant Garamond", serif'
 };
 
-const TiltCard = ({ logo, title, address, paragraph, mobileParagraph, delay, isVisible }) => (
+const TiltCard = ({ logo, title, address, paragraph, url, mobileParagraph, delay, isVisible }) => (
   <Tilt
     tiltMaxAngleX={8}
     tiltMaxAngleY={8}
@@ -35,7 +35,7 @@ const TiltCard = ({ logo, title, address, paragraph, mobileParagraph, delay, isV
     }}
   >
     <img src={contactCard} alt="Contact Card Background" className="w-full h-auto" />
-    <div className="absolute inset-0 flex flex-col items-center justify-center px-3 py-10">
+    <a href={url} target="_blank" className="absolute inset-0 flex flex-col items-center justify-center px-3 py-10">
       <img src={logo} alt={title} className="lg:size-16 size-8 " />
       <div className="mt-3 text-center text-[#FBEED5]">
         <h2
@@ -63,7 +63,7 @@ const TiltCard = ({ logo, title, address, paragraph, mobileParagraph, delay, isV
           {mobileParagraph}
         </p>
       </div>
-    </div>
+    </a>
   </Tilt>
 );
 
@@ -74,21 +74,24 @@ const HeroText = ({ isVisible }) => {
       title: "Instagram",
       address: "@rm_prasmantara",
       paragraph: "Lihat menu spesial, promo, dan momen seru di Instagram kami.",
-      mobileParagraph: "Lihat menu spesial, promo di Instagram kami."
+      mobileParagraph: "Lihat menu spesial, promo di Instagram kami.",
+      url: "https://www.instagram.com/"
     },
     {
       logo: whatsappLogo,
       title: "Whatsapp",
       address: "+62 858-1187-1116",
       paragraph: "Admin kami siap menjawab pertanyaan Anda 24 jam penuh.",
-      mobileParagraph: "Admin kami siap menjawab pertanyaan Anda."
+      mobileParagraph: "Admin kami siap menjawab pertanyaan Anda.",
+      url: "https://wa.me/qr/AUPBC5NJ3ZNMN1"
     },
     {
       logo: locationLogo,
       title: "Lokasi Utama",
       address: "Jl. Cut Mutia",
       paragraph: "Datang dan nikmati pengalaman kuliner terbaik di sini.",
-      mobileParagraph: "Nikmati pengalaman kuliner terbaik di sini."
+      mobileParagraph: "Nikmati pengalaman kuliner terbaik di sini.",
+      url: "https://www.google.com/maps/place/Rumah+Makan+Ibu+Ida"
     }
   ];
 
@@ -130,6 +133,7 @@ const HeroText = ({ isVisible }) => {
               title={contact.title}
               address={contact.address}
               paragraph={contact.paragraph}
+              url={contact.url}
               mobileParagraph={contact.mobileParagraph}
               delay={index * 0.4}
               isVisible={isVisible}
@@ -185,9 +189,6 @@ const HeroText = ({ isVisible }) => {
   );
 };
 
-
-
-// Main Hero Section
 export const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
 

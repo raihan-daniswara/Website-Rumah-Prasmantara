@@ -1,0 +1,9 @@
+.rating-custom-scrollbar {
+  overflow-y: auto;         /* tetap bisa scroll secara vertikal */
+  scrollbar-width: none;    /* untuk Firefox */
+  -ms-overflow-style: none; /* untuk Internet Explorer dan Edge lama */
+}
+
+.rating-custom-scrollbar::-webkit-scrollbar {
+  display: none;            /* untuk Chrome, Safari, dan Edge baru */
+}

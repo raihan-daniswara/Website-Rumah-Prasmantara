@@ -35,7 +35,7 @@ function RatingDisplay({ rating, reviewCount, isVisible }) {
 
         <div cla ssName="flex justify-center items-center">
           <h1
-            className={`text-[128px] font-semibold text-[#EAAE8F] leading-[120px]`}
+            className={`text-[128px] font-semibold text-center text-[#EAAE8F] leading-[120px]`}
             style={{
               fontFamily: "'Cormorant Infant', serif",
               textShadow:
@@ -275,7 +275,7 @@ const CardContent = ({ isVisible }) => {
   ];
   return (
     <div
-      className={`mt-5 w-max h-[400px] lg:h-[500px] overflow-y-auto custom-scrollbar mask-fade transform transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+      className={`mt-5 w-max h-[400px] lg:h-[500px] overflow-y-auto rating-custom-scrollbar mask-fade transform transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
     >
       <div className="flex flex-col lg:gap-12 gap-5 items-center lg:m-10 mb-5 mt-5">
         {commentData.map((item, index) => (
