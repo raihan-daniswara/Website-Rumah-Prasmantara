@@ -1,18 +1,52 @@
-# React + Vite
+# Website Rumah Prasmantara
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Project Overview
 
-Currently, two official plugins are available:
+Website Rumah Prasmantara merupakan website yang dibuat untuk menampilkan informasi mengenai rumah atau properti yang ditawarkan oleh Rumah Prasmantara. Website ini berfungsi sebagai media informasi dan promosi yang dapat diakses secara online oleh calon pelanggan.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Melalui website ini, pengguna dapat melihat berbagai informasi seperti profil rumah, fasilitas, lokasi, serta informasi lainnya yang berkaitan dengan properti yang ditawarkan.
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🎯 Tujuan Project
 
-Note: This will impact Vite dev & build performances.
+Tujuan dibuatnya website ini adalah:
 
-## Expanding the ESLint configuration
+* Menyediakan media informasi mengenai Rumah Prasmantara
+* Mempermudah calon pelanggan mendapatkan informasi properti
+* Menjadi sarana promosi secara digital
+* Menampilkan informasi rumah secara lebih menarik dan mudah diakses
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌐 Page Website
+
+Beberapa page yang terdapat pada website ini antara lain:
+
+* **Beranda :**
+  Menampilkan halaman utama website dengan informasi singkat mengenai Rumah Prasmantara.
+
+* **Tentang Kami :**
+  Menjelaskan informasi mengenai Rumah Prasmantara.
+
+* **Produk :**
+  Menampilkan detail menu yang tersedia.
+
+* **Testimoni :**
+  Menampilkan review dari orang yang sudah datang ke restoran rumah prasmantara.
+
+* **Hubungi Kami :**
+  Menyediakan informasi kontak untuk calon pembeli.
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+Project website ini dibuat menggunakan teknologi berikut:
+
+* HTML
+* CSS
+* JavaScript
+* React
+* Tailwind CSS
+* Git & GitHub
