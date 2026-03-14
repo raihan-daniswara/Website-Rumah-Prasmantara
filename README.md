@@ -10,7 +10,7 @@ Website ini juga dirancang agar tampil menarik, responsif, dan mudah diakses ole
 ...
 
 ## 🌐 Live Website
-Website ini dapat diakses di: [https://www.rumahprasmantara.site/]
+Website ini dapat diakses di: https://www.rumahprasmantara.site/
 
 ---
 
